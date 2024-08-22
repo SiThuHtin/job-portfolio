@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+  min-height: 100vh;
+}
+img {
+  height: 500px;
+  border-radius: 50px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.2); /* More transparent white background */
+  backdrop-filter: blur(10px); /* Blur effect to create the glass look */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
+  border-radius: 15px; /* Optional: rounded corners */
+  padding: 2em; /* Padding inside the glass element */
+  color: white; /* Text color to contrast with the black background */
+  /* Height of the glass element */
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+}

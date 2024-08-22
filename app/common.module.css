@@ -1,0 +1,32 @@
+.position {
+  color: white;
+  list-style: none;
+  margin-bottom: 1.5em;
+}
+
+.division {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #343541;
+}
+
+.heroSection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+.heroButton {
+  background-color: blueviolet;
+  padding: 1em;
+  margin-right: 20px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.heroButton:hover {
+  background-color: #ff0000;
+}
