@@ -13,7 +13,7 @@ img {
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.2); /* More transparent white background */
+  background: rgb(21, 20, 20); /* More transparent white background */
   backdrop-filter: blur(10px); /* Blur effect to create the glass look */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
@@ -22,4 +22,5 @@ img {
   color: white; /* Text color to contrast with the black background */
   /* Height of the glass element */
   box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+  width: auto;
 }

@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #343541;
+  background-color: #080808;
 }
 
 .heroSection {
@@ -20,13 +20,17 @@
   height: 100vh;
 }
 .heroButton {
-  background-color: blueviolet;
+  background-color: white;
   padding: 1em;
-  margin-right: 20px;
-  color: white;
-  border-radius: 10px;
+  margin-right: 1.2em;
+  margin-bottom: 1.2em;
+  color: #313131;
+  border-radius: 50px;
   cursor: pointer;
 }
 .heroButton:hover {
-  background-color: #ff0000;
+  background-color: #e4da14;
+}
+.projectdiv {
+  background-color: #080808;
 }
