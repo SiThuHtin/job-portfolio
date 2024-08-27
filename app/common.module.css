@@ -31,6 +31,23 @@
 .heroButton:hover {
   background-color: #e4da14;
 }
-.projectdiv {
-  background-color: #080808;
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 16px; /* Spacing between the cards */
+  padding: 2em;
+}
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 cards per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr; /* 1 card per row on small screens */
+  }
 }

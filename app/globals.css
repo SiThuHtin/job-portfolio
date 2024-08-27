@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply text-white;
+  background-color: #080808;
+}
 main {
   min-height: 100vh;
 }
@@ -23,4 +27,6 @@ img {
   /* Height of the glass element */
   box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
   width: auto;
+}
+.card-button:hover {
 }
