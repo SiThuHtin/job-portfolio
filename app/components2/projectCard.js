@@ -3,27 +3,27 @@
 import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/component/ui/3d-card";
-
-const ThreeDCardDemo = () => {
+import style from '@/app/common.module.css'
+const ThreeDCardDemo = ({title,desc}) => {
   const redirectTobma = () => {
     window.location.href = "https://www.bmahq.org";
   };
   return (
-    <div>
+    <div className={style.card}>
       <CardContainer className="inter-var">
         <CardBody className="rounded-xl p-6 border  ">
           <CardItem
             translateZ="50"
-            className="text-xl font-bold text-neutral-600 dark:text-white"
+            className="text-xl font-bold text-white"
           >
-            Burma Medical Association
+            {title}
           </CardItem>
           <CardItem
             as="p"
             translateZ="60"
             className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
           >
-            Hover over this card to unleash the power of CSS perspective
+            {desc}
           </CardItem>
           <CardItem
             translateZ="100"

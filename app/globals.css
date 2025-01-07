@@ -6,9 +6,7 @@ body {
   @apply text-white;
   background-color: #080808;
 }
-main {
-  min-height: 100vh;
-}
+
 img {
   height: 500px;
   border-radius: 50px;
@@ -22,11 +20,27 @@ img {
   -webkit-backdrop-filter: blur(10px); /* For Safari */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
   border-radius: 15px; /* Optional: rounded corners */
-  padding: 2em; /* Padding inside the glass element */
+   /* Padding inside the glass element */
   color: white; /* Text color to contrast with the black background */
   /* Height of the glass element */
   box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
-  width: auto;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
-.card-button:hover {
+/* nav{
+  position: absolute;
+  right: 0px;
+  width: 100%;
+  height: 8%;
+} */
+
+/* @media (max-width: 768px) {
+nav{
+  position: relative;
 }
+} */

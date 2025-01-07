@@ -1,12 +1,24 @@
+'use client'
+import {useRouter} from 'next/navigation'
 import style from "./common.module.css";
 import { IoMdDownload } from "react-icons/io";
+
+
+
+
 export default function Home() {
+  
+  const router= useRouter();
+  const handleClick =()=>{
+    router.push('/my-projects')
+
+  }
   return (
     <main className="flex  flex-col items-center justify-between ">
-      <div className={style.heroSection}>
+      
         <div className={style.division}>
           <div className="glass-effect">
-            <h1 className="text-4xl py-5 text-yellow-500">I am</h1>
+            <h1 className="text-4xl py-5">I am <span className=" text-blue-700"><b>Sithu Htin</b></span></h1>
             <ul className={style.position}>
               <li className="text-xl">IT System Admin</li>
               <li className="text-xl">Website Developer</li>
@@ -23,16 +35,12 @@ export default function Home() {
                   }}
                 />
               </button>
-              <button className={style.heroButton}>My Projects</button>
+              <button className={style.heroButton} onClick={handleClick}>My Projects</button>
             </div>
           </div>
         </div>
-        <div className={style.division}>
-          <div className={style.imageDiv}>
-            <img src="https://bmafiles.s3.eu-north-1.amazonaws.com/IMG_3769.png" />
-          </div>
-        </div>
-      </div>
+        
+      
     </main>
   );
 }

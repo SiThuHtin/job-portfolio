@@ -9,20 +9,20 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
   return (
-    <nav className="bg-gray-900 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-yellow-500 text-2xl font-bold">Sithu Htin</div>
+    <nav className="p-4">
+      <div className="container mx-auto flex justify-around items-center">
+        <div className="text-blue-700 text-2xl font-bold">Sithu Htin</div>
         <div className="hidden md:flex space-x-8">
-          <Link href="/" className="text-gray-300 hover:text-white">
+          <Link href="/" className="text-gray-300 hover:text-blue-500">
             Home
           </Link>
-          <Link href="/about-me" className="text-gray-300 hover:text-white">
+          <Link href="/about-me" className="text-gray-300 hover:text-blue-500">
             About Me
           </Link>
-          <Link href="/my-projects" className="text-gray-300 hover:text-white">
+          <Link href="/my-projects" className="text-gray-300 hover:text-blue-500">
             My Projects
           </Link>
-          <Link href="/contact-me" className="text-gray-300 hover:text-white">
+          <Link href="/contact-me" className="text-gray-300 hover:text-blue-500">
             Contact Me
           </Link>
         </div>
@@ -53,25 +53,25 @@ const Navbar = () => {
         <div id="mobile-menu">
           <Link
             href="/"
-            className="block text-gray-300 hover:text-white px-2 py-1"
+            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
           >
             Home
           </Link>
           <Link
             href="/about-me"
-            className="block text-gray-300 hover:text-white px-2 py-1"
+            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
           >
             About
           </Link>
           <Link
             href="/my-projects"
-            className="block text-gray-300 hover:text-white px-2 py-1"
+            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
           >
             My Projects
           </Link>
           <Link
             href="/contact-me"
-            className="block text-gray-300 hover:text-white px-2 py-1"
+            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
           >
             Contact Me
           </Link>
