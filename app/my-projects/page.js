@@ -27,7 +27,7 @@ const myProjects = () => {
   return (
     <div className={style.gridContainer}>
       {/* <div onClick={() => alert("Hello")}>
-      <ThreeDCardDemo title={cardData[0].title} />
+      
       </div>
       
       <div onClick={() => alert("Hello2")}>
