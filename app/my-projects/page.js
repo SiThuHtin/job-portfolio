@@ -26,16 +26,7 @@ const cardData =[
 const myProjects = () => {
   return (
     <div className={style.gridContainer}>
-      {/* <div onClick={() => alert("Hello")}>
-      
-      </div>
-      
-      <div onClick={() => alert("Hello2")}>
-      <ThreeDCardDemo title={cardData[1].title} />
-      </div>
-      <div onClick={() => alert("Hello3")}>
-      <ThreeDCardDemo title={cardData[2].title} />
-      </div> */}
+ 
       {
         cardData.map((data)=>{
           return(
