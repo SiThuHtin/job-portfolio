@@ -51,10 +51,10 @@ const ContactMe = () => {
         >
           <h3 style={{ marginBottom: 12, fontWeight: "bold" }}>Contact Information</h3>
           <div style={{ marginBottom: 8 }}>
-            <strong>Phone:</strong> <a href="tel:+1234567890" style={{ color: "#fff" }}>+123 456 7890</a>
+            <strong>Phone:</strong> <a href="tel:+66640869218" style={{ color: "#fff" }}>+66 640 869 218</a>
           </div>
           <div style={{ marginBottom: 8 }}>
-            <strong>Email:</strong> <a href="mailto:your@email.com" style={{ color: "#fff" }}>your@email.com</a>
+            <strong>Email:</strong> <a href="mailto:sithuhtin2022@gmail.com" style={{ color: "#fff" }}>sithuhtin2022@gmail.com</a>
           </div>
           <div style={{ marginBottom: 8 }}>
             <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" style={{ color: "#0077b5" }}>linkedin.com/in/yourprofile</a>
