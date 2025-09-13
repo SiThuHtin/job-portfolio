@@ -5,9 +5,9 @@ import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/component/ui/3d-card";
 import style from '@/app/common.module.css'
 const ThreeDCardDemo = ({title,desc,image}) => {
-  const redirectTobma = () => {
-    window.location.href = "https://www.bmahq.org";
-  };
+  // const redirectTobma = () => {
+  //   window.location.href = "https://www.bmahq.org";
+  // };
   return (
     <div className={style.card}>
       <CardContainer className="inter-var">
