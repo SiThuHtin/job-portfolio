@@ -8,70 +8,69 @@ const Navbar = () => {
   const handleClick = () => {
     setShowMenu(!showMenu);
   };
+
   return (
-    <nav className="p-4">
-      <div className="container mx-auto flex justify-around items-center">
-        <div className="text-blue-700 text-2xl font-bold">Sithu Htin</div>
-        <div className="hidden md:flex space-x-8">
-          <Link href="/" className="text-gray-300 hover:text-blue-500">
+    <nav className="fixed top-0 left-0 w-full h-20 z-50 bg-neutral-900/95 border-b border-neutral-800 shadow-lg flex items-center transition-all duration-300">
+      <div className="container mx-auto flex justify-between items-center px-8">
+        <div className="text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
+          Sithu Htin
+        </div>
+        <div className="hidden md:flex space-x-10">
+          <Link href="/" className="text-md text-white font-semibold hover:text-blue-400 transition">
             Home
           </Link>
-          <Link href="/about-me" className="text-gray-300 hover:text-blue-500">
-            About Me
-          </Link>
-          <Link href="/my-projects" className="text-gray-300 hover:text-blue-500">
+          <Link href="/my-projects" className="text-md text-white font-semibold hover:text-blue-400 transition">
             My Projects
           </Link>
-          <Link href="/contact-me" className="text-gray-300 hover:text-blue-500">
+          <Link href="/contact-me" className="text-md text-white font-semibold hover:text-blue-400 transition">
             Contact Me
           </Link>
         </div>
         <div className="md:hidden">
           <button
             id="menu-btn"
-            className="text-gray-300 focus:outline-none"
+            className="text-white focus:outline-none"
             onClick={handleClick}
+            aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6"
+              className="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 6h16M4 12h16m-7 6h7"
               ></path>
             </svg>
           </button>
         </div>
       </div>
+      {/* Mobile Menu */}
       {showMenu && (
-        <div id="mobile-menu">
+        <div className="absolute top-20 left-0 w-full bg-gradient-to-r from-blue-900 via-black to-purple-900 border-b-4 border-blue-600 flex flex-col items-center py-4 md:hidden z-40 shadow-xl">
           <Link
             href="/"
-            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
+            className="block text-lg text-white font-semibold hover:text-blue-400 px-4 py-2 w-full text-center"
+            onClick={() => setShowMenu(false)}
           >
             Home
           </Link>
           <Link
-            href="/about-me"
-            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
-          >
-            About
-          </Link>
-          <Link
             href="/my-projects"
-            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
+            className="block text-lg text-white font-semibold hover:text-blue-400 px-4 py-2 w-full text-center"
+            onClick={() => setShowMenu(false)}
           >
             My Projects
           </Link>
           <Link
             href="/contact-me"
-            className="block text-gray-300 hover:text-blue-500 px-2 py-1"
+            className="block text-lg text-white font-semibold hover:text-blue-400 px-4 py-2 w-full text-center"
+            onClick={() => setShowMenu(false)}
           >
             Contact Me
           </Link>

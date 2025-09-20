@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import style from "@/app/common.module.css";
 
 const ContactMe = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -16,122 +15,111 @@ const ContactMe = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "64px",
-        maxWidth: 1100,
-        margin: "40px auto",
-        padding: 32,
-        alignItems: "stretch"
-      }}
-    >
-      {/* Address Card Section */}
-      
-      <div style={{
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-        <div
-          style={{
-            background: "rgba(30, 30, 30, 0.4)", // semi-transparent for glass effect
-            borderRadius: 16,
-            padding: 28,
-            minWidth: 320,
-            boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
-            color: "#fff",
-            border: "3px solid rgba(255,255,255,0.4)", // significant border
-            backdropFilter: "blur(12px)", // glass effect
-            WebkitBackdropFilter: "blur(12px)", // Safari support
-            transition: "box-shadow 0.3s"
-          }}
-        >
-          <h3 style={{ marginBottom: 12, fontWeight: "bold" }}>Contact Information</h3>
-          <div style={{ marginBottom: 8 }}>
-            <strong>Phone:</strong> <a href="tel:+66640869218" style={{ color: "#fff" }}>+66 640 869 218</a>
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <strong>Email:</strong> <a href="mailto:sithuhtin2022@gmail.com" style={{ color: "#fff" }}>sithuhtin2022@gmail.com</a>
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" style={{ color: "#0077b5" }}>linkedin.com/in/yourprofile</a>
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <strong>Telegram:</strong> <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" style={{ color: "#0088cc" }}>@yourusername</a>
-          </div>
-          <div>
-            <strong>Facebook:</strong> <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" style={{ color: "#1877f3" }}>facebook.com/yourprofile</a>
+    <div className="pt-20 min-h-screen bg-black">
+      <div className="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto px-4 py-12">
+        {/* Address Card Section */}
+        <div className="flex-1 flex justify-center items-center">
+          <div className="bg-black/60 backdrop-blur-lg border-4 border-white/20 rounded-2xl p-8 min-w-[300px] shadow-xl text-white">
+            <h3 className="mb-3 font-bold text-lg text-center">Contact Information</h3>
+            <div className="mb-2">
+              <strong>Phone:</strong>{" "}
+              <a href="tel:+66640869218" className="text-white hover:underline">
+                +66 640 869 218
+              </a>
+            </div>
+            <div className="mb-2">
+              <strong>Email:</strong>{" "}
+              <a href="mailto:sithuhtin2022@gmail.com" className="text-white hover:underline">
+                sithuhtin2022@gmail.com
+              </a>
+            </div>
+            <div className="mb-2">
+              <strong>LinkedIn:</strong>{" "}
+              <a
+                href="https://linkedin.com/in/yourprofile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0077b5] hover:underline"
+              >
+                linkedin.com/in/yourprofile
+              </a>
+            </div>
+            <div className="mb-2">
+              <strong>Telegram:</strong>{" "}
+              <a
+                href="https://t.me/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0088cc] hover:underline"
+              >
+                @yourusername
+              </a>
+            </div>
+            <div>
+              <strong>Facebook:</strong>{" "}
+              <a
+                href="https://facebook.com/yourprofile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#1877f3] hover:underline"
+              >
+                facebook.com/yourprofile
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      {/* Contact Form Section */}
-      <div style={{
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-        <div style={{ width: "100%", maxWidth: 400 }}>
-          <h2 style={{ textAlign: "center", marginBottom: 24, color: "#222" }}>Contact Me</h2>
-          {submitted ? (
-            <div style={{ textAlign: "center", color: "green" }}>
-              Thank you for reaching out!
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <div style={{ marginBottom: 16 }}>
-                <label>Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                  style={{ width: "100%", padding: 8, borderRadius: 6, border: "1px solid #ccc", color: "#222" }}
-                />
+        {/* Contact Form Section */}
+        <div className="flex-1 flex justify-center items-center">
+          <div className="w-full max-w-md bg-black/60 backdrop-blur-lg border-4 border-white/20 rounded-2xl shadow-xl p-8">
+            <h2 className="text-center mb-6 text-white text-2xl font-semibold">Contact Me</h2>
+            {submitted ? (
+              <div className="text-center text-green-500 font-medium">
+                Thank you for reaching out!
               </div>
-              <div style={{ marginBottom: 16 }}>
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  style={{ width: "100%", padding: 8, borderRadius: 6, border: "1px solid #ccc", color: "#222" }}
-                />
-              </div>
-              <div style={{ marginBottom: 16 }}>
-                <label>Message</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  style={{ width: "100%", padding: 8, borderRadius: 6, border: "1px solid #ccc", color: "#222" }}
-                />
-              </div>
-              <button
-                type="submit"
-                style={{
-                  width: "100%",
-                  padding: 10,
-                  borderRadius: 6,
-                  background: "#222",
-                  color: "#fff",
-                  fontWeight: "bold",
-                  border: "none",
-                  cursor: "pointer"
-                }}
-              >
-                Send
-              </button>
-            </form>
-          )}
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label className="block mb-1 text-white">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-1 text-white">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-1 text-white">Message</label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-lg transition-all duration-300 hover:from-purple-600 hover:to-blue-600 hover:scale-105 hover:shadow-2xl"
+                >
+                  Send
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </div>
