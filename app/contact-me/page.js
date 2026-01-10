@@ -1,17 +1,40 @@
 "use client";
 import React, { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const ContactMe = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      await emailjs.send(
+        'service_37ugmkr', // Replace with your EmailJS service ID
+        'template_ylumre8', // Replace with your EmailJS template ID
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+          to_email: 'sithuhtin2022@gmail.com', // Your personal email
+        },
+        'F3RuUwL4wRRGypadF' // Replace with your EmailJS public key
+      );
+      setSubmitted(true);
+    } catch (err) {
+      setError("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -78,6 +101,7 @@ const ContactMe = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
+                {error && <div className="text-red-500 mb-4">{error}</div>}
                 <div className="mb-4">
                   <label className="block mb-1 text-white">Name</label>
                   <input
@@ -86,7 +110,7 @@ const ContactMe = () => {
                     value={form.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
                 </div>
                 <div className="mb-4">
@@ -97,7 +121,7 @@ const ContactMe = () => {
                     value={form.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
                 </div>
                 <div className="mb-4">
@@ -108,14 +132,15 @@ const ContactMe = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-lg transition-all duration-300 hover:from-purple-600 hover:to-blue-600 hover:scale-105 hover:shadow-2xl"
+                  disabled={loading}
+                  className="w-full py-3 rounded-lg bg-yellow-500 text-black font-bold text-lg shadow-lg transition-all duration-300 hover:bg-yellow-600 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send
+                  {loading ? "Sending..." : "Send"}
                 </button>
               </form>
             )}

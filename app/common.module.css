@@ -15,16 +15,16 @@
 }
 
 .heroButton {
-  background-color: white;
+  background-color: #eab308;
   padding: 1em;
   margin-right: 1.2em;
   margin-bottom: 1.2em;
-  color: #313131;
+  color: black;
   border-radius: 50px;
   cursor: pointer;
 }
 .heroButton:hover {
-  background-color: #e4da14;
+  background-color: #ca8a04;
 }
 
 .gridContainer {

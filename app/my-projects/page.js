@@ -54,10 +54,17 @@ const myProjects = () => {
         </div>
       </div>
       {/* Beautiful Divider */}
+            <div className="flex items-center my-12">
+        <div className="flex-grow border-t border-gray-600"></div>
+        <span className="mx-6 text-gray-400 uppercase tracking-widest text-sm font-semibold select-none">
+          My Web Developing Projects
+        </span>
+        <div className="flex-grow border-t border-gray-600"></div>
+      </div>
       <div className="flex items-center my-12">
         <div className="flex-grow border-t border-gray-600"></div>
         <span className="mx-6 text-gray-400 uppercase tracking-widest text-sm font-semibold select-none">
-          My Projects
+          My Web Developing Projects
         </span>
         <div className="flex-grow border-t border-gray-600"></div>
       </div>

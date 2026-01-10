@@ -16,13 +16,13 @@ const Navbar = () => {
           Sithu Htin
         </div>
         <div className="hidden md:flex space-x-10">
-          <Link href="/" className="text-md text-white font-semibold hover:text-blue-400 transition">
+          <Link href="/" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             Home
           </Link>
-          <Link href="/my-projects" className="text-md text-white font-semibold hover:text-blue-400 transition">
+          <Link href="/my-projects" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             My Projects
           </Link>
-          <Link href="/contact-me" className="text-md text-white font-semibold hover:text-blue-400 transition">
+          <Link href="/contact-me" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             Contact Me
           </Link>
         </div>
@@ -52,24 +52,24 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {showMenu && (
-        <div className="absolute top-20 left-0 w-full bg-gradient-to-r from-blue-900 via-black to-purple-900 border-b-4 border-blue-600 flex flex-col items-center py-4 md:hidden z-40 shadow-xl">
+        <div className="absolute top-20 left-0 w-full bg-gradient-to-r from-yellow-900 via-black to-yellow-900 border-b-4 border-yellow-600 flex flex-col items-center py-4 md:hidden z-40 shadow-xl">
           <Link
             href="/"
-            className="block text-lg text-white font-semibold hover:text-blue-400 px-4 py-2 w-full text-center"
+            className="block text-lg text-white font-semibold hover:text-yellow-400 px-4 py-2 w-full text-center"
             onClick={() => setShowMenu(false)}
           >
             Home
           </Link>
           <Link
             href="/my-projects"
-            className="block text-lg text-white font-semibold hover:text-blue-400 px-4 py-2 w-full text-center"
+            className="block text-lg text-white font-semibold hover:text-yellow-400 px-4 py-2 w-full text-center"
             onClick={() => setShowMenu(false)}
           >
             My Projects
           </Link>
           <Link
             href="/contact-me"
-            className="block text-lg text-white font-semibold hover:text-blue-400 px-4 py-2 w-full text-center"
+            className="block text-lg text-white font-semibold hover:text-yellow-400 px-4 py-2 w-full text-center"
             onClick={() => setShowMenu(false)}
           >
             Contact Me
