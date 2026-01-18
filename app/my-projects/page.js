@@ -32,6 +32,15 @@ const cardData = [
       window.open("https://www.hiswg.org/", "_blank");
     },
   },
+    {
+    title: "Shun & Ye Wedding",
+    desc: "I made this with Next.js",
+    image:
+      "https://res.cloudinary.com/dznkec5x0/image/upload/v1768719152/Screenshot_from_2026-01-18_13-52-02_movgha.png",
+    func: function () {
+      window.open("https://wedding-invitation-ys.vercel.app/", "_blank");
+    },
+  }
 ];
 // ...existing code...
 // ...existing code...

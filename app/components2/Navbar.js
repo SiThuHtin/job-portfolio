@@ -22,6 +22,9 @@ const Navbar = () => {
           <Link href="/my-projects" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             My Projects
           </Link>
+          <Link href="https://sithu-htin-docs.gitbook.io/sithu-things/" className="text-md text-white font-semibold hover:text-yellow-400 transition">
+            My Documentation
+          </Link>
           <Link href="/contact-me" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             Contact Me
           </Link>
