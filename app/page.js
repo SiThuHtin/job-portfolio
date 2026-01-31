@@ -242,7 +242,7 @@ export default function Home() {
                   Read Documentation →
                 </button>
               </div>
-              <div className="hidden md:block ml-6 text-5xl">📚</div>
+              <div className="hidden md:block ml-6 text-5xl" aria-hidden="true">📚</div>
             </div>
           </div>
         </div>
