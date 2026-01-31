@@ -5,26 +5,32 @@ import Navbar from "./components2/Navbar";
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export const metadata = {
-  title: "Sithu Htin",
-  description: "IT systems engineer portfolio website",
+  title: {
+    default: "Sithu Htin",
+    template: "%s – Sithu Htin",
+  },
+  description:
+    "Sithu Htin – IT System Engineer & Developer. Official portfolio website.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.className}>
       <head>
-        <script
+        <Script
+          id="person-schema"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Sithu Htin",
               url: "https://www.sithuhtin.com",
-              jobTitle: "IT System Engineer, Full-Stack Developer, Technical Writer",
+              jobTitle: "IT System Engineer & Developer",
               sameAs: [
-                "https://www.linkedin.com/in/see-min-thu",
                 "https://github.com/SiThuHtin",
+                "https://www.linkedin.com/in/see-min-thu",
               ],
             }),
           }}
