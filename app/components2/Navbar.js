@@ -55,24 +55,26 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {showMenu && (
-        <div className="absolute top-20 left-0 w-full bg-gradient-to-r from-yellow-900 via-black to-yellow-900 border-b-4 border-yellow-600 flex flex-col items-center py-4 md:hidden z-40 shadow-xl">
+        <div className="absolute top-16 left-0 w-full bg-neutral-900/95 border-b border-neutral-800 flex flex-col items-start px-4 py-3 md:hidden z-40 shadow-md">
           <Link
             href="/"
-            className="block text-lg text-white font-semibold hover:text-yellow-400 px-4 py-2 w-full text-center"
+            className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
             onClick={() => setShowMenu(false)}
           >
             Home
           </Link>
+          <div className="w-full h-px bg-neutral-800 my-1"></div>
           <Link
             href="/my-projects"
-            className="block text-lg text-white font-semibold hover:text-yellow-400 px-4 py-2 w-full text-center"
+            className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
             onClick={() => setShowMenu(false)}
           >
             My Projects
           </Link>
+          <div className="w-full h-px bg-neutral-800 my-1"></div>
           <Link
             href="/contact-me"
-            className="block text-lg text-white font-semibold hover:text-yellow-400 px-4 py-2 w-full text-center"
+            className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
             onClick={() => setShowMenu(false)}
           >
             Contact Me
