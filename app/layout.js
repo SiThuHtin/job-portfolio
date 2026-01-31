@@ -1,27 +1,43 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components2/Navbar";
-import Script from "next/script";
 
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "600", "700"] });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
 
+/* =========================
+   SEO Metadata (Google)
+========================= */
 export const metadata = {
   title: {
     default: "Sithu Htin",
-    template: "%s – Sithu Htin",
+    template: "%s | Sithu Htin",
   },
   description:
     "Sithu Htin – IT System Engineer & Developer. Official portfolio website.",
+  metadataBase: new URL("https://www.sithuhtin.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Sithu Htin",
+    description:
+      "IT System Engineer & Developer. Official portfolio website.",
+    url: "https://www.sithuhtin.com",
+    siteName: "Sithu Htin",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.className}>
-      <head>
-        <Script
-          id="person-schema"
+      <body>
+        {/* ===== Schema.org Person (Google SEO) ===== */}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -36,8 +52,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-      </head>
-      <body>
+
         <Navbar />
         {children}
       </body>
