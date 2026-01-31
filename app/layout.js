@@ -5,7 +5,7 @@ import Navbar from "./components2/Navbar";
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export const metadata = {
-  title: "Sithu Htin - Portfolio",
+  title: "Sithu Htin",
   description: "IT systems engineer portfolio website",
 };
 
