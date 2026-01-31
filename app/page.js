@@ -145,12 +145,11 @@ export default function Home() {
               <div className="bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden hover:border-yellow-400 transition-all duration-300 transform hover:scale-105">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={project.image}
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="group-hover:scale-110 transition-transform duration-300"
-                  />
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="group-hover:scale-110 transition-transform duration-300 object-cover"
+                    />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
