@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.className}>
-           <head>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
