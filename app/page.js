@@ -55,36 +55,36 @@ export default function Home() {
       <div className="relative py-20 px-2 md:px-4 bg-gradient-to-b from-black via-black to-black/50 overflow-hidden w-full">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-10 w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-8 left-6 w-48 h-48 md:w-96 md:h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-4 right-6 w-48 h-48 md:w-96 md:h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        <div className="relative flex flex-col items-center justify-center z-10 w-full">
-          <div className="glass-effect bg-black/40 backdrop-blur-xl border-2 border-yellow-400/30 rounded-3xl shadow-2xl p-8 w-7/10 mx-auto" style={{ width: '60%' }}>
+        <div className="relative flex flex-col items-center justify-center z-10 w-full px-4">
+          <div className="glass-effect bg-black/40 backdrop-blur-xl border-2 border-yellow-400/30 rounded-3xl shadow-2xl p-6 sm:p-8 max-w-3xl w-full mx-auto">
             {/* Animated Greeting */}
             <div className="text-center mb-8">
               <span className="inline-block text-yellow-400 text-sm font-bold mb-4 px-4 py-2 bg-yellow-400/10 rounded-full">Welcome to My Portfolio</span>
             </div>
 
             {/* Main Title */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl py-6 text-center text-white font-bold whitespace-nowrap overflow-hidden text-ellipsis">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl py-4 sm:py-6 text-center text-white font-bold">
               I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">Sithu Htin</span>
             </h1>
 
             {/* Subtitle with better styling */}
-            <div className="mb-8 text-center overflow-x-auto">
-              <div className="flex gap-2 justify-center items-center flex-nowrap">
-                <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 whitespace-nowrap text-sm md:text-base">
+            <div className="mb-8 text-center">
+              <div className="flex flex-wrap gap-2 justify-center items-center">
+                <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-2 rounded-full bg-white/5 border border-white/10 text-sm md:text-base">
                   <span className="text-yellow-400">◆</span>
                   <span className="text-gray-200">IT System Admin</span>
                 </div>
                 <div className="hidden md:block text-gray-600">•</div>
-                <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 whitespace-nowrap text-sm md:text-base">
+                <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-2 rounded-full bg-white/5 border border-white/10 text-sm md:text-base">
                   <span className="text-yellow-400">◆</span>
                   <span className="text-gray-200">Website Dev</span>
                 </div>
                 <div className="hidden md:block text-gray-600">•</div>
-                <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 whitespace-nowrap text-sm md:text-base">
+                <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-2 rounded-full bg-white/5 border border-white/10 text-sm md:text-base">
                   <span className="text-yellow-400">◆</span>
                   <span className="text-gray-200">DB Dev</span>
                 </div>
@@ -92,34 +92,34 @@ export default function Home() {
             </div>
 
             {/* Call to Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
               <button
                 onClick={handleDownload}
-                className="group py-4 px-8 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold text-lg shadow-lg transition-all duration-300 flex items-center justify-center hover:shadow-2xl hover:scale-105 hover:from-yellow-600 hover:to-yellow-700"
+                className="group py-3 px-6 sm:py-4 sm:px-8 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold text-base sm:text-lg shadow-lg transition-all duration-300 flex items-center justify-center hover:shadow-2xl hover:scale-105 hover:from-yellow-600 hover:to-yellow-700"
               >
                 <IoMdDownload className="mr-2 text-xl group-hover:animate-bounce" />
                 Download CV
               </button>
               <button
                 onClick={handleClick}
-                className="py-4 px-8 rounded-xl bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-lg transition-all duration-300 hover:bg-yellow-400/10 hover:scale-105"
+                className="py-3 px-6 sm:py-4 sm:px-8 rounded-xl bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-base sm:text-lg transition-all duration-300 hover:bg-yellow-400/10 hover:scale-105"
               >
                 View My Work →
               </button>
             </div>
 
             {/* Stats Section */}
-            <div className="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10">
               <div className="text-center">
-                <p className="text-3xl font-bold text-yellow-400">3+</p>
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">3+</p>
                 <p className="text-sm text-gray-400">Years Experience</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-yellow-400">10+</p>
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">10+</p>
                 <p className="text-sm text-gray-400">Projects Completed</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-yellow-400">100%</p>
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">100%</p>
                 <p className="text-sm text-gray-400">Dedication</p>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Home() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">Featured Projects</h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Featured Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {featuredProjects.map((project) => (
             <div
@@ -180,7 +180,7 @@ export default function Home() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black/50 backdrop-blur-lg">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">My Skills & Expertise</h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">My Skills & Expertise</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {skills.map((skill) => (
             <div
@@ -208,7 +208,7 @@ export default function Home() {
       </div>
       <div className="py-12 px-4 md:px-16 bg-black">
         <div className="max-w-4xl mx-auto bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl p-8">
-          <h2 className="text-3xl font-bold text-white mb-6">About Me</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">About Me</h2>
           <p className="text-lg text-gray-300 leading-relaxed">
             I am an IT System Admin and Website Developer with over 3 years of experience in managing and maintaining IT infrastructure, ensuring seamless operations and optimal performance. I have a strong background in web development, specializing in creating responsive and user-friendly websites using modern technologies.
           </p>
@@ -222,7 +222,7 @@ export default function Home() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black/50 backdrop-blur-lg">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">Documentation & Guides</h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Documentation & Guides</h2>
         <div className="max-w-2xl mx-auto">
           <div
             onClick={handleDocsClick}

@@ -11,7 +11,7 @@ const ThreeDCardDemo = ({title,desc,image}) => {
   return (
     <div className={style.card}>
       <CardContainer className="inter-var">
-        <CardBody className="rounded-xl p-6 border  ">
+        <CardBody className="rounded-xl p-4 md:p-6 border">
           <CardItem
             translateZ="50"
             className="text-xl font-bold text-white"
@@ -33,13 +33,13 @@ const ThreeDCardDemo = ({title,desc,image}) => {
           >
             <Image
               src={image}
-              height="1000"
-              width="1000"
-              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              height={1000}
+              width={1000}
+              className="w-full h-48 md:h-60 object-cover rounded-xl group-hover/card:shadow-xl"
               alt="thumbnail"
             />
           </CardItem>
-          <div className="flex justify-center items-center mt-20">
+          <div className="flex justify-center items-center mt-8 md:mt-20">
             <CardItem
               translateZ={20}
               translateX={50}

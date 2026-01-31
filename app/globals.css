@@ -7,30 +7,45 @@ body {
   background-color: #080808;
 }
 
+/* Responsive base font tweaks for better mobile readability */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 img {
-  height: 500px;
-  border-radius: 50px;
-  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
   object-fit: cover;
 }
 
 .glass-effect {
-  background: rgb(21, 20, 20); /* More transparent white background */
-  backdrop-filter: blur(10px); /* Blur effect to create the glass look */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
-  border-radius: 15px; /* Optional: rounded corners */
-   /* Padding inside the glass element */
-  color: white; /* Text color to contrast with the black background */
-  /* Height of the glass element */
-  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
-  width: 500px;
+  background: rgb(21, 20, 20);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.06);
+  width: min(100%, 500px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .glass-effect {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 /* nav{
   position: absolute;
