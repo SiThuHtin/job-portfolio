@@ -10,7 +10,7 @@ import Skills from './components/Skills';
 
 export default function Home() {
   const router = useRouter();
-  
+
   const handleClick = () => {
     // smooth scroll to Featured Projects section if present
     const el = document.getElementById('projects')
@@ -20,7 +20,7 @@ export default function Home() {
       router.push('/my-projects')
     }
   }
-  
+
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = '/cv.pdf';
@@ -100,13 +100,13 @@ export default function Home() {
                 <div className="hidden md:block text-gray-600">•</div>
                 <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-2 rounded-full bg-white/5 border border-white/10 text-sm md:text-base">
                   <span className="text-yellow-400">◆</span>
-                  <span className="text-gray-200">Website Dev</span>
+                  <span className="text-gray-200">Developer</span>
                 </div>
-                <div className="hidden md:block text-gray-600">•</div>
+                {/* <div className="hidden md:block text-gray-600">•</div>
                 <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-2 rounded-full bg-white/5 border border-white/10 text-sm md:text-base">
                   <span className="text-yellow-400">◆</span>
                   <span className="text-gray-200">DB Dev</span>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -130,16 +130,24 @@ export default function Home() {
             {/* Stats Section */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10">
               <div className="text-center">
-                <p className="text-2xl md:text-3xl font-bold text-yellow-400">3+</p>
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">4+</p>
                 <p className="text-sm text-gray-400">Years Experience</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl md:text-3xl font-bold text-yellow-400">10+</p>
-                <p className="text-sm text-gray-400">Projects Completed</p>
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">300+</p>
+                <p className="text-sm text-gray-400">Users Supported</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl md:text-3xl font-bold text-yellow-400">100%</p>
-                <p className="text-sm text-gray-400">Dedication</p>
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">15+</p>
+                <p className="text-sm text-gray-400">Certifications</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">10+</p>
+                <p className="text-sm text-gray-400">Website Projects</p>
+              </div>
+                            <div className="text-center">
+                <p className="text-2xl md:text-3xl font-bold text-yellow-400">10+</p>
+                <p className="text-sm text-gray-400">IT Labs</p>
               </div>
             </div>
           </div>
@@ -163,11 +171,11 @@ export default function Home() {
               <div className="bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden hover:border-yellow-400 transition-all duration-300 transform hover:scale-105">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="group-hover:scale-110 transition-transform duration-300 object-cover"
-                    />
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="group-hover:scale-110 transition-transform duration-300 object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
