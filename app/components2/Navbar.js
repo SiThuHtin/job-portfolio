@@ -22,6 +22,9 @@ const Navbar = () => {
           <Link href="/my-projects" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             My Projects
           </Link>
+          <Link href="/about-me" className="text-md text-white font-semibold hover:text-yellow-400 transition">
+            About Me
+          </Link>
           <Link href="https://sithu-htin-docs.gitbook.io/sithu-things/" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             My Documentation
           </Link>
@@ -70,6 +73,14 @@ const Navbar = () => {
             onClick={() => setShowMenu(false)}
           >
             My Projects
+          </Link>
+          <div className="w-full h-px bg-neutral-800 my-1"></div>
+          <Link
+            href="/about-me"
+            className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
+            onClick={() => setShowMenu(false)}
+          >
+            About Me
           </Link>
           <div className="w-full h-px bg-neutral-800 my-1"></div>
           <Link
