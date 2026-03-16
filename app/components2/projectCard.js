@@ -4,10 +4,18 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/component/ui/3d-card";
 import style from '@/app/common.module.css'
-const ThreeDCardDemo = ({title,desc,image}) => {
-  // const redirectTobma = () => {
-  //   window.location.href = "https://www.bmahq.org";
-  // };
+const getOptimizedImageUrl = (url) => {
+  if (!url) return '';
+  const driveRegex = /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/;
+  const match = url.match(driveRegex);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?id=${match[1]}`;
+  }
+  return url;
+};
+
+const ThreeDCardDemo = ({ title, desc, image }) => {
+  const transformedImage = getOptimizedImageUrl(image);
   return (
     <div className={style.card}>
       <CardContainer className="inter-var">
@@ -32,10 +40,10 @@ const ThreeDCardDemo = ({title,desc,image}) => {
             className="w-full mt-4"
           >
             <Image
-              src={image}
+              src={transformedImage}
               height={1000}
               width={1000}
-              className="w-full h-48 md:h-60 object-cover rounded-xl group-hover/card:shadow-xl"
+              className="w-full h-48 md:h-60 object-contain bg-white/5 rounded-xl group-hover/card:shadow-xl"
               alt="thumbnail"
             />
           </CardItem>

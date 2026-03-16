@@ -19,11 +19,11 @@ const Navbar = () => {
           <Link href="/" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             Home
           </Link>
-          <Link href="/my-projects" className="text-md text-white font-semibold hover:text-yellow-400 transition">
-            My Projects
-          </Link>
           <Link href="/about-me" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             About Me
+          </Link>
+          <Link href="/blog" className="text-md text-white font-semibold hover:text-yellow-400 transition">
+            Blog
           </Link>
           <Link href="https://sithu-htin-docs.gitbook.io/sithu-things/" className="text-md text-white font-semibold hover:text-yellow-400 transition">
             My Documentation
@@ -68,19 +68,19 @@ const Navbar = () => {
           </Link>
           <div className="w-full h-px bg-neutral-800 my-1"></div>
           <Link
-            href="/my-projects"
-            className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
-            onClick={() => setShowMenu(false)}
-          >
-            My Projects
-          </Link>
-          <div className="w-full h-px bg-neutral-800 my-1"></div>
-          <Link
             href="/about-me"
             className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
             onClick={() => setShowMenu(false)}
           >
             About Me
+          </Link>
+          <div className="w-full h-px bg-neutral-800 my-1"></div>
+          <Link
+            href="/blog"
+            className="block w-full text-left text-lg text-white font-semibold hover:text-yellow-300 px-4 py-3 rounded-md transition-colors"
+            onClick={() => setShowMenu(false)}
+          >
+            Blog
           </Link>
           <div className="w-full h-px bg-neutral-800 my-1"></div>
           <Link
