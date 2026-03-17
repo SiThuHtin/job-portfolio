@@ -1,8 +1,9 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function FeaturedProjects() {
   const router = useRouter();
@@ -38,45 +39,65 @@ export default function FeaturedProjects() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Featured Projects</h2>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12"
+        >
+          Featured Projects
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.slice(0, 3).map((project) => (
+          {projects.slice(0, 3).map((project, index) => (
             <Link
               href={project.projectUrl}
               target="_blank"
               rel="noopener noreferrer"
               key={project._id}
-              className="group cursor-pointer block"
+              className="block"
             >
-              <div className="bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden hover:border-yellow-400 transition-all duration-300 transform hover:scale-105">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden hover:border-yellow-400 transition-colors duration-300 transform"
+              >
                 <div className="relative h-48 overflow-hidden bg-white/5">
                   <Image
                     src={getOptimizedImageUrl(project.imageUrl)}
                     alt={project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="group-hover:scale-110 transition-transform duration-300 object-contain"
+                    className="group-hover:scale-110 transition-transform duration-500 object-contain"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                   <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
-                  <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors">
+                  <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors w-full">
                     View Project
                   </button>
                 </div>
-              </div>
+              </motion.div>
             </Link>
           ))}
         </div>
-        <div className="text-center mt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-12"
+        >
           <button
             onClick={() => router.push('/about-me#projects')}
             className="py-3 px-8 rounded-lg bg-yellow-500 text-black font-bold text-lg hover:bg-yellow-600 transition-colors"
           >
             View All Projects →
           </button>
-        </div>
+        </motion.div>
       </div>
     </>
   )

@@ -1,6 +1,7 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react'
-import { Server, ShieldCheck, Wifi, Cloud, Code, Database, Zap, GitBranch, Terminal } from 'lucide-react'
+import React, { useState } from 'react';
+import { Server, ShieldCheck, Wifi, Cloud, Code, Database, Zap, GitBranch, Terminal } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const CATEGORIES = [
   {
@@ -113,31 +114,43 @@ export default function Skills() {
     CATEGORIES.forEach((c, i) => (initial[c.id] = i < 3)) // open first 3 by default
     return initial
   })
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const els = ref.current?.querySelectorAll('[data-animate]') || []
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => e.isIntersecting && e.target.classList.add('in-view'))
-    }, { threshold: 0.12 })
-    els.forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
 
   const toggle = (id) => setOpen((s) => ({ ...s, [id]: !s[id] }))
 
   return (
-    <section ref={ref} className="py-12 px-4 md:px-8 max-w-6xl mx-auto">
+    <section className="py-12 px-4 md:px-8 max-w-6xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl md:text-3xl font-semibold text-white">Skills & Expertise</h2>
-        <p className="text-sm text-gray-300 hidden sm:block">Organized categories with visual indicators.</p>
+        <motion.h2 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-2xl md:text-3xl font-semibold text-white"
+        >
+          Skills & Expertise
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-sm text-gray-300 hidden sm:block"
+        >
+          Organized categories with visual indicators.
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CATEGORIES.map((cat) => {
+        {CATEGORIES.map((cat, index) => {
           const Icon = cat.icon
           return (
-            <article key={cat.id} data-animate className="bg-black/50 dark:bg-gray-900 rounded-2xl p-4 shadow-sm hover:shadow-lg transition">
+            <motion.article 
+              key={cat.id} 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="bg-black/50 dark:bg-gray-900 rounded-2xl p-4 shadow-sm hover:shadow-lg transition"
+            >
               <header className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-white bg-gradient-to-br ${cat.color}`}>
@@ -172,15 +185,10 @@ export default function Skills() {
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           )
         })}
       </div>
-
-      <style jsx>{`
-        [data-animate] { opacity: 0; transform: translateY(10px); transition: opacity 420ms ease, transform 420ms ease; }
-        [data-animate].in-view { opacity: 1; transform: translateY(0); }
-      `}</style>
     </section>
   )
 }

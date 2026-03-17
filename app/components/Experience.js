@@ -1,5 +1,6 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
 import Image from 'next/image'
 
 const positions = [
@@ -60,33 +61,24 @@ const positions = [
 
 export default function Experience() {
   const [open, setOpen] = useState({})
-  const containerRef = useRef(null)
-
-  useEffect(() => {
-    const els = containerRef.current?.querySelectorAll("[data-animate]") || []
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("in-view")
-        })
-      },
-      { threshold: 0.12 }
-    )
-    els.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
 
   const toggle = (id) => setOpen((s) => ({ ...s, [id]: !s[id] }))
 
   return (
     <section
-      ref={containerRef}
       className="py-8 md:py-12 lg:py-16 px-4 md:px-8 max-w-6xl mx-auto"
       aria-labelledby="experience-heading"
     >
-      <h2 id="experience-heading" className="text-2xl md:text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100 text-center">
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        id="experience-heading" 
+        className="text-2xl md:text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100 text-center"
+      >
         Professional Experience
-      </h2>
+      </motion.h2>
 
       <div className="relative">
         {/* center timeline line */}
@@ -96,7 +88,14 @@ export default function Experience() {
           {positions.map((pos, idx) => {
             const side = idx % 2 === 0 ? 'left' : 'right'
             return (
-              <li key={pos.id} className="md:grid md:grid-cols-2 md:items-start" data-animate>
+              <motion.li 
+                key={pos.id} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="md:grid md:grid-cols-2 md:items-start"
+              >
                 {/* Left column (card or spacer depending on side) */}
                 <div className={`md:pr-8 ${side === 'right' ? 'md:order-1' : 'md:order-0'}`}>
                   <div
@@ -153,16 +152,11 @@ export default function Experience() {
                     </div>
                   </div>
                 </div>
-              </li>
+              </motion.li>
             )
           })}
         </ul>
       </div>
-
-      <style jsx>{`
-        [data-animate] { opacity: 0; transform: translateY(12px); transition: opacity 480ms ease, transform 480ms ease; }
-        [data-animate].in-view { opacity: 1; transform: translateY(0); }
-      `}</style>
     </section>
   )
 }
