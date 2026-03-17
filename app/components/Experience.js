@@ -9,7 +9,7 @@ const positions = [
     title: "IT System Administrator",
     company: "Shoklo Malaria Research Unit (Borderland Health Foundation)",
     duration: "2024 - 2026",
-    location: "Mae Sot, Thailand",
+    location: "Mae Ramat, Thailand",
     logo: "SMRU",
     responsibilities: [
       {
@@ -51,7 +51,7 @@ const positions = [
     title: "IT Support",
     company: "Burma Medical Association",
     duration: "2022 - 2024",
-    location: "Myanmar",
+    location: "Mae Sot, Thailand",
     logo: "BMA",
     description:
       "Provided technical support and system maintenance for healthcare organization",
@@ -69,12 +69,12 @@ export default function Experience() {
       className="py-8 md:py-12 lg:py-16 px-4 md:px-8 max-w-6xl mx-auto"
       aria-labelledby="experience-heading"
     >
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        id="experience-heading" 
+        id="experience-heading"
         className="text-2xl md:text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100 text-center"
       >
         Professional Experience
@@ -88,8 +88,8 @@ export default function Experience() {
           {positions.map((pos, idx) => {
             const side = idx % 2 === 0 ? 'left' : 'right'
             return (
-              <motion.li 
-                key={pos.id} 
+              <motion.li
+                key={pos.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
