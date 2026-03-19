@@ -35,18 +35,18 @@ export default function Certifications() {
       return visible.map((c) => {
         const Icon = c.icon || Award
         return (
-          <article key={c.id} data-animate className="group bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-900/60 dark:to-gray-900/40 rounded-2xl p-4 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all cursor-pointer">
+          <article key={c.id} data-animate className="group bg-gray-900/60 border border-gray-800 rounded-2xl p-4 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all cursor-pointer">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-pink-500 text-white flex items-center justify-center shadow-md">
                 <Icon className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{c.name}</h3>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{c.org} {c.year ? `• ${c.year}` : ''}</p>
+                <h3 className="text-sm font-semibold text-white">{c.name}</h3>
+                <p className="text-xs text-gray-400 mt-1">{c.org} {c.year ? `• ${c.year}` : ''}</p>
                 <div className="mt-3 flex items-center gap-2">
-                  <span className="text-xs font-medium px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-200">{c.category}</span>
-                  <span className="text-xs text-gray-400">●</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Verified</span>
+                  <span className="text-xs font-medium px-2 py-1 rounded-full bg-indigo-900/20 text-indigo-200">{c.category}</span>
+                  <span className="text-xs text-gray-500">●</span>
+                  <span className="text-xs text-gray-500">Verified</span>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@ export default function Certifications() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100"
+          className="text-2xl md:text-3xl font-semibold text-white"
         >
           Certifications
         </motion.h2>
@@ -77,7 +77,7 @@ export default function Certifications() {
             <button
               key={cat}
               onClick={() => setFilterSafe(cat)}
-              className={`text-sm px-3 py-1 rounded-full transition ${filter === cat ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'}`}
+              className={`text-sm px-3 py-1 rounded-full transition ${filter === cat ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
             >
               {cat}
             </button>
@@ -86,9 +86,9 @@ export default function Certifications() {
       </div>
 
       {filter === 'All' ? (
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 max-w-2xl">A curated list of professional certifications grouped by category. Click a card for more details.</p>
+        <p className="text-sm text-gray-400 mb-6 max-w-2xl">A curated list of professional certifications grouped by category. Click a card for more details.</p>
       ) : (
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Showing {visible.length} result{visible.length !== 1 ? 's' : ''} for <span className="font-medium">{filter}</span></p>
+        <p className="text-sm text-gray-400 mb-6">Showing {visible.length} result{visible.length !== 1 ? 's' : ''} for <span className="font-medium">{filter}</span></p>
       )}
 
       <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -105,19 +105,19 @@ export default function Certifications() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="group bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-900/60 dark:to-gray-900/40 rounded-2xl p-4 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all cursor-pointer"
+                className="group bg-gray-900/60 border border-gray-800 rounded-2xl p-4 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all cursor-pointer hover:border-gray-500"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-pink-500 text-white flex items-center justify-center shadow-md">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{c.name}</h3>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{c.org} {c.year ? `• ${c.year}` : ''}</p>
+                    <h3 className="text-sm font-semibold text-white">{c.name}</h3>
+                    <p className="text-xs text-gray-400 mt-1">{c.org} {c.year ? `• ${c.year}` : ''}</p>
                     <div className="mt-3 flex items-center gap-2">
-                      <span className="text-xs font-medium px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-200">{c.category}</span>
-                      <span className="text-xs text-gray-400">●</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">Verified</span>
+                      <span className="text-xs font-medium px-2 py-1 rounded-full bg-indigo-900/20 text-indigo-200">{c.category}</span>
+                      <span className="text-xs text-gray-500">●</span>
+                      <span className="text-xs text-gray-500">Verified</span>
                     </div>
                   </div>
                 </div>
