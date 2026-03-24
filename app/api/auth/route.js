@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
+import { signJwt } from "@/lib/jwt";
 
 export async function POST(request) {
     try {
         const { password } = await request.json();
 
         if (password === process.env.ADMIN_PASSWORD) {
-            return NextResponse.json({ success: true }, { status: 200 });
+            const token = await signJwt({ role: "admin" });
+            return NextResponse.json({ success: true, token }, { status: 200 });
         } else {
             return NextResponse.json({ success: false, message: "Invalid password" }, { status: 401 });
         }

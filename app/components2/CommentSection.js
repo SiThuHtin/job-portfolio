@@ -62,7 +62,8 @@ export default function CommentSection({ postId }) {
                 setAuthor("");
                 setContent("");
             } else {
-                setError("Failed to post comment.");
+                const errorData = await res.json();
+                setError(errorData.message || "Failed to post comment.");
             }
         } catch (err) {
             setError("Network error. Try again later.");

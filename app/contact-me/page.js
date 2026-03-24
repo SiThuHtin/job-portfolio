@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import emailjs from '@emailjs/browser';
-
 const ContactMe = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -18,20 +16,24 @@ const ContactMe = () => {
     setError("");
 
     try {
-      await emailjs.send(
-        'service_37ugmkr', // Replace with your EmailJS service ID
-        'template_ylumre8', // Replace with your EmailJS template ID
-        {
-          from_name: form.name,
-          from_email: form.email,
-          message: form.message,
-          to_email: 'sithuhtin2022@gmail.com', // Your personal email
-        },
-        'F3RuUwL4wRRGypadF' // Replace with your EmailJS public key
-      );
-      setSubmitted(true);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const errData = await res.json();
+        setError(errData.message || "Failed to send message. Please try again.");
+      }
     } catch (err) {
-      setError("Failed to send message. Please try again.");
+      setError("Network error. Please check your connection.");
     } finally {
       setLoading(false);
     }

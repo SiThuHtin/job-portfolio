@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import Post from "@/lib/models/Post";
+import { verifyJwt } from "@/lib/jwt";
 
 // GET all posts
 export async function GET() {
@@ -19,7 +20,8 @@ export async function GET() {
 export async function POST(request) {
     try {
         const authHeader = request.headers.get("authorization");
-        if (authHeader !== `Bearer ${process.env.ADMIN_PASSWORD}`) {
+        const token = authHeader?.split(" ")[1];
+        if (!token || !(await verifyJwt(token))) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
 

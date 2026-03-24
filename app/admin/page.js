@@ -68,8 +68,9 @@ export default function AdminPanel() {
             });
 
             if (res.ok) {
-                setAdminToken(passwordInput);
-                sessionStorage.setItem("adminToken", passwordInput);
+                const data = await res.json();
+                setAdminToken(data.token);
+                sessionStorage.setItem("adminToken", data.token);
                 setIsAuthenticated(true);
                 setPasswordInput("");
             } else {
