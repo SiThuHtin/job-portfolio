@@ -19,6 +19,7 @@ export default function FeaturedProjects() {
   };
 
   const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     fetch('/api/projects')
@@ -28,7 +29,8 @@ export default function FeaturedProjects() {
           setProjects(data.projects);
         }
       })
-      .catch(err => console.error("Failed to fetch projects:", err));
+      .catch(err => console.error("Failed to fetch projects:", err))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -49,40 +51,54 @@ export default function FeaturedProjects() {
           Featured Projects
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.slice(0, 3).map((project, index) => (
-            <Link
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={project._id}
-              className="block"
-            >
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden hover:border-yellow-400 transition-colors duration-300 transform"
+          {isLoading ? (
+            [...Array(3)].map((_, index) => (
+              <div key={`skeleton-${index}`} className="group bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden animate-pulse h-[400px]">
+                <div className="h-48 bg-white/10 w-full mb-4"></div>
+                <div className="p-6 flex flex-col items-start w-full">
+                  <div className="h-6 bg-white/20 rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-white/10 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-white/10 rounded w-5/6 mb-8"></div>
+                  <div className="h-10 bg-white/20 rounded w-full mt-auto"></div>
+                </div>
+              </div>
+            ))
+          ) : (
+            projects.slice(0, 3).map((project, index) => (
+              <Link
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={project._id}
+                className="block"
               >
-                <div className="relative h-48 overflow-hidden bg-white/5">
-                  <Image
-                    src={getOptimizedImageUrl(project.imageUrl)}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="group-hover:scale-110 transition-transform duration-500 object-contain"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
-                  <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors w-full">
-                    View Project
-                  </button>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden hover:border-yellow-400 transition-colors duration-300 transform"
+                >
+                  <div className="relative h-48 overflow-hidden bg-white/5">
+                    <Image
+                      src={getOptimizedImageUrl(project.imageUrl)}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="group-hover:scale-110 transition-transform duration-500 object-contain"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
+                    <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors w-full mt-auto">
+                      View Project
+                    </button>
+                  </div>
+                </motion.div>
+              </Link>
+            ))
+          )}
         </div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
