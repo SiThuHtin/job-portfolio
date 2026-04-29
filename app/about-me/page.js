@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Suspense } from "react";
-import ThreeDCardDemo from "@/app/components2/projectCard";
 import { getProjectsWithFallback } from "@/lib/content";
 
 export const metadata = {
@@ -14,12 +13,29 @@ async function AboutProjects() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
       {projects.map((data) => (
-        <a href={data.projectUrl} target="_blank" rel="noopener noreferrer" key={data.id} className="block hover:scale-105 transition-transform duration-300">
-          <ThreeDCardDemo
-            title={data.title}
-            desc={data.description}
-            image={data.imageUrl}
-          />
+        <a
+          href={data.projectUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={data.id}
+          className="group block rounded-2xl border border-white/10 bg-black/50 overflow-hidden hover:border-yellow-400/40 transition-colors duration-300"
+        >
+          <div className="relative h-48 md:h-56 bg-white/5 overflow-hidden">
+            <Image
+              src={data.imageUrl}
+              alt={data.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
+            />
+          </div>
+          <div className="p-5 md:p-6">
+            <h3 className="text-xl font-bold text-white">{data.title}</h3>
+            <p className="mt-2 text-sm text-gray-300">{data.description}</p>
+            <span className="mt-5 inline-flex items-center rounded-lg bg-yellow-500 px-4 py-2 text-sm font-semibold text-black">
+              View Project
+            </span>
+          </div>
         </a>
       ))}
     </div>
@@ -58,7 +74,6 @@ export default function About() {
                 fill
                 sizes="(max-width: 768px) 160px, 160px"
                 className="object-cover"
-                priority
               />
             </div>
             <div className="mt-4 space-y-2 text-center md:text-left">
