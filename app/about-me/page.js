@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import ThreeDCardDemo from "@/app/components2/projectCard";
 import { getProjectsWithFallback } from "@/lib/content";
 
@@ -7,8 +8,43 @@ export const metadata = {
   description: "About Sithu Htin and his projects",
 };
 
-export default async function About() {
+async function AboutProjects() {
   const projects = await getProjectsWithFallback();
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
+      {projects.map((data) => (
+        <a href={data.projectUrl} target="_blank" rel="noopener noreferrer" key={data.id} className="block hover:scale-105 transition-transform duration-300">
+          <ThreeDCardDemo
+            title={data.title}
+            desc={data.description}
+            image={data.imageUrl}
+          />
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function AboutProjectsFallback() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
+      {[...Array(3)].map((_, index) => (
+        <div
+          key={`about-project-skeleton-${index}`}
+          className="rounded-xl border border-white/10 bg-black/40 p-6 animate-pulse"
+        >
+          <div className="h-8 w-2/3 rounded bg-white/10 mb-4"></div>
+          <div className="h-4 w-full rounded bg-white/10 mb-2"></div>
+          <div className="h-4 w-5/6 rounded bg-white/10 mb-6"></div>
+          <div className="h-48 rounded-xl bg-white/10"></div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function About() {
 
   return (
     <main className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
@@ -63,17 +99,9 @@ export default async function About() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
-          {projects.map((data) => (
-            <a href={data.projectUrl} target="_blank" rel="noopener noreferrer" key={data.id} className="block hover:scale-105 transition-transform duration-300">
-              <ThreeDCardDemo
-                title={data.title}
-                desc={data.description}
-                image={data.imageUrl}
-              />
-            </a>
-          ))}
-        </div>
+        <Suspense fallback={<AboutProjectsFallback />}>
+          <AboutProjects />
+        </Suspense>
       </div>
     </main>
   );
