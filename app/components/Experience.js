@@ -1,7 +1,6 @@
 "use client"
-import React, { useState } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
-import Image from 'next/image'
 
 const positions = [
   {
@@ -81,7 +80,6 @@ export default function Experience() {
       </motion.h2>
 
       <div className="relative">
-        {/* center timeline line */}
         <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-8 bottom-0 w-0.5 bg-gradient-to-b from-gray-700 to-gray-800" />
 
         <ul className="space-y-10 md:space-y-16">
@@ -96,7 +94,6 @@ export default function Experience() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className="md:grid md:grid-cols-2 md:items-start"
               >
-                {/* Left column (card or spacer depending on side) */}
                 <div className={`md:pr-8 ${side === 'right' ? 'md:order-1' : 'md:order-0'}`}>
                   <div
                     className={`group relative bg-black/60 border border-transparent hover:border-indigo-500 rounded-2xl p-5 md:p-6 shadow-md hover:shadow-2xl transition transform ${side === 'right' ? 'md:ml-auto' : ''}`}
@@ -111,7 +108,7 @@ export default function Experience() {
                         <h3 className="text-lg font-semibold text-white">{pos.title}</h3>
                         <p className="text-sm text-gray-300 mt-1">
                           <span className="font-medium text-gray-100">{pos.company}</span>
-                          <span className="mx-2">•</span>
+                          <span className="mx-2">|</span>
                           <span className="text-gray-300">{pos.location}</span>
                         </p>
                       </div>
@@ -143,7 +140,6 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Timeline connector and dot (center) */}
                 <div className="md:flex md:items-start md:justify-center md:col-span-2">
                   <div className="md:hidden h-6" />
                   <div className="hidden md:flex items-center justify-center relative w-full pointer-events-none">

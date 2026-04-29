@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/component/ui/3d-card";
 import style from '@/app/common.module.css'
 const getOptimizedImageUrl = (url) => {

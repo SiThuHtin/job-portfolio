@@ -6,12 +6,18 @@ import Skills from './components/Skills';
 import LatestPosts from './components/LatestPosts';
 import DocumentationSection from './components/DocumentationSection';
 import ContactSection from './components/ContactSection';
+import { getPostsWithFallback, getProjectsWithFallback } from '@/lib/content';
 
-export default function Home() {
+export default async function Home() {
+  const [posts, projects] = await Promise.all([
+    getPostsWithFallback({ limit: 3 }),
+    getProjectsWithFallback({ limit: 3 }),
+  ]);
+
   return (
     <main className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
       <HeroSection />
-      <FeaturedProjects />
+      <FeaturedProjects projects={projects} />
       
       <div className="flex items-center justify-center py-6 px-4">
         <div className="flex-grow border-t border-yellow-400/20"></div>
@@ -29,7 +35,7 @@ export default function Home() {
 
       <Skills />
       
-      <LatestPosts />
+      <LatestPosts posts={posts} />
       <DocumentationSection />
       <ContactSection />
     </main>

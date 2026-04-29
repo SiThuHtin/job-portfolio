@@ -1,57 +1,103 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Hash, List } from "lucide-react";
+
+function CodeBlock({ language, code, ...props }) {
+    const [copied, setCopied] = useState(false);
+    const [copyMessage, setCopyMessage] = useState("");
+    const [showLineNumbers, setShowLineNumbers] = useState(true);
+    const displayLanguage = language || "text";
+
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(code);
+            setCopied(true);
+            setCopyMessage("Copied to clipboard");
+            setTimeout(() => setCopied(false), 2000);
+            setTimeout(() => setCopyMessage(""), 2000);
+        } catch (error) {
+            console.error("Failed to copy code block:", error);
+            setCopyMessage("Copy failed");
+            setTimeout(() => setCopyMessage(""), 2000);
+        }
+    };
+
+    return (
+        <div className="relative my-8 rounded-xl overflow-hidden bg-[#1e1e1e] border border-white/10 group shadow-lg">
+            <div className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-black/50 to-white/5 border-b border-white/10">
+                <div className="flex items-center gap-3">
+                    <span className="text-xs text-yellow-400 font-mono tracking-wider uppercase">
+                        {displayLanguage}
+                    </span>
+                    <button
+                        onClick={() => setShowLineNumbers((value) => !value)}
+                        className="p-1.5 rounded bg-white/5 hover:bg-white/20 text-gray-300 hover:text-white transition-all flex items-center justify-center border border-white/10"
+                        title={showLineNumbers ? "Hide line numbers" : "Show line numbers"}
+                        type="button"
+                        aria-pressed={showLineNumbers}
+                    >
+                        {showLineNumbers ? (
+                            <span className="flex items-center gap-1 text-xs font-medium">
+                                <Hash className="w-3.5 h-3.5" /> Lines
+                            </span>
+                        ) : (
+                            <span className="flex items-center gap-1 text-xs font-medium">
+                                <List className="w-3.5 h-3.5" /> No lines
+                            </span>
+                        )}
+                    </button>
+                </div>
+                <button
+                    onClick={handleCopy}
+                    className="p-1.5 rounded bg-white/5 hover:bg-white/20 text-gray-300 hover:text-white transition-all flex items-center justify-center border border-white/10"
+                    title="Copy code"
+                    type="button"
+                >
+                    {copied ? (
+                        <span className="flex items-center gap-1 text-xs text-green-400 font-medium">
+                            <Check className="w-3.5 h-3.5" /> Copied!
+                        </span>
+                    ) : (
+                        <span className="flex items-center gap-1 text-xs font-medium">
+                            <Copy className="w-3.5 h-3.5" /> Copy
+                        </span>
+                    )}
+                </button>
+            </div>
+            <div className="px-2 py-4 overflow-x-auto text-sm sm:text-base custom-scrollbar">
+                <SyntaxHighlighter
+                    style={vscDarkPlus}
+                    language={displayLanguage}
+                    PreTag="div"
+                    customStyle={{ margin: 0, padding: 0, background: "transparent", whiteSpace: "pre-wrap" }}
+                    showLineNumbers={showLineNumbers}
+                    wrapLongLines
+                    {...props}
+                >
+                    {code}
+                </SyntaxHighlighter>
+            </div>
+            <div className="px-4 pb-3 text-xs text-gray-400 min-h-5" aria-live="polite">
+                {copyMessage}
+            </div>
+        </div>
+    );
+}
 
 export default function MarkdownRenderer({ content }) {
     return (
         <ReactMarkdown
             components={{
-                code({ node, inline, className, children, ...props }) {
+                code({ node: _node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
-                    const [copied, setCopied] = useState(false);
-
-                    const handleCopy = () => {
-                        navigator.clipboard.writeText(String(children).replace(/\n$/, ""));
-                        setCopied(true);
-                        setTimeout(() => setCopied(false), 2000);
-                    };
+                    const code = String(children).replace(/\n$/, "");
 
                     return !inline && match ? (
-                        <div className="relative my-8 rounded-xl overflow-hidden bg-[#1e1e1e] border border-white/10 group shadow-lg">
-                            <div className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-black/50 to-white/5 border-b border-white/10">
-                                <span className="text-xs text-yellow-400 font-mono tracking-wider uppercase">{match[1]}</span>
-                                <button
-                                    onClick={handleCopy}
-                                    className="p-1.5 rounded bg-white/5 hover:bg-white/20 text-gray-300 hover:text-white transition-all flex items-center justify-center border border-white/10"
-                                    title="Copy code"
-                                >
-                                    {copied ? (
-                                        <span className="flex items-center gap-1 text-xs text-green-400 font-medium">
-                                            <Check className="w-3.5 h-3.5" /> Copied!
-                                        </span>
-                                    ) : (
-                                        <span className="flex items-center gap-1 text-xs font-medium">
-                                            <Copy className="w-3.5 h-3.5" /> Copy
-                                        </span>
-                                    )}
-                                </button>
-                            </div>
-                            <div className="px-2 py-4 overflow-x-auto text-sm sm:text-base custom-scrollbar">
-                                <SyntaxHighlighter
-                                    style={vscDarkPlus}
-                                    language={match[1]}
-                                    PreTag="div"
-                                    customStyle={{ margin: 0, padding: 0, background: 'transparent' }}
-                                    {...props}
-                                >
-                                    {String(children).replace(/\n$/, "")}
-                                </SyntaxHighlighter>
-                            </div>
-                        </div>
+                        <CodeBlock language={match[1]} code={code} {...props} />
                     ) : (
                         <code className="bg-white/10 text-yellow-300 px-1.5 py-0.5 rounded-md text-[0.9em] font-mono border border-white/5" {...props}>
                             {children}

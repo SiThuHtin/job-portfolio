@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from 'react';
-import { Server, ShieldCheck, Wifi, Cloud, Code, Database, Zap, GitBranch, Terminal } from 'lucide-react';
+import { useState } from 'react';
+import { Server, ShieldCheck, Wifi, Cloud, Code, Database, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const CATEGORIES = [

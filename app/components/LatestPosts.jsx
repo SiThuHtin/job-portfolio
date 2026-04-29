@@ -1,23 +1,10 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { TerminalSquare, Calendar, Clock, ArrowRight } from 'lucide-react'
 
-export default function LatestPosts() {
+export default function LatestPosts({ posts = [] }) {
   const router = useRouter();
-  const [posts, setPosts] = useState([]);
-  
-  useEffect(() => {
-    fetch('/api/posts')
-      .then(res => res.json())
-      .then(data => {
-        if (data.posts) {
-          setPosts(data.posts);
-        }
-      })
-      .catch(err => console.error("Failed to fetch posts:", err));
-  }, []);
 
   return (
     <>
@@ -29,10 +16,10 @@ export default function LatestPosts() {
       <div className="py-12 px-4 md:px-16 bg-black">
         <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Recent Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {posts.slice(0, 3).map((post) => (
+          {posts.map((post) => (
             <Link
-              href={`/blog/${post._id}`}
-              key={post._id}
+              href={`/blog/${post.id}`}
+              key={post.id}
               className="group cursor-pointer flex flex-col bg-black/60 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.1)] hover:-translate-y-1"
             >
               <div className="flex justify-between items-center mb-4">
@@ -51,7 +38,7 @@ export default function LatestPosts() {
                 <div className="flex items-center gap-4 text-gray-500 text-xs mb-4">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
-                    {new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                    {post.date}
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
@@ -75,7 +62,7 @@ export default function LatestPosts() {
             onClick={() => router.push('/blog')}
             className="py-3 px-8 rounded-lg bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-lg hover:bg-yellow-400/10 transition-colors"
           >
-            Read All Articles →
+            Read All Articles -&gt;
           </button>
         </div>
       </div>

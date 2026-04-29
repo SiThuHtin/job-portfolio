@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import Post from "@/lib/models/Post";
-import { verifyJwt } from "@/lib/jwt";
+import { isSameOriginRequest, validateCsrfToken, verifyAdminSession } from "@/lib/jwt";
+import { validatePostPayload } from "@/lib/validation";
 
 // GET all posts
 export async function GET() {
@@ -19,22 +20,22 @@ export async function GET() {
 // POST a new blog post
 export async function POST(request) {
     try {
-        const authHeader = request.headers.get("authorization");
-        const token = authHeader?.split(" ")[1];
-        if (!token || !(await verifyJwt(token))) {
+        if (!(await verifyAdminSession(request))) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
+        if (!isSameOriginRequest(request) || !validateCsrfToken(request)) {
+            return NextResponse.json({ message: "Invalid CSRF token" }, { status: 403 });
+        }
 
-        const { title, summary, content, category, readTime } = await request.json();
+        const payload = await request.json();
+        const validation = validatePostPayload(payload);
+        if (!validation.ok) {
+            return NextResponse.json({ message: validation.message }, { status: 400 });
+        }
+
         await connectToDatabase();
 
-        const newPost = await Post.create({
-            title,
-            summary,
-            content,
-            category,
-            readTime,
-        });
+        const newPost = await Post.create(validation.data);
 
         return NextResponse.json({ message: "Post Created", post: newPost }, { status: 201 });
     } catch (error) {

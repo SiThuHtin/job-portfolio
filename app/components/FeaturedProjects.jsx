@@ -1,11 +1,10 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ projects = [] }) {
   const router = useRouter();
 
   const getOptimizedImageUrl = (url) => {
@@ -18,21 +17,6 @@ export default function FeaturedProjects() {
     return url;
   };
 
-  const [projects, setProjects] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  
-  useEffect(() => {
-    fetch('/api/projects')
-      .then(res => res.json())
-      .then(data => {
-        if (data.projects) {
-          setProjects(data.projects);
-        }
-      })
-      .catch(err => console.error("Failed to fetch projects:", err))
-      .finally(() => setIsLoading(false));
-  }, []);
-
   return (
     <>
       <div id="projects" className="flex items-center justify-center py-8 px-4 scroll-mt-20">
@@ -41,7 +25,7 @@ export default function FeaturedProjects() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -51,7 +35,7 @@ export default function FeaturedProjects() {
           Featured Projects
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {isLoading ? (
+          {projects.length === 0 ? (
             [...Array(3)].map((_, index) => (
               <div key={`skeleton-${index}`} className="group bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl overflow-hidden animate-pulse h-[400px]">
                 <div className="h-48 bg-white/10 w-full mb-4"></div>
@@ -64,15 +48,15 @@ export default function FeaturedProjects() {
               </div>
             ))
           ) : (
-            projects.slice(0, 3).map((project, index) => (
+            projects.map((project, index) => (
               <Link
                 href={project.projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                key={project._id}
+                key={project.id}
                 className="block"
               >
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -100,7 +84,7 @@ export default function FeaturedProjects() {
             ))
           )}
         </div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -111,7 +95,7 @@ export default function FeaturedProjects() {
             onClick={() => router.push('/about-me#projects')}
             className="py-3 px-8 rounded-lg bg-yellow-500 text-black font-bold text-lg hover:bg-yellow-600 transition-colors"
           >
-            View All Projects →
+            View All Projects -&gt;
           </button>
         </motion.div>
       </div>

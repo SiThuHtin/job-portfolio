@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import Post from "@/lib/models/Post";
-import { verifyJwt } from "@/lib/jwt";
+import { isSameOriginRequest, validateCsrfToken, verifyAdminSession } from "@/lib/jwt";
+import { validatePostPayload } from "@/lib/validation";
 
 // GET a specific post by ID
 export async function GET(request, { params }) {
@@ -25,19 +26,25 @@ export async function GET(request, { params }) {
 export async function PUT(request, { params }) {
     const { id } = await params;
     try {
-        const authHeader = request.headers.get("authorization");
-        const token = authHeader?.split(" ")[1];
-        if (!token || !(await verifyJwt(token))) {
+        if (!(await verifyAdminSession(request))) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
+        if (!isSameOriginRequest(request) || !validateCsrfToken(request)) {
+            return NextResponse.json({ message: "Invalid CSRF token" }, { status: 403 });
+        }
 
-        const { title, summary, content, category, readTime } = await request.json();
+        const payload = await request.json();
+        const validation = validatePostPayload(payload);
+        if (!validation.ok) {
+            return NextResponse.json({ message: validation.message }, { status: 400 });
+        }
+
         await connectToDatabase();
 
         const updatedPost = await Post.findByIdAndUpdate(
             id,
-            { title, summary, content, category, readTime },
-            { new: true } // Returns the updated document
+            validation.data,
+            { new: true, runValidators: true } // Returns the updated document
         );
 
         if (!updatedPost) {
@@ -55,10 +62,11 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
     const { id } = await params;
     try {
-        const authHeader = request.headers.get("authorization");
-        const token = authHeader?.split(" ")[1];
-        if (!token || !(await verifyJwt(token))) {
+        if (!(await verifyAdminSession(request))) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
+        if (!isSameOriginRequest(request) || !validateCsrfToken(request)) {
+            return NextResponse.json({ message: "Invalid CSRF token" }, { status: 403 });
         }
 
         await connectToDatabase();

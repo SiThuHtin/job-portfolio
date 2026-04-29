@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 // Using a basic in-memory rate-limiter to prevent email spam as well!
 const rateLimitMap = new Map();
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const checkRateLimit = (ip) => {
     const now = Date.now();
@@ -40,16 +41,36 @@ export async function POST(request) {
             return NextResponse.json({ message: "All fields are required" }, { status: 400 });
         }
 
+        if (name.length > 100 || email.length > 254 || message.length > 5000) {
+            return NextResponse.json({ message: "Input is too long" }, { status: 400 });
+        }
+
+        if (!emailRegex.test(email)) {
+            return NextResponse.json({ message: "Please provide a valid email address" }, { status: 400 });
+        }
+
+        const serviceId = process.env.EMAILJS_SERVICE_ID;
+        const templateId = process.env.EMAILJS_TEMPLATE_ID;
+        const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+        const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+        const contactRecipient = process.env.CONTACT_TO_EMAIL;
+
+        if (!serviceId || !templateId || !publicKey || !privateKey || !contactRecipient) {
+            console.error("EmailJS contact form environment variables are not fully configured");
+            return NextResponse.json({ message: "Contact form is not configured." }, { status: 500 });
+        }
+
         // Prepare payload for EmailJS REST API
         const payload = {
-            service_id: process.env.EMAILJS_SERVICE_ID || 'service_37ugmkr',
-            template_id: process.env.EMAILJS_TEMPLATE_ID || 'template_ylumre8',
-            user_id: process.env.EMAILJS_PUBLIC_KEY || 'F3RuUwL4wRRGypadF',
+            service_id: serviceId,
+            template_id: templateId,
+            user_id: publicKey,
+            accessToken: privateKey,
             template_params: {
                 from_name: name,
                 from_email: email,
                 message: message,
-                to_email: 'sithuhtin2022@gmail.com'
+                to_email: contactRecipient
             }
         };
 

@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 
@@ -10,8 +9,6 @@ const Footer = () => {
         <footer className="bg-neutral-900 border-t border-neutral-800 text-neutral-400 py-12 transition-all duration-300 mt-auto">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-
-                    {/* Brand & About */}
                     <div className="flex flex-col space-y-4">
                         <h3 className="text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
                             Sithu Htin
@@ -21,7 +18,6 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Quick Links */}
                     <div className="flex flex-col space-y-4">
                         <h4 className="text-white font-semibold text-lg">Quick Links</h4>
                         <div className="flex flex-col space-y-2 text-sm">
@@ -33,7 +29,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Social Links */}
                     <div className="flex flex-col space-y-4">
                         <h4 className="text-white font-semibold text-lg">Connect</h4>
                         <div className="flex space-x-4">
@@ -64,12 +59,10 @@ const Footer = () => {
                             </Link>
                         </div>
                     </div>
-
                 </div>
 
-                {/* Divider & Copyright */}
                 <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs">
-                    <p>© {currentYear} Sithu Htin. All rights reserved.</p>
+                    <p>(c) {currentYear} Sithu Htin. All rights reserved.</p>
                     <div className="flex space-x-6">
                         <Link href="https://sithu-htin-docs.gitbook.io/sithu-things/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">
                             Documentation

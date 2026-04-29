@@ -1,9 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock, TerminalSquare } from "lucide-react";
-
-import connectToDatabase from "@/lib/mongodb";
-import Post from "@/lib/models/Post";
+import { getPostsWithFallback } from "@/lib/content";
 
 export const metadata = {
     title: "Blog",
@@ -11,63 +8,7 @@ export const metadata = {
 };
 
 export default async function Blog() {
-    let posts = [];
-
-    try {
-        await connectToDatabase();
-        const rawPosts = await Post.find().sort({ createdAt: -1 });
-        const dbPosts = JSON.parse(JSON.stringify(rawPosts));
-
-        if (dbPosts.length > 0) {
-            posts = dbPosts.map(post => ({
-                id: post._id,
-                title: post.title,
-                summary: post.summary,
-                date: new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
-                readTime: post.readTime || "5 min read",
-                category: post.category || "General",
-                slug: `/blog/${post._id}`,
-            }));
-        }
-    } catch (error) {
-        console.error("Failed to fetch posts from MongoDB:", error);
-    }
-
-    // Fallback sample posts if database is empty or connection fails
-    if (posts.length === 0) {
-        posts = [
-            {
-                id: 1,
-                title: "Building Resilient IT Infrastructure for Clinics",
-                summary:
-                    "Learn how I combine my healthcare background with system engineering principles to design bullet-proof workflows for medical environments.",
-                date: "Feb 15, 2026",
-                readTime: "5 min read",
-                category: "Infrastructure",
-                slug: "#",
-            },
-            {
-                id: 2,
-                title: "From Stethoscope to Server Rack: My Career Transition",
-                summary:
-                    "A personal look into why I shifted from a final-year medical student to becoming an IT systems builder. The lessons, challenges, and parallel diagnostic skills.",
-                date: "Jan 28, 2026",
-                readTime: "8 min read",
-                category: "Career",
-                slug: "#",
-            },
-            {
-                id: 3,
-                title: "Automating Daily Operations with Bash and Python",
-                summary:
-                    "Step-by-step guide to some of the scripts I run daily to manage 300+ users securely and efficiently across multiple devices.",
-                date: "Dec 10, 2025",
-                readTime: "6 min read",
-                category: "Automation",
-                slug: "#",
-            },
-        ];
-    }
+    const posts = await getPostsWithFallback();
 
     return (
         <main className="flex flex-col bg-black min-h-screen pt-20 w-full overflow-x-hidden">

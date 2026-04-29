@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Trash2, Edit2, Lock, LogOut, Layout, FileText } from "lucide-react";
 
 export default function AdminPanel() {
@@ -15,7 +15,7 @@ export default function AdminPanel() {
     // Auth State
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [passwordInput, setPasswordInput] = useState("");
-    const [adminToken, setAdminToken] = useState("");
+    const [csrfToken, setCsrfToken] = useState("");
     const [authLoading, setAuthLoading] = useState(true);
 
     const [postFormData, setPostFormData] = useState({
@@ -48,13 +48,23 @@ export default function AdminPanel() {
     };
 
     useEffect(() => {
-        const token = sessionStorage.getItem("adminToken");
-        if (token) {
-            setAdminToken(token);
-            setIsAuthenticated(true);
-        }
-        fetchData();
-        setAuthLoading(false);
+        const initializeAdminPage = async () => {
+            try {
+                const authRes = await fetch("/api/auth");
+                const authData = await authRes.json();
+                setIsAuthenticated(!!authData.authenticated);
+                setCsrfToken(authData.csrfToken || "");
+            } catch (error) {
+                console.error("Failed to check admin session:", error);
+                setIsAuthenticated(false);
+                setCsrfToken("");
+            } finally {
+                fetchData();
+                setAuthLoading(false);
+            }
+        };
+
+        initializeAdminPage();
     }, []);
 
     const handleLogin = async (e) => {
@@ -68,25 +78,29 @@ export default function AdminPanel() {
             });
 
             if (res.ok) {
-                const data = await res.json();
-                setAdminToken(data.token);
-                sessionStorage.setItem("adminToken", data.token);
-                setIsAuthenticated(true);
+                const authRes = await fetch("/api/auth");
+                const authData = await authRes.json();
+                setIsAuthenticated(!!authData.authenticated);
+                setCsrfToken(authData.csrfToken || "");
                 setPasswordInput("");
             } else {
                 alert("Incorrect database password!");
             }
-        } catch (error) {
+        } catch {
             alert("Error connecting to auth service.");
         } finally {
             setSaving(false);
         }
     };
 
-    const handleLogout = () => {
-        sessionStorage.removeItem("adminToken");
-        setAdminToken("");
+    const handleLogout = async () => {
+        try {
+            await fetch("/api/auth", { method: "DELETE" });
+        } catch (error) {
+            console.error("Failed to clear admin session:", error);
+        }
         setIsAuthenticated(false);
+        setCsrfToken("");
         setPasswordInput("");
     };
 
@@ -117,7 +131,7 @@ export default function AdminPanel() {
                 method: method,
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${adminToken}`
+                    "X-CSRF-Token": csrfToken,
                 },
                 body: JSON.stringify(bodyData),
             });
@@ -125,6 +139,16 @@ export default function AdminPanel() {
             if (res.status === 401) {
                 alert("Session unauthorized. Please log in again.");
                 handleLogout();
+                return;
+            }
+            if (res.status === 403) {
+                alert("Security check failed. Please refresh and log in again.");
+                handleLogout();
+                return;
+            }
+            if (res.status === 400) {
+                const errorData = await res.json();
+                alert(errorData.message || "Invalid input.");
                 return;
             }
 
@@ -183,13 +207,23 @@ export default function AdminPanel() {
             const res = await fetch(url, {
                 method: "DELETE",
                 headers: {
-                    "Authorization": `Bearer ${adminToken}`
-                }
+                    "X-CSRF-Token": csrfToken,
+                },
             });
 
             if (res.status === 401) {
                 alert("Session unauthorized. Please log in again.");
                 handleLogout();
+                return;
+            }
+            if (res.status === 403) {
+                alert("Security check failed. Please refresh and log in again.");
+                handleLogout();
+                return;
+            }
+            if (res.status === 400) {
+                const errorData = await res.json();
+                alert(errorData.message || "Invalid input.");
                 return;
             }
 

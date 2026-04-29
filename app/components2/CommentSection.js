@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MessageSquare, User, Send, Clock } from "lucide-react";
 
 export default function CommentSection({ postId }) {
@@ -65,7 +65,7 @@ export default function CommentSection({ postId }) {
                 const errorData = await res.json();
                 setError(errorData.message || "Failed to post comment.");
             }
-        } catch (err) {
+        } catch {
             setError("Network error. Try again later.");
         } finally {
             setSubmitting(false);

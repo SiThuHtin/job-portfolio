@@ -2,14 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply text-white;
-  background-color: #080808;
+html {
+  --font-body: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Avenir Next", Avenir, "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
 }
 
-/* Responsive base font tweaks for better mobile readability */
-html {
-  font-size: 16px;
+body {
+  @apply text-white;
+  font-family: var(--font-body);
+  background-color: #080808;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 @media (max-width: 640px) {

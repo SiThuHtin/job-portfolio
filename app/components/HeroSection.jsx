@@ -8,7 +8,6 @@ export default function HeroSection() {
   const router = useRouter();
 
   const handleClick = () => {
-    // smooth scroll to Featured Projects section if present
     const el = document.getElementById('projects')
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -26,9 +25,9 @@ export default function HeroSection() {
     document.body.removeChild(link);
   }
 
-  // rotating specializations
   const specs = ['IT System Admin', 'Full-Stack Developer', 'Database Developer', 'Technical Writer', 'IT Instructor']
   const [specIndex, setSpecIndex] = useState(0)
+
   useEffect(() => {
     const t = setInterval(() => setSpecIndex((i) => (i + 1) % specs.length), 2200)
     return () => clearInterval(t)
@@ -36,21 +35,19 @@ export default function HeroSection() {
 
   return (
     <div className="relative py-20 px-2 md:px-4 bg-gradient-to-b from-black via-black to-black/50 overflow-hidden w-full">
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-8 left-6 w-48 h-48 md:w-96 md:h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-4 right-6 w-48 h-48 md:w-96 md:h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative flex flex-col items-center justify-center z-10 w-full px-4"
       >
         <div className="glass-effect bg-black/40 backdrop-blur-xl border-2 border-yellow-400/30 rounded-3xl shadow-2xl p-6 sm:p-8 max-w-3xl w-full mx-auto">
-          {/* Animated Greeting */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -59,8 +56,7 @@ export default function HeroSection() {
             <span className="inline-block text-yellow-400 text-sm font-bold mb-4 px-4 py-2 bg-yellow-400/10 rounded-full">Welcome to My Portfolio</span>
           </motion.div>
 
-          {/* Main Title */}
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -69,8 +65,7 @@ export default function HeroSection() {
             I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">Sithu Htin</span>
           </motion.h1>
 
-          {/* Subtitle with dynamic changing roles */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -78,8 +73,8 @@ export default function HeroSection() {
           >
             <div className="flex flex-wrap gap-2 justify-center items-center">
               <div className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white/5 border border-white/10 text-sm md:text-lg transition-all duration-300">
-                <span className="text-yellow-400 animate-pulse">◆</span>
-                <motion.span 
+                <span className="text-yellow-400 animate-pulse">*</span>
+                <motion.span
                   key={specIndex}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -88,13 +83,12 @@ export default function HeroSection() {
                 >
                   {specs[specIndex]}
                 </motion.span>
-                <span className="text-yellow-400 animate-pulse">◆</span>
+                <span className="text-yellow-400 animate-pulse">*</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Call to Action Buttons */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
@@ -111,12 +105,11 @@ export default function HeroSection() {
               onClick={handleClick}
               className="py-3 px-6 sm:py-4 sm:px-8 rounded-xl bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-base sm:text-lg transition-all duration-300 hover:bg-yellow-400/10 hover:scale-105"
             >
-              View My Work →
+              View My Work -&gt;
             </button>
           </motion.div>
 
-          {/* Stats Section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
