@@ -74,6 +74,7 @@ export default function About() {
                 fill
                 sizes="(max-width: 768px) 160px, 160px"
                 className="object-cover"
+                priority
               />
             </div>
             <div className="mt-4 space-y-2 text-center md:text-left">
