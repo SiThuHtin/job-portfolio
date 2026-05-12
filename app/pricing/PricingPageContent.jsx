@@ -24,6 +24,7 @@ const plans = [
       { label: 'Google Analytics setup', note: null },
       { label: '1 round of revisions', note: null },
       { label: '2 weeks delivery', note: null },
+      { label: '50% Discount on 1 addon', note: null },
     ],
     notIncluded: ['Custom backend / database', 'Admin dashboard', 'E-commerce features'],
     cta: 'Get Started',
@@ -83,12 +84,13 @@ const plans = [
 
 const addons = [
   { icon: '🌐+🔒', label: 'Domain & SSL Certificate Setup', price: '+$50' },
-  { icon: '🔗', label: 'Third-party API Integration', price: '+$150/each' },
-  { icon: '📧', label: 'Email Integration (Nodemailer / SendGrid)', price: '+$80' },
-  { icon: '🛒', label: 'E-commerce (WooCommerce / Stripe)', price: '+$200' },
-  { icon: '🔄', label: 'Monthly Maintenance Retainer', price: 'From $80/mo' },
-  { icon: '🌍', label: 'Multi-language Support (i18n)', price: '+$120' },
-  { icon: '📊', label: 'Custom Analytics Dashboard', price: '+$180' },
+  { icon: '🔗', label: 'Third-party API Integration', price: '+$120/each' },
+  { icon: '📧', label: 'Email Integration (Nodemailer / SendGrid)', price: '+$60' },
+  { icon: '🛒', label: 'E-commerce (WooCommerce / Stripe)', price: '+$180' },
+  { icon: '🔄', label: 'Monthly Maintenance Retainer', price: 'From $60/mo' },
+  { icon: '🌍', label: 'Multi-language Support (i18n)', price: '+$100' },
+  { icon: '📊', label: 'Custom Analytics Dashboard', price: '+$150' },
+  { icon: '📊', label: 'Admin Dashboard', price: '+$80' }
 ];
 
 const faqs = [

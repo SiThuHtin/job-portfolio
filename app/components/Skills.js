@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { Server, ShieldCheck, Wifi, Cloud, Code, Database, Terminal } from 'lucide-react';
+import { Server, ShieldCheck, Wifi, Cloud, Code, Briefcase, Database, Terminal, Container, ServerIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const CATEGORIES = [
@@ -14,6 +14,7 @@ const CATEGORIES = [
       { name: 'Windows 10/11', level: 92 },
       { name: 'Linux (Debian, Ubuntu)', level: 85 },
       { name: 'Linux Servers', level: 82 },
+      { name: 'MacOS', level: 70 }
     ],
   },
   {
@@ -24,6 +25,7 @@ const CATEGORIES = [
     skills: [
       { name: 'Active Directory (Users, Groups, GPO)', level: 88 },
       { name: 'User & Access Management', level: 86 },
+      { name: 'Role-Based Access Control (RBAC)', level: 80 },
     ],
   },
   {
@@ -40,21 +42,31 @@ const CATEGORIES = [
     ],
   },
   {
-    id: 'cloud',
-    title: 'Virtualization & Cloud',
-    icon: Cloud,
+    id: 'virt&container',
+    title: 'Virtualization & Containerization',
+    icon: Container,
     color: 'from-cyan-400 to-cyan-500',
     skills: [
       { name: 'VirtualBox', level: 75 },
       { name: 'KVM', level: 72 },
       { name: 'VMware', level: 70 },
-      { name: 'Microsoft 365', level: 84 },
-      { name: 'Google Workspace', level: 80 },
+      { name: 'Docker', level: 70 },
+      { name: 'Kubernetes', level: 60 },
+    ],
+  },
+  {
+    id: 'Cloud Infrastructure',
+    title: 'Cloud Infrastructure',
+    icon: Cloud,
+    color: 'from-violet-400 to-violet-500',
+    skills: [
+      { name: 'Orcale Cloud Infrastructure', level: 80 },
+      { name: 'AWS', level: 40 }
     ],
   },
   {
     id: 'security',
-    title: 'Security',
+    title: 'Security & System Maintenance',
     icon: ShieldCheck,
     color: 'from-rose-400 to-rose-500',
     skills: [
@@ -76,20 +88,36 @@ const CATEGORIES = [
       { name: 'Python', level: 78 },
       { name: 'Tailwind CSS', level: 90 },
       { name: 'JavaScript/TypeScript', level: 92 },
+      { name: 'WordPress', level: 88 },
+      { name: 'Elementor', level: 90 },
+    ],
+  },
+  {
+    id: 'Web Hosting & Server Management',
+    title: 'Web Hosting & Server Management',
+    icon: ServerIcon,
+    color: 'from-sky-400 to-sky-500',
+    skills: [
+      { name: 'Apache', level: 88 },
+      { name: 'Nginx', level: 86 },
+      { name: 'Wordpress', level: 90 },
+      { name: 'Elementor', level: 90 },
+      { name: 'Domain & DNS Management', level: 90 },
+      { name: 'Web Hosting Management', level: 90 }
     ],
   },
   {
     id: 'db',
-    title: 'Server & Database',
+    title: 'Database Management',
     icon: Database,
     color: 'from-emerald-400 to-emerald-500',
     skills: [
-      { name: 'Apache', level: 76 },
-      { name: 'Nginx', level: 78 },
       { name: 'MySQL', level: 80 },
       { name: 'PostgreSQL', level: 74 },
-      { name: 'WordPress', level: 88 },
-      { name: 'Elementor', level: 72 },
+      { name: 'MongoDB', level: 60 },
+      { name: 'Microsoft SQL Server', level: 70 },
+      { name: 'Oracle Database', level: 70 }
+
     ],
   },
   {
@@ -100,12 +128,22 @@ const CATEGORIES = [
     skills: [
       { name: 'Python Scripts', level: 82 },
       { name: 'Bash Scripts', level: 80 },
-      { name: 'Git', level: 88 },
+      { name: 'Git & Github', level: 88 },
       { name: 'Ticketing Systems', level: 84 },
       { name: 'IT Documentation', level: 90 },
       { name: 'Network Printers Management', level: 70 },
     ],
   },
+  {
+    id: 'Collaboration',
+    title: 'Collaboration & Productivity Platforms',
+    icon: Briefcase,
+    color: 'from-violet-400 to-violet-500',
+    skills: [
+      { name: 'Microsoft 365', level: 90 },
+      { name: 'Google Workspace', level: 88 },
+    ],
+  }
 ]
 
 export default function Skills() {
@@ -120,7 +158,7 @@ export default function Skills() {
   return (
     <section className="py-12 px-4 md:px-8 max-w-6xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -128,7 +166,7 @@ export default function Skills() {
         >
           Skills & Expertise
         </motion.h2>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -143,8 +181,8 @@ export default function Skills() {
         {CATEGORIES.map((cat, index) => {
           const Icon = cat.icon
           return (
-            <motion.article 
-              key={cat.id} 
+            <motion.article
+              key={cat.id}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
