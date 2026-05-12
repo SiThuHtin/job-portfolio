@@ -219,8 +219,8 @@ export default function PricingPageContent({ projects = [] }) {
       </section>
 
       {/* ── Pricing Cards ───────────────────────────────── */}
-      <section id="pricing-cards" className="relative z-10 py-16 px-4 md:px-16">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+      <section id="pricing-cards" className="relative z-10 py-16 px-4 sm:px-8 md:px-16">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.id}
@@ -231,7 +231,7 @@ export default function PricingPageContent({ projects = [] }) {
               viewport={{ once: true }}
               className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300
                 ${plan.highlight
-                  ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 scale-[1.03]'
+                  ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 lg:scale-[1.03]'
                   : 'border-white/10 bg-black/60 backdrop-blur-sm hover:border-yellow-400/30'
                 }
               `}
@@ -332,7 +332,7 @@ export default function PricingPageContent({ projects = [] }) {
       </section>
 
       {/* ── Add-ons ─────────────────────────────────────── */}
-      <section className="relative z-10 py-16 px-4 md:px-16">
+      <section className="relative z-10 py-16 px-4 sm:px-8 md:px-16">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -370,7 +370,7 @@ export default function PricingPageContent({ projects = [] }) {
       </section>
 
       {/* ── Technologies Used ───────────────────────────── */}
-      <section className="relative z-10 py-16 px-4 md:px-16">
+      <section className="relative z-10 py-16 px-4 sm:px-8 md:px-16">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -419,7 +419,7 @@ export default function PricingPageContent({ projects = [] }) {
       </section>
 
       {/* ── Featured Projects ────────────────────────────── */}
-      <section className="relative z-10 py-16 px-4 md:px-16">
+      <section className="relative z-10 py-16 px-4 sm:px-8 md:px-16">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -438,7 +438,7 @@ export default function PricingPageContent({ projects = [] }) {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <motion.a
                 key={project.id}
@@ -490,7 +490,7 @@ export default function PricingPageContent({ projects = [] }) {
 
       {/* ── FAQ ─────────────────────────────────────────── */}
 
-      <section className="relative z-10 py-16 px-4 md:px-16">
+      <section className="relative z-10 py-16 px-4 sm:px-8 md:px-16">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

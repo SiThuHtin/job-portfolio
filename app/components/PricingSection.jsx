@@ -90,7 +90,7 @@ export default function PricingSection() {
 
       <section
         id="pricing"
-        className="relative py-16 px-4 md:px-16 overflow-hidden"
+        className="relative py-16 px-4 sm:px-8 md:px-16 overflow-hidden"
       >
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
@@ -120,7 +120,7 @@ export default function PricingSection() {
           </motion.div>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.id}
@@ -131,7 +131,7 @@ export default function PricingSection() {
                 viewport={{ once: true }}
                 className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300 group
                   ${plan.highlight
-                    ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 scale-[1.03]'
+                    ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 lg:scale-[1.03]'
                     : 'border-white/10 bg-black/60 backdrop-blur-sm hover:border-yellow-400/30'
                   }
                 `}
