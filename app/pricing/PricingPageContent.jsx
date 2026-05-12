@@ -1,8 +1,9 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
-import { FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare } from 'react-icons/fi';
+import { FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare, FiExternalLink } from 'react-icons/fi';
 
 const plans = [
   {
@@ -15,7 +16,7 @@ const plans = [
     highlight: false,
     badge: null,
     description:
-      'Get a clean, fast, and professional web presence without breaking the bank. Ideal for portfolios, landing pages, and small business sites.',
+      'Get a clean, fast, and professional web presence without breaking the bank. Best for portfolios, NGOs, personal brands, and small local businesses.',
     features: [
       { label: '5-page responsive website', note: null },
       { label: 'Next.js / React build', note: null },
@@ -41,7 +42,7 @@ const plans = [
     highlight: true,
     badge: 'Most Popular',
     description:
-      'A fully custom website built with modern frameworks. Includes a CMS or database so you can manage your content without touching code.',
+      'A fully custom website built with modern frameworks. Includes a CMS or database so you can manage your content without touching code.Ideal for startups, booking systems, dashboards, directories, and CMS-driven websites.',
     features: [
       { label: 'Up to 15-page custom website', note: null },
       { label: 'Next.js / React build', note: null },
@@ -162,7 +163,16 @@ const cardVariants = {
   }),
 };
 
-export default function PricingPageContent() {
+// Transform Google Drive share links → direct embeddable image URLs
+const getOptimizedImageUrl = (url) => {
+  if (!url) return '';
+  // Format: drive.google.com/file/d/<ID>/view  →  drive.google.com/uc?id=<ID>
+  const match = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (match?.[1]) return `https://drive.google.com/uc?id=${match[1]}`;
+  return url;
+};
+
+export default function PricingPageContent({ projects = [] }) {
   return (
     <div className="relative overflow-hidden">
       {/* Background glows */}
@@ -189,8 +199,7 @@ export default function PricingPageContent() {
             Pricing
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8">
-            No hidden fees. No surprises. Pick the plan that fits your project, or reach out for a
-            custom quote tailored exactly to your needs.
+            No hidden fees. No surprises. Negotiatable.Pick the plan that fits your project.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -360,7 +369,127 @@ export default function PricingPageContent() {
         </div>
       </section>
 
+      {/* ── Technologies Used ───────────────────────────── */}
+      <section className="relative z-10 py-16 px-4 md:px-16">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Technologies{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
+                I Use
+              </span>
+            </h2>
+            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+              Every project is built with modern, production-grade tools — chosen for performance, scalability, and developer experience.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              { name: 'Next.js', icon: '▲', color: 'from-white/10 to-white/5', border: 'border-white/20', text: 'text-white' },
+              { name: 'React', icon: '⚛', color: 'from-cyan-500/10 to-cyan-500/5', border: 'border-cyan-500/30', text: 'text-cyan-400' },
+              { name: 'Tailwind CSS', icon: '🎨', color: 'from-sky-500/10 to-sky-500/5', border: 'border-sky-500/30', text: 'text-sky-400' },
+              { name: 'Node.js', icon: '🟢', color: 'from-green-500/10 to-green-500/5', border: 'border-green-500/30', text: 'text-green-400' },
+              { name: 'PostgreSQL / MySQL', icon: '🐘', color: 'from-blue-500/10 to-blue-500/5', border: 'border-blue-500/30', text: 'text-blue-400' },
+              { name: 'Vercel', icon: '🚀', color: 'from-white/10 to-white/5', border: 'border-white/20', text: 'text-white' },
+              { name: 'Cloudflare CDN', icon: '🌐', color: 'from-orange-500/10 to-orange-500/5', border: 'border-orange-500/30', text: 'text-orange-400' },
+              { name: 'MongoDB Atlas', icon: '🍃', color: 'from-green-600/10 to-green-600/5', border: 'border-green-600/30', text: 'text-green-500' },
+              { name: 'Supabase', icon: '⚡', color: 'from-emerald-500/10 to-emerald-500/5', border: 'border-emerald-500/30', text: 'text-emerald-400' },
+              { name: 'Neon', icon: '💡', color: 'from-violet-500/10 to-violet-500/5', border: 'border-violet-500/30', text: 'text-violet-400' },
+            ].map((tech, i) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.35 }}
+                className={`flex items-center gap-3 px-5 py-3 rounded-xl bg-gradient-to-br ${tech.color} border ${tech.border} hover:scale-105 transition-transform duration-300 cursor-default`}
+              >
+                <span className="text-xl leading-none">{tech.icon}</span>
+                <span className={`font-semibold text-sm ${tech.text}`}>{tech.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Featured Projects ────────────────────────────── */}
+      <section className="relative z-10 py-16 px-4 md:px-16">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Featured{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
+                Projects
+              </span>
+            </h2>
+            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+              Real-world websites I&apos;ve built for clients — each delivered with care and attention to detail.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {projects.map((project, index) => (
+              <motion.a
+                key={project.id}
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.1 }}
+                className="group flex flex-col rounded-2xl border border-white/10 bg-black/50 backdrop-blur-sm overflow-hidden hover:border-yellow-400/50 transition-all duration-300"
+              >
+                <div className="relative h-48 overflow-hidden bg-white/5">
+                  <Image
+                    src={getOptimizedImageUrl(project.imageUrl)}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-white font-bold text-lg mb-1">{project.title}</h3>
+                  <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-2">{project.description}</p>
+                  <span className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                    View Project <FiExternalLink />
+                  </span>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-center mt-10"
+          >
+            <Link
+              href="/about-me#projects"
+              className="inline-flex items-center gap-2 py-3 px-8 rounded-xl border border-yellow-400/30 text-yellow-400 font-semibold text-sm hover:bg-yellow-400/10 hover:border-yellow-400 transition-all duration-300"
+            >
+              View All Projects →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── FAQ ─────────────────────────────────────────── */}
+
       <section className="relative z-10 py-16 px-4 md:px-16">
         <div className="max-w-3xl mx-auto">
           <motion.div
