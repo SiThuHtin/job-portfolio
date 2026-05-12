@@ -6,6 +6,7 @@ import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import LatestPosts from './components/LatestPosts';
 import DocumentationSection from './components/DocumentationSection';
+import PricingSection from './components/PricingSection';
 import ContactSection from './components/ContactSection';
 import { getPostsWithFallback, getProjectsWithFallback } from '@/lib/content';
 
@@ -89,6 +90,7 @@ export default function Home() {
         <HomeLatestPosts />
       </Suspense>
       <DocumentationSection />
+      <PricingSection />
       <ContactSection />
     </main>
   );
