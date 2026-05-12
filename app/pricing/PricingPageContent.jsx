@@ -10,6 +10,7 @@ const plans = [
     name: 'Starter',
     tagline: 'Perfect for small businesses & individuals',
     price: '$300',
+    originalPrice: '$350',
     duration: 'one-time',
     highlight: false,
     badge: null,
@@ -35,6 +36,7 @@ const plans = [
     name: 'Professional',
     tagline: 'Best for growing teams & startups',
     price: '$800',
+    originalPrice: '$900',
     duration: 'one-time',
     highlight: true,
     badge: 'Most Popular',
@@ -241,6 +243,16 @@ export default function PricingPageContent() {
               </div>
 
               <div className="mb-4">
+                {plan.originalPrice && (
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-gray-500 text-lg line-through">
+                      {plan.originalPrice}
+                    </span>
+                    <span className="text-xs font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">
+                      Limited offer
+                    </span>
+                  </div>
+                )}
                 <span className="text-4xl md:text-5xl font-extrabold text-white">{plan.price}</span>
                 {plan.duration !== 'quote' && (
                   <span className="ml-2 text-gray-500 text-sm">/ {plan.duration}</span>
