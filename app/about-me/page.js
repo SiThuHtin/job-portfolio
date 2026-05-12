@@ -10,9 +10,19 @@ export const metadata = {
 async function AboutProjects() {
   const projects = await getProjectsWithFallback();
 
+  const getOptimizedImageUrl = (url) => {
+    if (!url) return '';
+    const driveRegex = /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/;
+    const match = url.match(driveRegex);
+    if (match && match[1]) {
+      return `https://drive.google.com/uc?id=${match[1]}`;
+    }
+    return url;
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
-      {projects.map((data) => (
+      {projects.map((data, index) => (
         <a
           href={data.projectUrl}
           target="_blank"
@@ -22,9 +32,10 @@ async function AboutProjects() {
         >
           <div className="relative h-48 md:h-56 bg-white/5 overflow-hidden">
             <Image
-              src={data.imageUrl}
+              src={getOptimizedImageUrl(data.imageUrl)}
               alt={data.title}
               fill
+              priority={index <= 2}
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
             />
