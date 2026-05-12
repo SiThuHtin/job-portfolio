@@ -17,7 +17,7 @@ const plans = [
       'Get a clean, fast, and professional web presence without breaking the bank. Ideal for portfolios, landing pages, and small business sites.',
     features: [
       { label: '5-page responsive website', note: null },
-      { label: 'WordPress / HTML & CSS build', note: null },
+      { label: 'Next.js / React build', note: null },
       { label: 'Mobile-friendly design', note: null },
       { label: 'Basic on-page SEO setup', note: null },
       { label: 'Contact form integration', note: null },
@@ -82,8 +82,7 @@ const plans = [
 ];
 
 const addons = [
-  { icon: '🌐', label: 'Domain & Hosting Setup', price: '+$50' },
-  { icon: '🔒', label: 'SSL Certificate Config', price: '+$30' },
+  { icon: '🌐+🔒', label: 'Domain & SSL Certificate Setup', price: '+$50' },
   { icon: '🔗', label: 'Third-party API Integration', price: '+$150/each' },
   { icon: '📧', label: 'Email Integration (Nodemailer / SendGrid)', price: '+$80' },
   { icon: '🛒', label: 'E-commerce (WooCommerce / Stripe)', price: '+$200' },
@@ -218,10 +217,9 @@ export default function PricingPageContent() {
               whileInView="visible"
               viewport={{ once: true }}
               className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300
-                ${
-                  plan.highlight
-                    ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 scale-[1.03]'
-                    : 'border-white/10 bg-black/60 backdrop-blur-sm hover:border-yellow-400/30'
+                ${plan.highlight
+                  ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 scale-[1.03]'
+                  : 'border-white/10 bg-black/60 backdrop-blur-sm hover:border-yellow-400/30'
                 }
               `}
             >
@@ -284,10 +282,9 @@ export default function PricingPageContent() {
               <Link
                 href={plan.ctaHref}
                 className={`w-full text-center py-3 px-6 rounded-xl font-bold text-base transition-all duration-300 mt-auto
-                  ${
-                    plan.highlight
-                      ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-black hover:from-yellow-500 hover:to-yellow-600 shadow-lg shadow-yellow-400/20 hover:scale-105'
-                      : 'border border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400'
+                  ${plan.highlight
+                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-black hover:from-yellow-500 hover:to-yellow-600 shadow-lg shadow-yellow-400/20 hover:scale-105'
+                    : 'border border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400'
                   }
                 `}
               >

@@ -13,7 +13,7 @@ const plans = [
     highlight: false,
     features: [
       '5-page responsive website',
-      'WordPress / HTML & CSS build',
+      'Next.js / React build',
       'Mobile-friendly design',
       'Basic SEO setup',
       'Contact form integration',
@@ -128,10 +128,9 @@ export default function PricingSection() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300 group
-                  ${
-                    plan.highlight
-                      ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 scale-[1.03]'
-                      : 'border-white/10 bg-black/60 backdrop-blur-sm hover:border-yellow-400/30'
+                  ${plan.highlight
+                    ? 'border-yellow-400/60 bg-gradient-to-b from-yellow-400/10 to-black/80 shadow-2xl shadow-yellow-400/10 scale-[1.03]'
+                    : 'border-white/10 bg-black/60 backdrop-blur-sm hover:border-yellow-400/30'
                   }
                 `}
               >
@@ -147,9 +146,8 @@ export default function PricingSection() {
                 {/* Plan name & tag */}
                 <div className="mb-6">
                   <h3
-                    className={`text-xl font-bold mb-1 ${
-                      plan.highlight ? 'text-yellow-400' : 'text-white'
-                    }`}
+                    className={`text-xl font-bold mb-1 ${plan.highlight ? 'text-yellow-400' : 'text-white'
+                      }`}
                   >
                     {plan.name}
                   </h3>
@@ -173,11 +171,10 @@ export default function PricingSection() {
                   {plan.features.map((feat) => (
                     <li key={feat} className="flex items-start gap-3 text-sm">
                       <FiCheck
-                        className={`mt-0.5 shrink-0 ${
-                          plan.highlight
+                        className={`mt-0.5 shrink-0 ${plan.highlight
                             ? 'text-yellow-400'
                             : 'text-yellow-500/70'
-                        }`}
+                          }`}
                       />
                       <span className="text-gray-300">{feat}</span>
                     </li>
@@ -188,10 +185,9 @@ export default function PricingSection() {
                 <Link
                   href={plan.ctaHref}
                   className={`w-full text-center py-3 px-6 rounded-xl font-bold text-base transition-all duration-300
-                    ${
-                      plan.highlight
-                        ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-black hover:from-yellow-500 hover:to-yellow-600 shadow-lg shadow-yellow-400/20 hover:scale-105'
-                        : 'border border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400'
+                    ${plan.highlight
+                      ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-black hover:from-yellow-500 hover:to-yellow-600 shadow-lg shadow-yellow-400/20 hover:scale-105'
+                      : 'border border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400'
                     }
                   `}
                 >
