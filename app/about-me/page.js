@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { Suspense } from "react";
 import { Download } from "lucide-react";
 import Experience from "@/app/components/Experience";
 import Certifications from "@/app/components/Certifications";
 import Skills from "@/app/components/Skills";
 import SectionLabel from "@/app/components/SectionLabel";
-import { getProjectsWithFallback } from "@/lib/content";
+import CaseStudyCard from "@/app/components/CaseStudyCard";
+import { WORK_PROJECTS, PERSONAL_PROJECTS } from "@/data/projects";
 import { pageMetadata } from "@/lib/metadata";
 import { LINKS } from "@/data/site";
 
@@ -14,72 +14,6 @@ export const metadata = pageMetadata({
   description: "About Sithu Htin: IT systems administrator and web developer in Mae Sot, Thailand. Experience, certifications, skills and projects.",
   path: "/about-me",
 });
-
-export const revalidate = 60;
-
-async function AboutProjects() {
-  const projects = await getProjectsWithFallback();
-
-  const getOptimizedImageUrl = (url) => {
-    if (!url) return '';
-    const driveRegex = /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/;
-    const match = url.match(driveRegex);
-    if (match && match[1]) {
-      return `https://drive.google.com/uc?id=${match[1]}`;
-    }
-    return url;
-  };
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
-      {projects.map((data, index) => (
-        <a
-          href={data.projectUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          key={data.id}
-          className="group block rounded-2xl border border-white/10 bg-black/50 overflow-hidden hover:border-yellow-400/40 transition-colors duration-300"
-        >
-          <div className="relative h-48 md:h-56 bg-white/5 overflow-hidden">
-            <Image
-              src={getOptimizedImageUrl(data.imageUrl)}
-              alt={data.title}
-              fill
-              priority={index <= 2}
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
-            />
-          </div>
-          <div className="p-5 md:p-6">
-            <h3 className="text-xl font-bold text-white">{data.title}</h3>
-            <p className="mt-2 text-sm text-gray-300">{data.description}</p>
-            <span className="mt-5 inline-flex items-center rounded-lg bg-yellow-500 px-4 py-2 text-sm font-semibold text-black">
-              View Project
-            </span>
-          </div>
-        </a>
-      ))}
-    </div>
-  );
-}
-
-function AboutProjectsFallback() {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto">
-      {[...Array(3)].map((_, index) => (
-        <div
-          key={`about-project-skeleton-${index}`}
-          className="rounded-xl border border-white/10 bg-black/40 p-6 animate-pulse"
-        >
-          <div className="h-8 w-2/3 rounded bg-white/10 mb-4"></div>
-          <div className="h-4 w-full rounded bg-white/10 mb-2"></div>
-          <div className="h-4 w-5/6 rounded bg-white/10 mb-6"></div>
-          <div className="h-48 rounded-xl bg-white/10"></div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function About() {
 
@@ -158,17 +92,19 @@ export default function About() {
 
       <Skills />
 
-      <div id="projects" className="flex items-center my-12 pt-8 scroll-mt-20">
-        <div className="flex-grow border-t border-yellow-400/30"></div>
-        <span className="mx-6 text-yellow-400 uppercase tracking-widest text-lg font-semibold select-none">
-          My Projects
-        </span>
-        <div className="flex-grow border-t border-yellow-400/30"></div>
+      <SectionLabel id="projects">Projects</SectionLabel>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto w-full pb-8">
+        {WORK_PROJECTS.map((project) => (
+          <CaseStudyCard key={project.id} project={project} />
+        ))}
       </div>
-      <div className="pb-16">
-        <Suspense fallback={<AboutProjectsFallback />}>
-          <AboutProjects />
-        </Suspense>
+
+      <SectionLabel id="personal-projects">Personal Projects</SectionLabel>
+      <p className="text-gray-400 text-center px-4 mb-8">Side projects I built to learn and experiment. Not client work.</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto w-full pb-16">
+        {PERSONAL_PROJECTS.map((project) => (
+          <CaseStudyCard key={project.id} project={project} />
+        ))}
       </div>
     </div>
   );

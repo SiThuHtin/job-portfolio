@@ -1,5 +1,4 @@
 import PricingPageContent from './PricingPageContent';
-import { getProjectsWithFallback } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata = pageMetadata({
@@ -9,11 +8,10 @@ export const metadata = pageMetadata({
   path: '/pricing',
 });
 
-export default async function PricingPage() {
-  const projects = await getProjectsWithFallback();
+export default function PricingPage() {
   return (
     <div className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
-      <PricingPageContent projects={projects} />
+      <PricingPageContent />
     </div>
   );
 }

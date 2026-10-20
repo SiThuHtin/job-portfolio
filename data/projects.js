@@ -13,8 +13,10 @@
  * @property {string} result
  * @property {string|null} image
  * @property {string|null} link
- * @property {boolean} featured   Shown in "Selected work" on the homepage
+ * @property {boolean} featured   Shown in "Selected work" on the homepage and services page
  * @property {boolean} clientWork False for employer or personal projects
+ * @property {boolean} personal   Side projects, listed separately and never described as client work
+ * @property {boolean|null} clientPermission  May the client be named? null = not asked yet (TODO(Sithu))
  */
 
 /** @type {Project[]} */
@@ -32,6 +34,8 @@ export const PROJECTS = [
         link: "https://www.hiswg.org/",
         featured: true,
         clientWork: false,
+        personal: false,
+        clientPermission: null,
     },
     {
         id: "ngo-website-thailand",
@@ -46,6 +50,8 @@ export const PROJECTS = [
         link: null,
         featured: true,
         clientWork: true,
+        personal: false,
+        clientPermission: null, // TODO(Sithu): may the client be named?
     },
     {
         id: "bma",
@@ -60,6 +66,8 @@ export const PROJECTS = [
         link: "https://www.bmahq.org/",
         featured: true,
         clientWork: false,
+        personal: false,
+        clientPermission: null,
     },
     {
         id: "e-learning",
@@ -74,6 +82,8 @@ export const PROJECTS = [
         link: null,
         featured: false,
         clientWork: true,
+        personal: false,
+        clientPermission: null, // TODO(Sithu): may the client be named?
     },
     {
         id: "wedding-rsvp",
@@ -88,7 +98,43 @@ export const PROJECTS = [
         link: null,
         featured: false,
         clientWork: true,
+        personal: false,
+        clientPermission: null, // TODO(Sithu): may the client be named?
+    },
+    {
+        id: "qr-code-generator",
+        title: "QR Code Generator",
+        client: "personal",
+        category: "Personal project",
+        problem: "",
+        built: "A web app that generates QR codes from links or files.",
+        stack: ["TypeScript"],
+        result: "",
+        image: "https://drive.google.com/uc?id=1YAhVtlOQDT-29dhsGfFOAqGmzywZtQZ9",
+        link: "https://silly-qr-code-generator.vercel.app/",
+        featured: false,
+        clientWork: false,
+        personal: true,
+        clientPermission: null,
+    },
+    {
+        id: "calendar-app",
+        title: "My Calendar App",
+        client: "personal",
+        category: "Personal project",
+        problem: "",
+        built: "A calendar app for creating daily, monthly and yearly tasks.",
+        stack: [], // TODO(Sithu): stack
+        result: "",
+        image: "https://drive.google.com/uc?id=1C7GRUYOI0WNSqWmJMpxn2owBZrB3D0vL",
+        link: "https://my-calendar-one-omega.vercel.app/",
+        featured: false,
+        clientWork: false,
+        personal: true,
+        clientPermission: null,
     },
 ];
 
 export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured);
+export const WORK_PROJECTS = PROJECTS.filter((project) => !project.personal);
+export const PERSONAL_PROJECTS = PROJECTS.filter((project) => project.personal);

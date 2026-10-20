@@ -1,9 +1,10 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
+import CaseStudyCard from '@/app/components/CaseStudyCard';
+import { FEATURED_PROJECTS } from '@/data/projects';
 import { useState } from 'react';
-import { FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare, FiExternalLink } from 'react-icons/fi';
+import { FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare } from 'react-icons/fi';
 import {
   WEB_PLANS as plans,
   WEB_ADDONS as addons,
@@ -55,16 +56,7 @@ const cardVariants = {
   }),
 };
 
-// Transform Google Drive share links → direct embeddable image URLs
-const getOptimizedImageUrl = (url) => {
-  if (!url) return '';
-  // Format: drive.google.com/file/d/<ID>/view  →  drive.google.com/uc?id=<ID>
-  const match = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
-  if (match?.[1]) return `https://drive.google.com/uc?id=${match[1]}`;
-  return url;
-};
-
-export default function PricingPageContent({ projects = [] }) {
+export default function PricingPageContent() {
   return (
     <div className="relative overflow-hidden">
       {/* Background glows */}
@@ -450,46 +442,19 @@ export default function PricingPageContent({ projects = [] }) {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Featured{' '}
+              Selected{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
-                Projects
+                Work
               </span>
             </h2>
             <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
-              Real-world websites I&apos;ve built for clients — each delivered with care and attention to detail.
+              Websites and systems I&apos;ve built for organizations I&apos;ve worked for and for clients.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <motion.a
-                key={project.id}
-                href={project.projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.1 }}
-                className="group flex flex-col rounded-2xl border border-white/10 bg-black/50 backdrop-blur-sm overflow-hidden hover:border-yellow-400/50 transition-all duration-300"
-              >
-                <div className="relative h-48 overflow-hidden bg-white/5">
-                  <Image
-                    src={getOptimizedImageUrl(project.imageUrl)}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-white font-bold text-lg mb-1">{project.title}</h3>
-                  <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-2">{project.description}</p>
-                  <span className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
-                    View Project <FiExternalLink />
-                  </span>
-                </div>
-              </motion.a>
+            {FEATURED_PROJECTS.map((project) => (
+              <CaseStudyCard key={project.id} project={project} />
             ))}
           </div>
 
