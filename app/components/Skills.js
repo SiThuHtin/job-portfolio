@@ -60,7 +60,7 @@ const CATEGORIES = [
     icon: Cloud,
     color: 'from-violet-400 to-violet-500',
     skills: [
-      { name: 'Orcale Cloud Infrastructure', level: 80 },
+      { name: 'Oracle Cloud Infrastructure', level: 80 },
       { name: 'AWS', level: 40 }
     ],
   },
@@ -100,7 +100,7 @@ const CATEGORIES = [
     skills: [
       { name: 'Apache', level: 88 },
       { name: 'Nginx', level: 86 },
-      { name: 'Wordpress', level: 90 },
+      { name: 'WordPress', level: 90 },
       { name: 'Elementor', level: 90 },
       { name: 'Domain & DNS Management', level: 90 },
       { name: 'Web Hosting Management', level: 90 }

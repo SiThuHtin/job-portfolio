@@ -11,8 +11,8 @@ const CERTS = [
   { id: 5, name: 'Introduction to Linux', org: 'IBM', category: 'Technical', icon: Cpu, year: 2021 },
   { id: 6, name: 'Python Developer', org: 'SoloLearn', category: 'Technical', icon: Zap, year: 2024 },
   { id: 7, name: 'Various IT Certificates', org: 'SoloLearn', category: 'Technical', icon: FileText },
-  { id: 8, name: 'PSEA', org: '[Organization]', category: 'Other', icon: ShieldCheck },
-  { id: 9, name: 'Information Security and Data Protection Awareness Course', org: '[Organization]', category: 'Other', icon: Award },
+  { id: 8, name: 'PSEA', org: 'TODO(Sithu): issuer and year', category: 'Other', icon: ShieldCheck },
+  { id: 9, name: 'Information Security and Data Protection Awareness Course', org: 'TODO(Sithu): issuer and year', category: 'Other', icon: Award },
 ]
 
 export default function Certifications() {

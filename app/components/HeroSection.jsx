@@ -63,7 +63,7 @@ export default function HeroSection() {
             className="mb-8 text-center"
           >
             <p className="text-lg sm:text-xl md:text-2xl text-gray-100 font-semibold tracking-wide">
-              IT &amp; Linux Systems Administrator
+              IT Systems Administrator &amp; Web Developer
             </p>
             <p className="mt-3 text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
               4+ years keeping Windows &amp; Linux infrastructure secure and running for 300+ users in healthcare and research organisations.
@@ -106,7 +106,7 @@ export default function HeroSection() {
               <p className="text-sm text-gray-400">Users Supported</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl md:text-3xl font-bold text-yellow-400">15+</p>
+              <p className="text-2xl md:text-3xl font-bold text-yellow-400">9+</p>
               <p className="text-sm text-gray-400">Certifications</p>
             </div>
             <div className="text-center">
