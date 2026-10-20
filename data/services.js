@@ -10,6 +10,7 @@
  * @property {string} priceFrom   Display price, e.g. "From ฿1,200 / month". Use "TODO(Sithu): …" if unknown.
  * @property {string} icon        lucide-react icon name used by the homepage cards
  * @property {string} href
+ * @property {boolean} [hidden] Not shown on the homepage
  */
 
 /** Homepage service cards (4–6). @type {ServiceSummary[]} */
@@ -61,6 +62,7 @@ export const HOME_SERVICES = [
         priceFrom: "TODO(Sithu): price",
         icon: "Heart",
         href: "/pricing",
+        hidden: true, // TODO(Sithu): set the price, then remove this line to show the card
     },
 ];
 
