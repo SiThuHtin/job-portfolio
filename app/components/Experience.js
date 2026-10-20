@@ -187,76 +187,30 @@ export default function Experience() {
         <div className="space-y-12 md:space-y-24">
           {positions.map((pos, idx) => {
             const isLeft = idx % 2 === 0
+            // Each position is rendered once; the grid places it left or right of the timeline on desktop
             return (
-              <div key={pos.id} className="relative">
-                {/* Desktop Layout */}
-                <div className="hidden md:grid grid-cols-[1fr_auto_1fr] items-center gap-12 lg:gap-20">
-                  {/* Left Side */}
-                  <div className={isLeft ? "block" : "invisible pointer-events-none"}>
-                    <motion.div
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                      className="group relative bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/5 hover:border-indigo-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-500 cursor-pointer"
-                      onClick={() => toggle(pos.id)}
-                    >
-                      <div className="absolute -right-[76px] top-1/2 -translate-y-1/2 z-20">
-                        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500 text-black font-black text-xs shadow-[0_0_20px_rgba(250,204,21,0.4)] border-4 border-[#080808] group-hover:scale-110 transition-transform duration-300">
-                          {pos.logo}
-                        </div>
-                      </div>
-                      <CardBody pos={pos} open={open} />
-                    </motion.div>
-                  </div>
-
-                  {/* Center Dot */}
-                  <div className="relative z-10">
-                    <div className="w-4 h-4 rounded-full bg-black border-2 border-yellow-500 shadow-[0_0_15px_rgba(250,204,21,0.5)] flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+              <div key={pos.id} className="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-12 lg:gap-20">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className={`group relative md:row-start-1 ${isLeft ? 'md:col-start-1' : 'md:col-start-3'} bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/5 hover:border-indigo-500/50 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl md:shadow-2xl transition-all duration-500 cursor-pointer`}
+                  onClick={() => toggle(pos.id)}
+                >
+                  <div className={`mb-4 md:mb-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:z-20 ${isLeft ? 'md:-right-[76px]' : 'md:-left-[76px]'}`}>
+                    <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-yellow-500 text-black font-black text-[10px] md:text-xs shadow-[0_0_20px_rgba(250,204,21,0.4)] md:border-4 md:border-[#080808] group-hover:scale-110 transition-transform duration-300">
+                      {pos.logo}
                     </div>
                   </div>
+                  <CardBody pos={pos} open={open} />
+                </motion.div>
 
-                  {/* Right Side */}
-                  <div className={!isLeft ? "block" : "invisible pointer-events-none"}>
-                    <motion.div
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                      className="group relative bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/5 hover:border-indigo-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-500 cursor-pointer"
-                      onClick={() => toggle(pos.id)}
-                    >
-                      <div className="absolute -left-[76px] top-1/2 -translate-y-1/2 z-20">
-                        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500 text-black font-black text-xs shadow-[0_0_20px_rgba(250,204,21,0.4)] border-4 border-[#080808] group-hover:scale-110 transition-transform duration-300">
-                          {pos.logo}
-                        </div>
-                      </div>
-                      <CardBody pos={pos} open={open} />
-                    </motion.div>
+                {/* Center dot on the timeline */}
+                <div className="hidden md:block md:row-start-1 md:col-start-2 relative z-10">
+                  <div className="w-4 h-4 rounded-full bg-black border-2 border-yellow-500 shadow-[0_0_15px_rgba(250,204,21,0.5)] flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
                   </div>
-                </div>
-
-                {/* Mobile Layout */}
-                <div className="md:hidden">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="relative bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 shadow-xl"
-                    onClick={() => toggle(pos.id)}
-                  >
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-yellow-500 flex items-center justify-center text-black font-bold text-[10px]">
-                        {pos.logo}
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-yellow-400 mb-1 uppercase tracking-wider">{pos.duration}</div>
-                        <div className="text-white font-black text-lg">{pos.title}</div>
-                      </div>
-                    </div>
-                    <CardBody pos={pos} open={open} />
-                  </motion.div>
                 </div>
               </div>
             )
