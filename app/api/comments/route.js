@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { isValidObjectId } from "mongoose";
 import connectToDatabase from "@/lib/mongodb";
 import Comment from "@/lib/models/Comment";
+import Post from "@/lib/models/Post";
 
 // In-memory store for basic rate-limiting (Works per serverless instance cold start)
 const rateLimitMap = new Map();
@@ -33,6 +35,9 @@ export async function GET(request) {
         if (!postId) {
             return NextResponse.json({ message: "postId is required" }, { status: 400 });
         }
+        if (!isValidObjectId(postId)) {
+            return NextResponse.json({ message: "Invalid postId" }, { status: 400 });
+        }
 
         await connectToDatabase();
         const comments = await Comment.find({ postId }).sort({ createdAt: -1 });
@@ -53,10 +58,21 @@ export async function POST(request) {
             return NextResponse.json({ message: "You are posting too fast. Please wait a moment." }, { status: 429 });
         }
 
-        const { postId, author, content } = await request.json();
+        const { postId, author: rawAuthor, content: rawContent, website } = await request.json();
 
-        if (!postId || !author || !content) {
+        // Honeypot field is hidden from people; only bots fill it in. Pretend success and drop it.
+        if (website) {
+            return NextResponse.json({ message: "Comment added successfully" }, { status: 201 });
+        }
+
+        const author = typeof rawAuthor === "string" ? rawAuthor.trim() : "";
+        const content = typeof rawContent === "string" ? rawContent.trim() : "";
+
+        if (typeof postId !== "string" || !author || !content) {
             return NextResponse.json({ message: "All fields are required" }, { status: 400 });
+        }
+        if (!isValidObjectId(postId)) {
+            return NextResponse.json({ message: "Invalid postId" }, { status: 400 });
         }
 
         // Input Validation (Prevent Database memory overflow / String crashes)
@@ -68,6 +84,10 @@ export async function POST(request) {
         }
 
         await connectToDatabase();
+        if (!(await Post.exists({ _id: postId }))) {
+            return NextResponse.json({ message: "Post not found" }, { status: 404 });
+        }
+
         const newComment = new Comment({ postId, author, content });
         await newComment.save();
 

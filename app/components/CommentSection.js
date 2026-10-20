@@ -10,25 +10,27 @@ export default function CommentSection({ postId }) {
     const [content, setContent] = useState("");
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState(null);
+    // Honeypot: hidden from people, but spam bots fill it in
+    const [website, setWebsite] = useState("");
 
     useEffect(() => {
+        const fetchComments = async () => {
+            try {
+                setLoading(true);
+                const res = await fetch(`/api/comments?postId=${encodeURIComponent(postId)}`);
+                const data = await res.json();
+                if (data.comments) {
+                    setComments(data.comments);
+                }
+            } catch (err) {
+                console.error("Failed to fetch comments", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchComments();
     }, [postId]);
-
-    const fetchComments = async () => {
-        try {
-            setLoading(true);
-            const res = await fetch(`/api/comments?postId=${postId}`);
-            const data = await res.json();
-            if (data.comments) {
-                setComments(data.comments);
-            }
-        } catch (err) {
-            console.error("Failed to fetch comments", err);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +43,7 @@ export default function CommentSection({ postId }) {
             const res = await fetch("/api/comments", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ postId, author, content }),
+                body: JSON.stringify({ postId, author, content, website }),
             });
 
             if (res.ok) {
@@ -70,6 +72,16 @@ export default function CommentSection({ postId }) {
             {/* Comment Form */}
             <form onSubmit={handleSubmit} className="mb-12 bg-black/40 backdrop-blur-lg border border-white/10 rounded-2xl p-6 shadow-lg">
                 <h4 className="text-lg font-semibold text-white mb-4">Leave a Reply</h4>
+                <input
+                    type="text"
+                    name="website"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="hidden"
+                />
                 {error && <div className="text-red-400 text-sm mb-4 bg-red-400/10 p-3 rounded-lg border border-red-400/20">{error}</div>}
 
                 <div className="mb-4">

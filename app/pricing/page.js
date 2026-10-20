@@ -10,8 +10,8 @@ export const metadata = {
 export default async function PricingPage() {
   const projects = await getProjectsWithFallback();
   return (
-    <main className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
+    <div className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
       <PricingPageContent projects={projects} />
-    </main>
+    </div>
   );
 }

@@ -11,7 +11,7 @@ You can visit the live website here: [www.sithuhtin.com](https://www.sithuhtin.c
 This project is built using modern web development technologies to ensure high performance, scalability, and excellent user experience:
 
 ### Frontend
-* **[Next.js 14+](https://nextjs.org/)** (App Router): React framework for server-side rendering and static site generation.
+* **[Next.js 16](https://nextjs.org/)** (App Router): React framework for server-side rendering and static site generation.
 * **[React](https://reactjs.org/)**: JavaScript library for building user interfaces.
 * **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for rapid and responsive UI styling.
 * **[Framer Motion](https://www.framer.com/motion/)**: For smooth, declarative UI animations and scroll effects.
@@ -41,7 +41,7 @@ This project is built using modern web development technologies to ensure high p
 To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
-* Node.js (v18.0.0 or higher) installed on your machine.
+* Node.js (v20.9.0 or higher) installed on your machine.
 * npm, yarn, or bun installed.
 * A MongoDB connection URI (if you want to fetch dynamic database content).
 * EmailJS account credentials (for testing the contact form).
@@ -91,8 +91,8 @@ To get a local copy up and running, follow these simple steps.
 ## Project Structure highlights
 
 * `/app`: Contains Next.js App Router pages, layout, globals.css, and API routes (`/api`).
-* `/app/components`: Core, reusable layout pieces (e.g., HeroSection, Skills, Experience, FeaturedProjects).
-* `/app/components2`: Reusable utility components like Navbar and Footer.
+* `/app/components`: All UI components: page sections (HeroSection, Skills, Experience, FeaturedProjects) and shared pieces (Navbar, Footer, MarkdownRenderer, CommentSection).
+* `/lib`: Database connection, Mongoose models, auth (JWT/CSRF) helpers, validation and content fetching.
 * `/public`: Static assets like images, PDFs (`cv.pdf`), and icons.
 
 ## License & Contact
@@ -100,7 +100,7 @@ To get a local copy up and running, follow these simple steps.
 * **Name**: Sithu Htin
 * **LinkedIn**: [SiMinThu](https://www.linkedin.com/in/see-min-thu)
 * **GitHub**: [@SiThuHtin](https://github.com/SiThuHtin)
-* **Email**: sithuhtin7@gmail.com
+* **Email**: sithuhtin2022@gmail.com
 
 ---
 *Developed with Next.js, initialized using `create-next-app`.*

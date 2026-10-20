@@ -1,8 +1,8 @@
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import MarkdownRenderer from "@/app/components2/MarkdownRenderer";
-import CommentSection from "@/app/components2/CommentSection";
+import MarkdownRenderer from "@/app/components/MarkdownRenderer";
+import CommentSection from "@/app/components/CommentSection";
 import { getPostByIdWithFallback } from "@/lib/content";
 
 export async function generateMetadata({ params }) {
@@ -16,6 +16,16 @@ export async function generateMetadata({ params }) {
         return {
             title: post.title,
             description: post.summary,
+            alternates: {
+                canonical: `/blog/${id}`,
+            },
+            openGraph: {
+                title: post.title,
+                description: post.summary,
+                url: `/blog/${id}`,
+                type: "article",
+                publishedTime: post.createdAt,
+            },
         };
     } catch {
         return { title: "Blog Post" };
@@ -31,7 +41,7 @@ export default async function BlogPostPage({ params }) {
     }
 
     return (
-        <main className="flex flex-col bg-black min-h-screen pt-24 w-full overflow-x-hidden">
+        <div className="flex flex-col bg-black min-h-screen pt-24 w-full overflow-x-hidden">
             <div className="max-w-4xl mx-auto w-full px-4 md:px-8 pb-20">
                 {/* Back Link */}
                 <Link
@@ -78,6 +88,6 @@ export default async function BlogPostPage({ params }) {
                 {/* Comment Section */}
                 <CommentSection postId={id} />
             </div>
-        </main>
+        </div>
     );
 }

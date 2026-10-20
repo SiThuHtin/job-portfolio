@@ -1,9 +1,17 @@
+const nextPlugin = require("@next/eslint-plugin-next");
+const reactHooks = require("eslint-plugin-react-hooks");
+const globals = require("globals");
+
 module.exports = [
   {
-    ignores: ["**/node_modules/**", "**/.next/**", "build_output.txt"],
+    ignores: ["**/node_modules/**", "**/.next/**"],
   },
   {
     files: ["**/*.{js,jsx,mjs,cjs}"],
+    plugins: {
+      "@next/next": nextPlugin,
+      "react-hooks": reactHooks,
+    },
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -13,24 +21,25 @@ module.exports = [
         },
       },
       globals: {
-        alert: "readonly",
-        confirm: "readonly",
-        console: "readonly",
-        fetch: "readonly",
-        navigator: "readonly",
-        process: "readonly",
-        sessionStorage: "readonly",
-        setTimeout: "readonly",
-        URL: "readonly",
-        window: "readonly",
+        ...globals.browser,
+        ...globals.node,
       },
     },
     rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+      "@next/next/no-img-element": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
       eqeqeq: "error",
       "no-redeclare": "error",
+      "no-undef": "error",
       "no-unreachable": "error",
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
+  {
+    files: ["**/*.cjs"],
+    languageOptions: { sourceType: "commonjs" },
+  },
 ];
-

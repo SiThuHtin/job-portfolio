@@ -76,7 +76,7 @@ function AboutProjectsFallback() {
 export default function About() {
 
   return (
-    <main className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
+    <div className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
       <div className="py-12 px-4 md:px-16 bg-black">
         <div className="max-w-5xl mx-auto bg-black/60 backdrop-blur-lg border-2 border-white/10 rounded-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           <div className="md:col-span-1 flex flex-col items-center md:items-start">
@@ -133,6 +133,6 @@ export default function About() {
           <AboutProjects />
         </Suspense>
       </div>
-    </main>
+    </div>
   );
 }

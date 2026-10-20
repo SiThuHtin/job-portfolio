@@ -13,7 +13,7 @@ export default async function Blog() {
     const posts = await getPostsWithFallback();
 
     return (
-        <main className="flex flex-col bg-black min-h-screen pt-20 w-full overflow-x-hidden">
+        <div className="flex flex-col bg-black min-h-screen pt-20 w-full overflow-x-hidden">
             {/* Header Section */}
             <div className="py-16 px-4 md:px-16 flex flex-col items-center justify-center text-center">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -88,6 +88,6 @@ export default async function Blog() {
                     ))}
                 </div>
             </div>
-        </main>
+        </div>
     );
 }

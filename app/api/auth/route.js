@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createHash, timingSafeEqual } from "node:crypto";
 import {
     ADMIN_CSRF_COOKIE,
     ADMIN_SESSION_COOKIE,
@@ -8,6 +9,16 @@ import {
 } from "@/lib/jwt";
 
 const rateLimitMap = new Map();
+
+// Hash both sides so the comparison is constant-time regardless of input length
+const passwordsMatch = (input, expected) => {
+    if (typeof input !== "string") {
+        return false;
+    }
+    const a = createHash("sha256").update(input).digest();
+    const b = createHash("sha256").update(expected).digest();
+    return timingSafeEqual(a, b);
+};
 
 const checkRateLimit = (ip) => {
     const now = Date.now();
@@ -42,7 +53,7 @@ export async function POST(request) {
 
         const { password } = await request.json();
 
-        if (password === adminPassword) {
+        if (passwordsMatch(password, adminPassword)) {
             const token = await signJwt({ role: "admin" });
             const csrfToken = crypto.randomUUID();
             const response = NextResponse.json({ success: true }, { status: 200 });

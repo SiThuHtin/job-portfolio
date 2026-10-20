@@ -1,6 +1,6 @@
 import "./globals.css";
-import Navbar from "./components2/Navbar";
-import Footer from "./components2/Footer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -12,9 +12,6 @@ export const metadata = {
   description:
     "Sithu Htin - IT & Linux Systems Administrator with 4+ years supporting 300+ users. Official portfolio website.",
   metadataBase: new URL("https://www.sithuhtin.com"),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Sithu Htin",
     description:

@@ -11,6 +11,12 @@ import { getPostsWithFallback, getProjectsWithFallback } from '@/lib/content';
 
 export const revalidate = 60;
 
+export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
+
 async function HomeFeaturedProjects() {
   const projects = await getProjectsWithFallback({ limit: 3 });
   return <FeaturedProjects projects={projects} />;
@@ -65,7 +71,7 @@ function LatestPostsFallback() {
 
 export default function Home() {
   return (
-    <main className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
+    <div className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
       <HeroSection />
       <div id="experience" className="flex items-center justify-center py-6 px-4 scroll-mt-20">
         <div className="flex-grow border-t border-yellow-400/20"></div>
@@ -92,6 +98,6 @@ export default function Home() {
       </Suspense>
       <DocumentationSection />
       <ContactSection />
-    </main>
+    </div>
   );
 }
