@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { BUDGET_OPTIONS, NEED_OPTIONS, PLAN_TO_NEED } from "@/data/contact";
 
 // Using a basic in-memory rate-limiter to prevent email spam as well!
 const rateLimitMap = new Map();
@@ -35,7 +36,16 @@ export async function POST(request) {
             );
         }
 
-        const { name, email, message } = await request.json();
+        const { name, email, message, need, budget, plan, website } = await request.json();
+
+        // Honeypot field is hidden from people; only bots fill it in. Pretend success and drop it.
+        if (website) {
+            return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 });
+        }
+
+        if (typeof name !== "string" || typeof email !== "string" || typeof message !== "string") {
+            return NextResponse.json({ message: "All fields are required" }, { status: 400 });
+        }
 
         if (!name || !email || !message) {
             return NextResponse.json({ message: "All fields are required" }, { status: 400 });
@@ -48,6 +58,16 @@ export async function POST(request) {
         if (!emailRegex.test(email)) {
             return NextResponse.json({ message: "Please provide a valid email address" }, { status: 400 });
         }
+
+        // Only accept known option values; anything else is dropped
+        const safeNeed = NEED_OPTIONS.includes(need) ? need : "";
+        const safeBudget = BUDGET_OPTIONS.includes(budget) ? budget : "";
+        const safePlan = Object.hasOwn(PLAN_TO_NEED, plan) ? plan : "";
+        const details = [
+            safeNeed && `Need: ${safeNeed}`,
+            safeBudget && `Budget: ${safeBudget}`,
+            safePlan && `Plan: ${safePlan}`,
+        ].filter(Boolean).join("\n");
 
         const serviceId = process.env.EMAILJS_SERVICE_ID;
         const templateId = process.env.EMAILJS_TEMPLATE_ID;
@@ -69,7 +89,11 @@ export async function POST(request) {
             template_params: {
                 from_name: name,
                 from_email: email,
-                message: message,
+                // Details are prefixed so they arrive even if the EmailJS template doesn't use the new fields
+                message: details ? `${details}\n\n${message}` : message,
+                need: safeNeed,
+                budget: safeBudget,
+                plan: safePlan,
                 to_email: contactRecipient
             }
         };

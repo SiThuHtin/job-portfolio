@@ -26,3 +26,20 @@ export const LINKS = {
     docs: { label: "My Documentation", href: "https://sithu-htin-docs.gitbook.io/sithu-things/", display: "Docs" },
     email: { label: "Email", href: `mailto:${SITE.email}`, display: SITE.email },
 };
+
+/**
+ * Messaging apps shown on the contact page. Only entries with an href are rendered.
+ * TODO(Sithu): fill in the links, e.g. https://m.me/<username>, viber://chat?number=%2B66..., https://line.me/ti/p/~<id>, https://wa.me/66...
+ * @type {SiteLink[]}
+ */
+export const MESSAGING = [
+    { label: "Facebook Messenger", href: "", display: "" },
+    { label: "Viber", href: "", display: "" },
+    { label: "LINE", href: "", display: "" },
+    { label: "WhatsApp", href: "", display: "" },
+];
+
+/** TODO(Sithu): Tech Tuesday page URL. The link is hidden while empty. */
+export const TECH_TUESDAY_URL = "";
+
+export const RESPONSE_TIME = "I usually reply within 24 hours.";
