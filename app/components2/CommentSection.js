@@ -18,12 +18,6 @@ export default function CommentSection({ postId }) {
     const fetchComments = async () => {
         try {
             setLoading(true);
-            // Ignore fetch if it is a fallback post ID
-            if (postId === "1" || postId === "2" || postId === "3") {
-                setComments([]);
-                setLoading(false);
-                return;
-            }
             const res = await fetch(`/api/comments?postId=${postId}`);
             const data = await res.json();
             if (data.comments) {
@@ -42,12 +36,6 @@ export default function CommentSection({ postId }) {
 
         setSubmitting(true);
         setError(null);
-
-        if (postId === "1" || postId === "2" || postId === "3") {
-            setError("Cannot post comments on sample demo posts.");
-            setSubmitting(false);
-            return;
-        }
 
         try {
             const res = await fetch("/api/comments", {

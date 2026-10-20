@@ -6,9 +6,10 @@ import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import LatestPosts from './components/LatestPosts';
 import DocumentationSection from './components/DocumentationSection';
-import PricingSection from './components/PricingSection';
 import ContactSection from './components/ContactSection';
 import { getPostsWithFallback, getProjectsWithFallback } from '@/lib/content';
+
+export const revalidate = 60;
 
 async function HomeFeaturedProjects() {
   const projects = await getProjectsWithFallback({ limit: 3 });
@@ -66,11 +67,7 @@ export default function Home() {
   return (
     <main className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
       <HeroSection />
-      <Suspense fallback={<FeaturedProjectsFallback />}>
-        <HomeFeaturedProjects />
-      </Suspense>
-      
-      <div className="flex items-center justify-center py-6 px-4">
+      <div id="experience" className="flex items-center justify-center py-6 px-4 scroll-mt-20">
         <div className="flex-grow border-t border-yellow-400/20"></div>
         <span className="mx-4 text-yellow-400 text-sm font-bold uppercase tracking-widest">Experience</span>
         <div className="flex-grow border-t border-yellow-400/20"></div>
@@ -85,12 +82,15 @@ export default function Home() {
       <Certifications />
 
       <Skills />
-      
+
+      <Suspense fallback={<FeaturedProjectsFallback />}>
+        <HomeFeaturedProjects />
+      </Suspense>
+
       <Suspense fallback={<LatestPostsFallback />}>
         <HomeLatestPosts />
       </Suspense>
       <DocumentationSection />
-      <PricingSection />
       <ContactSection />
     </main>
   );

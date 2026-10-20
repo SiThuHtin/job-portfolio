@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About Me", href: "/about-me" },
   { label: "Blog", href: "/blog" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Services", href: "/pricing" },
   { label: "My Documentation", href: "https://sithu-htin-docs.gitbook.io/sithu-things/", external: true },
   { label: "Contact Me", href: "/contact-me" },
 ];

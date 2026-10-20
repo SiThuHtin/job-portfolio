@@ -6,6 +6,10 @@ import { TerminalSquare, Calendar, Clock, ArrowRight } from 'lucide-react'
 export default function LatestPosts({ posts = [] }) {
   const router = useRouter();
 
+  if (posts.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <div className="flex items-center justify-center py-8 px-4">

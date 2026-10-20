@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import connectToDatabase from "@/lib/mongodb";
 import Post from "@/lib/models/Post";
 import { isSameOriginRequest, validateCsrfToken, verifyAdminSession } from "@/lib/jwt";
@@ -37,6 +38,8 @@ export async function POST(request) {
 
         const newPost = await Post.create(validation.data);
 
+        revalidatePath("/");
+        revalidatePath("/blog");
         return NextResponse.json({ message: "Post Created", post: newPost }, { status: 201 });
     } catch (error) {
         console.error("Error creating post:", error);

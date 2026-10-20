@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import connectToDatabase from "@/lib/mongodb";
 import Project from "@/lib/models/Project";
 import { isSameOriginRequest, validateCsrfToken, verifyAdminSession } from "@/lib/jwt";
@@ -44,6 +45,8 @@ export async function PUT(request, { params }) {
 
         if (!updated) return NextResponse.json({ message: "Not found" }, { status: 404 });
 
+        revalidatePath("/");
+        revalidatePath("/about-me");
         return NextResponse.json({ message: "Project updated", project: updated }, { status: 200 });
     } catch {
         return NextResponse.json({ message: "Server error" }, { status: 500 });
@@ -65,6 +68,8 @@ export async function DELETE(request, { params }) {
 
         if (!deleted) return NextResponse.json({ message: "Not found" }, { status: 404 });
 
+        revalidatePath("/");
+        revalidatePath("/about-me");
         return NextResponse.json({ message: "Deleted" }, { status: 200 });
     } catch {
         return NextResponse.json({ message: "Server error" }, { status: 500 });

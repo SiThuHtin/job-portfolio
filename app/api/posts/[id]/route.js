@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import connectToDatabase from "@/lib/mongodb";
 import Post from "@/lib/models/Post";
 import { isSameOriginRequest, validateCsrfToken, verifyAdminSession } from "@/lib/jwt";
@@ -51,6 +52,8 @@ export async function PUT(request, { params }) {
             return NextResponse.json({ message: "Post not found" }, { status: 404 });
         }
 
+        revalidatePath("/");
+        revalidatePath("/blog");
         return NextResponse.json({ message: "Post updated", post: updatedPost }, { status: 200 });
     } catch (error) {
         console.error("Error updating post:", error);
@@ -76,6 +79,8 @@ export async function DELETE(request, { params }) {
             return NextResponse.json({ message: "Post not found" }, { status: 404 });
         }
 
+        revalidatePath("/");
+        revalidatePath("/blog");
         return NextResponse.json({ message: "Post deleted successfully" }, { status: 200 });
     } catch (error) {
         console.error("Error deleting post:", error);

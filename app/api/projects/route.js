@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import connectToDatabase from "@/lib/mongodb";
 import Project from "@/lib/models/Project";
 import { isSameOriginRequest, validateCsrfToken, verifyAdminSession } from "@/lib/jwt";
@@ -34,6 +35,8 @@ export async function POST(request) {
 
         const newProject = await Project.create(validation.data);
 
+        revalidatePath("/");
+        revalidatePath("/about-me");
         return NextResponse.json({ message: "Project created", project: newProject }, { status: 201 });
     } catch (error) {
         console.error("Error creating project:", error);

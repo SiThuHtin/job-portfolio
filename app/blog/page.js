@@ -7,6 +7,8 @@ export const metadata = {
     description: "Writing about tech, system building, and my journey.",
 };
 
+export const revalidate = 60;
+
 export default async function Blog() {
     const posts = await getPostsWithFallback();
 
@@ -30,6 +32,11 @@ export default async function Blog() {
 
             {/* Blog Grid */}
             <div className="px-4 md:px-16 pb-20 max-w-7xl mx-auto w-full">
+                {posts.length === 0 && (
+                    <p className="text-gray-500 text-center py-10 bg-white/5 rounded-2xl border border-white/10">
+                        No posts yet. Check back soon!
+                    </p>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {posts.map((post) => (
                         <Link

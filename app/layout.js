@@ -10,7 +10,7 @@ export const metadata = {
     template: "%s | Sithu Htin",
   },
   description:
-    "Sithu Htin - IT System Engineer & Developer. Official portfolio website.",
+    "Sithu Htin - IT & Linux Systems Administrator with 4+ years supporting 300+ users. Official portfolio website.",
   metadataBase: new URL("https://www.sithuhtin.com"),
   alternates: {
     canonical: "/",
@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: "Sithu Htin",
     description:
-      "IT System Engineer & Developer. Official portfolio website.",
+      "IT & Linux Systems Administrator with 4+ years supporting 300+ users.",
     url: "https://www.sithuhtin.com",
     siteName: "Sithu Htin",
     type: "website",
@@ -36,8 +36,9 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Sithu Htin",
+              alternateName: "See Min Thu",
               url: "https://www.sithuhtin.com",
-              jobTitle: "IT System Engineer & Developer",
+              jobTitle: "IT & Linux Systems Administrator",
               sameAs: [
                 "https://github.com/SiThuHtin",
                 "https://www.linkedin.com/in/see-min-thu",
