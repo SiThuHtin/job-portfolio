@@ -1,5 +1,10 @@
 import Image from "next/image";
 import { Suspense } from "react";
+import { Download } from "lucide-react";
+import Experience from "@/app/components/Experience";
+import Certifications from "@/app/components/Certifications";
+import Skills from "@/app/components/Skills";
+import SectionLabel from "@/app/components/SectionLabel";
 import { getProjectsWithFallback } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import { LINKS } from "@/data/site";
@@ -94,6 +99,7 @@ export default function About() {
               />
             </div>
             <div className="mt-4 space-y-2 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 bg-yellow-400/10 text-yellow-400 px-3 py-1 rounded-full text-sm font-semibold">Open to IT / Sysadmin roles</div>
               <div className="inline-flex items-center gap-2 bg-yellow-400 text-black px-3 py-1 rounded-full font-semibold">4+ Years in IT</div>
               <div className="inline-flex items-center gap-2 bg-white/5 text-gray-200 px-3 py-1 rounded-full">Supports 300+ users</div>
             </div>
@@ -103,6 +109,15 @@ export default function About() {
               <a href={LINKS.github.href} target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">GitHub</a>
               <a href={LINKS.docs.href} target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">Docs</a>
             </div>
+
+            <a
+              href="/cv.pdf"
+              download="Sithu_Htin_CV.pdf"
+              className="mt-6 inline-flex items-center gap-2 py-3 px-6 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold hover:from-yellow-600 hover:to-yellow-700 transition-colors"
+            >
+              <Download className="w-5 h-5" aria-hidden="true" />
+              Download CV
+            </a>
           </div>
 
           <div className="md:col-span-2">
@@ -120,11 +135,30 @@ export default function About() {
             <p className="text-gray-300 mb-4">On the development side, I build web applications using React.js, Next.js, and Node.js, and I also work with WordPress, PHP, web hosting, CDN configuration, and domain management.</p>
 
             <p className="text-gray-300">I enjoy solving complex technical problems, optimizing systems, and continuously learning new technologies to build reliable and scalable solutions.</p>
+
+            <dl className="mt-6 pt-6 border-t border-white/10 grid gap-3 text-sm">
+              <div>
+                <dt className="text-yellow-400 font-semibold">Education</dt>
+                <dd className="text-gray-300">Medical studies (MBBS programme, to final year), University of Medicine 2, Yangon, 2013–2020</dd>
+              </div>
+              <div>
+                <dt className="text-yellow-400 font-semibold">Languages</dt>
+                <dd className="text-gray-300">Burmese (native), English (professional), Thai (basic)</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </div>
 
-      <div id="projects" className="flex items-center my-12 pt-8">
+      <SectionLabel id="experience">Experience</SectionLabel>
+      <Experience />
+
+      <SectionLabel id="certifications">Certifications</SectionLabel>
+      <Certifications />
+
+      <Skills />
+
+      <div id="projects" className="flex items-center my-12 pt-8 scroll-mt-20">
         <div className="flex-grow border-t border-yellow-400/30"></div>
         <span className="mx-6 text-yellow-400 uppercase tracking-widest text-lg font-semibold select-none">
           My Projects

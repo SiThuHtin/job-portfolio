@@ -4,6 +4,37 @@ import { motion } from "framer-motion"
 
 const positions = [
   {
+    id: 4,
+    title: "IT Officer",
+    company: "Health Information System Working Group (HISWG)",
+    duration: "May 2026 - Present",
+    location: "Mae Sot, Thailand",
+    logo: "HISWG",
+    responsibilities: [
+      {
+        category: "Web Development",
+        items: [
+          "Develop and maintain 5 websites and web applications for HISWG",
+          "Migrated the organization's website from WordPress to Next.js on Oracle Cloud",
+        ],
+      },
+      {
+        category: "Servers & Infrastructure",
+        items: [
+          "Manage and monitor 5 Linux servers on Oracle Cloud and VPS",
+          "Rolled out SPF, DKIM and DMARC email security",
+        ],
+      },
+      {
+        category: "Policy & Training",
+        items: [
+          "Write IT policy for the organization",
+          "Run staff security awareness training",
+        ],
+      },
+    ],
+  },
+  {
     id: 1,
     title: "IT System Administrator",
     company: "Shoklo Malaria Research Unit (Borderland Health Foundation)",
@@ -83,6 +114,7 @@ const positions = [
           "Gathered requirements and delivered projects within agreed timelines",
           "Provided post-launch maintenance, updates, and content revisions",
           "Delivered 10+ website projects across various industries",
+          "Consulted 3 organizations on hosting, email and IT infrastructure",
         ],
       },
     ],
@@ -96,7 +128,15 @@ const positions = [
     logo: "BMA",
     description:
       "Provided technical support and system maintenance for healthcare organization",
-    responsibilities: [],
+    responsibilities: [
+      {
+        category: "Support & Web",
+        items: [
+          "Supported 50+ users",
+          "Developed the BMA website",
+        ],
+      },
+    ],
   },
 ]
 
