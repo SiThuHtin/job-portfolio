@@ -1,31 +1,22 @@
 import { Suspense } from 'react';
 import HeroSection from './components/HeroSection';
-import FeaturedProjects from './components/FeaturedProjects';
-import Experience from './components/Experience';
-import Certifications from './components/Certifications';
-import Skills from './components/Skills';
+import ServicesSection from './components/ServicesSection';
+import SelectedWork from './components/SelectedWork';
+import WhyWorkWithMe from './components/WhyWorkWithMe';
+import Testimonials from './components/Testimonials';
 import LatestPosts from './components/LatestPosts';
 import DocumentationSection from './components/DocumentationSection';
 import ContactSection from './components/ContactSection';
-import { getPostsWithFallback, getProjectsWithFallback } from '@/lib/content';
+import { getPostsWithFallback } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
 
 export const revalidate = 60;
 
 export const metadata = pageMetadata({ path: '/' });
 
-async function HomeFeaturedProjects() {
-  const projects = await getProjectsWithFallback({ limit: 3 });
-  return <FeaturedProjects projects={projects} />;
-}
-
 async function HomeLatestPosts() {
   const posts = await getPostsWithFallback({ limit: 3 });
   return <LatestPosts posts={posts} />;
-}
-
-function FeaturedProjectsFallback() {
-  return <FeaturedProjects projects={[]} />;
 }
 
 function LatestPostsFallback() {
@@ -66,30 +57,15 @@ function LatestPostsFallback() {
   );
 }
 
+// Client-first homepage; employer content (CV, experience, certifications, skills) lives on /about-me
 export default function Home() {
   return (
     <div className="flex flex-col bg-black min-h-screen pt-16 w-full overflow-x-hidden">
       <HeroSection />
-      <div id="experience" className="flex items-center justify-center py-6 px-4 scroll-mt-20">
-        <div className="flex-grow border-t border-yellow-400/20"></div>
-        <span className="mx-4 text-yellow-400 text-sm font-bold uppercase tracking-widest">Experience</span>
-        <div className="flex-grow border-t border-yellow-400/20"></div>
-      </div>
-      <Experience />
-
-      <div className="flex items-center justify-center py-6 px-4">
-        <div className="flex-grow border-t border-yellow-400/20"></div>
-        <span className="mx-4 text-yellow-400 text-sm font-bold uppercase tracking-widest">Certifications</span>
-        <div className="flex-grow border-t border-yellow-400/20"></div>
-      </div>
-      <Certifications />
-
-      <Skills />
-
-      <Suspense fallback={<FeaturedProjectsFallback />}>
-        <HomeFeaturedProjects />
-      </Suspense>
-
+      <ServicesSection />
+      <SelectedWork />
+      <WhyWorkWithMe />
+      <Testimonials />
       <Suspense fallback={<LatestPostsFallback />}>
         <HomeLatestPosts />
       </Suspense>

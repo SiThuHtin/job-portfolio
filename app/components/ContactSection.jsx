@@ -10,16 +10,16 @@ export default function ContactSection() {
       </div>
       <div className="py-16 px-4 md:px-16 bg-gradient-to-t from-yellow-900/20 to-black">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Let's Work Together</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Need help with your website or IT?</h2>
           <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
-            I am currently open to new opportunities. Whether you have a question or just want to say hi, I will try my best to get back to you!
+            Tell me what you need. The first 15-minute check is free, and I usually reply within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               href="/contact-me"
               className="w-full sm:w-auto py-4 px-8 rounded-xl bg-yellow-500 text-black font-bold text-lg hover:bg-yellow-600 transition-colors shadow-lg shadow-yellow-500/20"
             >
-              Say Hello
+              Get a free 15-minute check
             </Link>
           </div>
         </div>
