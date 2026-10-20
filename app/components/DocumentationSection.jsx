@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LINKS } from "@/data/site";
 
 export default function DocumentationSection() {
   return (
@@ -12,7 +13,7 @@ export default function DocumentationSection() {
         <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Documentation & Guides</h2>
         <div className="max-w-2xl mx-auto">
           <Link
-            href="https://sithu-htin-docs.gitbook.io/sithu-things"
+            href={LINKS.docs.href}
             target="_blank"
             rel="noopener noreferrer"
             className="group block cursor-pointer bg-black/60 backdrop-blur-lg border-2 border-white/20 rounded-xl p-8 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105"

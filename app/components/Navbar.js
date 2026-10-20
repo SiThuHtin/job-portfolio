@@ -2,13 +2,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LINKS } from "@/data/site";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About Me", href: "/about-me" },
   { label: "Blog", href: "/blog" },
   { label: "Services", href: "/pricing" },
-  { label: "My Documentation", href: "https://sithu-htin-docs.gitbook.io/sithu-things/", external: true },
+  { label: "My Documentation", href: LINKS.docs.href, external: true },
   { label: "Contact Me", href: "/contact-me" },
 ];
 

@@ -1,11 +1,13 @@
 import PricingPageContent from './PricingPageContent';
 import { getProjectsWithFallback } from '@/lib/content';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata = {
-  title: 'Web Development Pricing',
+export const metadata = pageMetadata({
+  title: 'Services & Pricing',
   description:
-    'Transparent pricing for web development services — from simple WordPress sites to full-stack Next.js applications. Get a custom quote today.',
-};
+    'Transparent pricing for web development and IT services: websites, hosting, email security and support for NGOs and small businesses.',
+  path: '/pricing',
+});
 
 export default async function PricingPage() {
   const projects = await getProjectsWithFallback();

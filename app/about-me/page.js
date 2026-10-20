@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { Suspense } from "react";
 import { getProjectsWithFallback } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
+import { LINKS } from "@/data/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About Me",
-  description: "About Sithu Htin and his projects",
-};
+  description: "About Sithu Htin: IT systems administrator and web developer in Mae Sot, Thailand. Experience, certifications, skills and projects.",
+  path: "/about-me",
+});
 
 export const revalidate = 60;
 
@@ -96,9 +99,9 @@ export default function About() {
             </div>
 
             <div className="mt-4 flex gap-3">
-              <a href="https://www.linkedin.com/in/see-min-thu" target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">LinkedIn</a>
-              <a href="https://github.com/SiThuHtin" target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">GitHub</a>
-              <a href="https://sithu-htin-docs.gitbook.io/sithu-things" target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">Docs</a>
+              <a href={LINKS.linkedin.href} target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">LinkedIn</a>
+              <a href={LINKS.github.href} target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">GitHub</a>
+              <a href={LINKS.docs.href} target="_blank" rel="noreferrer" className="text-gray-200 hover:text-white underline">Docs</a>
             </div>
           </div>
 
@@ -106,7 +109,7 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">Hi, I&apos;m Sithu Htin</h2>
             <p className="text-sm text-gray-500 mb-4">Also known as See Min Thu (LinkedIn).</p>
 
-            <p className="text-gray-300 mb-4">I&apos;m an IT &amp; Linux Systems Administrator who keeps infrastructure secure, stable and running, with development skills that let me automate and build the tools teams need.</p>
+            <p className="text-gray-300 mb-4">I&apos;m an IT Systems Administrator &amp; Web Developer who keeps infrastructure secure, stable and running, and builds the websites and tools organizations need.</p>
 
             <p className="text-gray-300 mb-4">My professional journey started in a very different field - I was originally a final-year medical student. However, my curiosity for technology and problem-solving led me to transition into the IT industry. Over the past four years, I have built hands-on experience in system administration, Linux environments, database development, and modern web technologies.</p>
 

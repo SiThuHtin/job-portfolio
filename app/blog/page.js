@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock, TerminalSquare } from "lucide-react";
 import { getPostsWithFallback } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
     title: "Blog",
-    description: "Writing about tech, system building, and my journey.",
-};
+    description: "Tech notes on Linux, system administration, web development and IT for NGOs, by Sithu Htin.",
+    path: "/blog",
+});
 
 export const revalidate = 60;
 

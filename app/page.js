@@ -8,14 +8,11 @@ import LatestPosts from './components/LatestPosts';
 import DocumentationSection from './components/DocumentationSection';
 import ContactSection from './components/ContactSection';
 import { getPostsWithFallback, getProjectsWithFallback } from '@/lib/content';
+import { pageMetadata } from '@/lib/metadata';
 
 export const revalidate = 60;
 
-export const metadata = {
-  alternates: {
-    canonical: '/',
-  },
-};
+export const metadata = pageMetadata({ path: '/' });
 
 async function HomeFeaturedProjects() {
   const projects = await getProjectsWithFallback({ limit: 3 });

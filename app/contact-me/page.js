@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { LINKS } from "@/data/site";
 const ContactMe = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -59,7 +60,7 @@ const ContactMe = () => {
               </div>
               <div>
                 <div className="text-sm text-gray-400">Email</div>
-                <a href="mailto:sithuhtin2022@gmail.com" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">sithuhtin2022@gmail.com</a>
+                <a href={LINKS.email.href} className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">{LINKS.email.display}</a>
               </div>
             </div>
 
@@ -69,7 +70,7 @@ const ContactMe = () => {
               </div>
               <div>
                 <div className="text-sm text-gray-400">LinkedIn</div>
-                <a href="https://www.linkedin.com/in/see-min-thu" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">Sithu Htin (See Min Thu)</a>
+                <a href={LINKS.linkedin.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">{LINKS.linkedin.display}</a>
               </div>
             </div>
 
@@ -79,7 +80,7 @@ const ContactMe = () => {
               </div>
               <div>
                 <div className="text-sm text-gray-400">GitHub</div>
-                <a href="https://github.com/SiThuHtin" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">SiThuHtin</a>
+                <a href={LINKS.github.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">SiThuHtin</a>
               </div>
             </div>
 
@@ -89,7 +90,7 @@ const ContactMe = () => {
               </div>
               <div>
                 <div className="text-sm text-gray-400">Facebook</div>
-                <a href="https://www.facebook.com/sithu.htin/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">Sithu Htin</a>
+                <a href={LINKS.facebook.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">Sithu Htin</a>
               </div>
             </div>
           </div>

@@ -3,21 +3,20 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SITE, SITE_URL, LINKS } from "@/data/site";
 
+// Pages set their own canonical and og:url via pageMetadata() in lib/metadata.js
 export const metadata = {
   title: {
-    default: "Sithu Htin",
-    template: "%s | Sithu Htin",
+    default: `${SITE.name} | ${SITE.title}`,
+    template: `%s | ${SITE.name}`,
   },
-  description:
-    "Sithu Htin - IT & Linux Systems Administrator with 4+ years supporting 300+ users. Official portfolio website.",
-  metadataBase: new URL("https://www.sithuhtin.com"),
+  description: SITE.description,
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "Sithu Htin",
-    description:
-      "IT & Linux Systems Administrator with 4+ years supporting 300+ users.",
-    url: "https://www.sithuhtin.com",
-    siteName: "Sithu Htin",
+    title: SITE.name,
+    description: SITE.description,
+    siteName: SITE.name,
     type: "website",
   },
 };
@@ -32,14 +31,11 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Sithu Htin",
-              alternateName: "See Min Thu",
-              url: "https://www.sithuhtin.com",
-              jobTitle: "IT & Linux Systems Administrator",
-              sameAs: [
-                "https://github.com/SiThuHtin",
-                "https://www.linkedin.com/in/see-min-thu",
-              ],
+              name: SITE.name,
+              alternateName: SITE.alternateName,
+              url: SITE_URL,
+              jobTitle: SITE.title,
+              sameAs: [LINKS.github.href, LINKS.linkedin.href, LINKS.facebook.href],
             }),
           }}
         />

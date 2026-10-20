@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { LINKS, SITE } from "@/data/site";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -14,7 +15,7 @@ const Footer = () => {
                             Sithu Htin
                         </h3>
                         <p className="max-w-xs text-sm leading-relaxed">
-                            IT System Engineer & Developer. Building secure, scalable, and responsive applications with modern technologies.
+                            {SITE.title}. Building secure, scalable, and responsive applications with modern technologies.
                         </p>
                     </div>
 
@@ -33,7 +34,7 @@ const Footer = () => {
                         <h4 className="text-white font-semibold text-lg">Connect</h4>
                         <div className="flex space-x-4">
                             <a
-                                href="https://github.com/SiThuHtin"
+                                href={LINKS.github.href}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="p-2 rounded-full bg-neutral-800 text-white hover:bg-yellow-400 hover:text-neutral-900 transition-all duration-300 shadow-md"
@@ -42,7 +43,7 @@ const Footer = () => {
                                 <Github size={20} />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/see-min-thu"
+                                href={LINKS.linkedin.href}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="p-2 rounded-full bg-neutral-800 text-white hover:bg-yellow-400 hover:text-neutral-900 transition-all duration-300 shadow-md"
@@ -64,7 +65,7 @@ const Footer = () => {
                 <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs">
                     <p>(c) {currentYear} Sithu Htin. All rights reserved.</p>
                     <div className="flex space-x-6">
-                        <Link href="https://sithu-htin-docs.gitbook.io/sithu-things/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">
+                        <Link href={LINKS.docs.href} className="hover:text-white transition-colors" target="_blank" rel="noreferrer">
                             Documentation
                         </Link>
                     </div>

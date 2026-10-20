@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import MarkdownRenderer from "@/app/components/MarkdownRenderer";
 import CommentSection from "@/app/components/CommentSection";
 import { getPostByIdWithFallback } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }) {
     const { id } = await params;
@@ -13,20 +14,13 @@ export async function generateMetadata({ params }) {
         if (!post) {
             return { title: "Post Not Found" };
         }
-        return {
+        return pageMetadata({
             title: post.title,
             description: post.summary,
-            alternates: {
-                canonical: `/blog/${id}`,
-            },
-            openGraph: {
-                title: post.title,
-                description: post.summary,
-                url: `/blog/${id}`,
-                type: "article",
-                publishedTime: post.createdAt,
-            },
-        };
+            path: `/blog/${id}`,
+            type: "article",
+            publishedTime: post.createdAt,
+        });
     } catch {
         return { title: "Blog Post" };
     }
