@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { isValidElement, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -92,13 +92,17 @@ export default function MarkdownRenderer({ content }) {
     return (
         <ReactMarkdown
             components={{
-                code({ node: _node, inline, className, children, ...props }) {
-                    const match = /language-(\w+)/.exec(className || "");
-                    const code = String(children).replace(/\n$/, "");
-
-                    return !inline && match ? (
-                        <CodeBlock language={match[1]} code={code} {...props} />
-                    ) : (
+                // Fenced code blocks arrive as <pre><code>, with or without a language
+                pre({ children }) {
+                    if (!isValidElement(children)) {
+                        return <pre>{children}</pre>;
+                    }
+                    const match = /language-(\w+)/.exec(children.props.className || "");
+                    const code = String(children.props.children ?? "").replace(/\n$/, "");
+                    return <CodeBlock language={match?.[1]} code={code} />;
+                },
+                code({ node: _node, className: _className, children, ...props }) {
+                    return (
                         <code className="bg-white/10 text-yellow-300 px-1.5 py-0.5 rounded-md text-[0.9em] font-mono border border-white/5" {...props}>
                             {children}
                         </code>
