@@ -58,10 +58,9 @@ export const HOME_SERVICES = [
         id: "wedding",
         name: "Wedding invitation & RSVP websites",
         description: "A personal invitation website for your wedding with RSVP, schedule, photo gallery and guest messages.",
-        priceFrom: "TODO(Sithu): price",
+        priceFrom: "From ฿4,000",
         icon: "Heart",
-        href: "/pricing#it-services",
-        hidden: true, // TODO(Sithu): set the price, then remove this line to show the card
+        href: "/pricing#wedding",
     },
 ];
 
@@ -258,19 +257,62 @@ export const IT_SERVICES = [
         description: "Help with anything not covered by a plan.",
         price: "฿700",
         currency: "THB",
-        unit: "/ hour",
+        unit: "/ hour (about $20)",
         inclusions: ["Billed per hour"],
     },
+];
+
+/**
+ * @typedef {Object} WeddingPackage
+ * @property {string} id          Also the ?plan= slug used by the contact form
+ * @property {string} name
+ * @property {string} price
+ * @property {string} tagline
+ * @property {string|null} includesFrom
+ * @property {string[]} inclusions
+ */
+
+/** Wedding invitation & RSVP websites (THB). Prices confirmed by Sithu. @type {WeddingPackage[]} */
+export const WEDDING_PACKAGES = [
     {
-        id: "wedding",
-        name: "Wedding Invitation & RSVP Website",
-        description: "A personal invitation website with RSVP for your wedding.",
-        price: "TODO(Sithu): price",
-        currency: "THB",
-        unit: "",
-        inclusions: ["TODO(Sithu): inclusions"],
-        hidden: true, // TODO(Sithu): set price and inclusions, then remove this line
+        id: "wedding-classic",
+        name: "Classic",
+        price: "฿4,000",
+        tagline: "A beautiful invitation, ready fast",
+        includesFrom: null,
+        inclusions: [
+            "Template design with your photos and colours",
+            "Names, date, venue, map and schedule",
+            "Photo gallery (up to 15 photos)",
+            "RSVP form",
+            "1 language",
+            "Online for 3 months",
+            "1 round of revisions",
+            "Delivered in 5 days",
+        ],
     },
+    {
+        id: "wedding-premium",
+        name: "Premium",
+        price: "฿8,000",
+        tagline: "Fully custom, in up to 3 languages",
+        includesFrom: "Classic",
+        inclusions: [
+            "Custom design with envelope opening animation",
+            "Love story section and larger gallery",
+            "Guest messages and an exportable guest list",
+            "Up to 3 languages (e.g. English, Burmese, Japanese)",
+            "Online for 6 months",
+            "3 rounds of revisions",
+            "Delivered in 10 days",
+        ],
+    },
+];
+
+export const WEDDING_ADDONS = [
+    { label: "Your own domain name (e.g. yournames.com)", price: "about ฿800 / year" },
+    { label: "Extra language", price: "฿1,000" },
+    { label: "Rush delivery (48 hours)", price: "+50%" },
 ];
 
 /**
@@ -278,7 +320,7 @@ export const IT_SERVICES = [
  * @property {string} id          Also the ?plan= slug used by the contact form
  * @property {string} name
  * @property {string} price       Per month
- * @property {string|null} includesFrom  Tier this one builds on. TODO(Sithu): confirm tiers are cumulative
+ * @property {string|null} includesFrom  Tier this one builds on (tiers are cumulative; better items replace weaker ones)
  * @property {string[]} inclusions
  */
 
@@ -319,7 +361,7 @@ export const HOSTING_TIERS = [
         price: "฿3,500",
         includesFrom: "Standard",
         inclusions: [
-            "Your own VPS (billed at cost)",
+            "Your own VPS instead of a shared server (billed at cost)",
             "Off-site backup copy",
             "Weekly malware scan",
             "3 hours of changes / month",
@@ -349,7 +391,7 @@ export const FAQS = [
     },
     {
         q: 'Do you offer revisions after final delivery?',
-        a: 'Each plan includes a set number of revision rounds. After that, additional revisions are billed at my hourly rate of $40/hr.',
+        a: 'Each plan includes a set number of revision rounds. After that, additional revisions are billed at my hourly rate of ฿700 (about $20).',
     },
     {
         q: 'Will I own the source code?',

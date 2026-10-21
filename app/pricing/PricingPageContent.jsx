@@ -14,6 +14,8 @@ import {
   HOSTING_SETUP_FEE,
   HOSTING_NOTES,
   CURRENCY_NOTE,
+  WEDDING_PACKAGES,
+  WEDDING_ADDONS,
 } from '@/data/services';
 
 function FAQItem({ faq }) {
@@ -379,6 +381,77 @@ export default function PricingPageContent() {
               </li>
             ))}
             <li className="text-gray-600">{CURRENCY_NOTE}</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Wedding Websites ────────────────────────────── */}
+      <section id="wedding" className="relative z-10 py-16 px-4 sm:px-8 md:px-16 scroll-mt-20">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Wedding{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
+                Websites
+              </span>
+            </h2>
+            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+              Invitation websites with RSVP that guests open on their phones.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+            {WEDDING_PACKAGES.map((pkg, i) => (
+              <motion.div
+                key={pkg.id}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="flex flex-col rounded-2xl border border-white/10 bg-black/60 p-7 hover:border-yellow-400/30 transition-colors duration-300"
+              >
+                <h3 className="text-xl font-bold text-white mb-1">{pkg.name}</h3>
+                <p className="text-gray-500 text-sm mb-3">{pkg.tagline}</p>
+                <div className="mb-5">
+                  <span className="text-4xl font-extrabold text-white">{pkg.price}</span>
+                  <span className="ml-2 text-gray-500 text-sm">one-time</span>
+                </div>
+                {pkg.includesFrom && (
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+                    Everything in {pkg.includesFrom}, plus
+                  </p>
+                )}
+                <ul className="flex flex-col gap-2.5 mb-6 flex-1">
+                  {pkg.inclusions.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm">
+                      <FiCheck className="mt-0.5 shrink-0 text-yellow-500/70" />
+                      <span className="text-gray-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/contact-me?plan=${pkg.id}`}
+                  className="w-full text-center py-3 px-6 rounded-xl font-bold text-base border border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400 transition-all duration-300"
+                >
+                  Choose {pkg.name}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          <ul className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-400">
+            {WEDDING_ADDONS.map((addon) => (
+              <li key={addon.label} className="flex items-start gap-2">
+                <FiZap className="mt-0.5 shrink-0 text-yellow-400" />
+                <span>
+                  {addon.label}: <span className="text-yellow-400 font-semibold">{addon.price}</span>
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
