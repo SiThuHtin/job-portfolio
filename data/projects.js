@@ -165,22 +165,6 @@ export const PROJECTS = [
         personal: true,
         clientPermission: null,
     },
-    {
-        id: "calendar-app",
-        title: "My Calendar App",
-        client: "personal",
-        category: "Personal project",
-        problem: "",
-        built: "A calendar app for creating daily, monthly and yearly tasks.",
-        stack: [], // TODO(Sithu): stack
-        result: "",
-        image: "https://drive.google.com/uc?id=1C7GRUYOI0WNSqWmJMpxn2owBZrB3D0vL",
-        link: "https://my-calendar-one-omega.vercel.app/",
-        featured: false,
-        clientWork: false,
-        personal: true,
-        clientPermission: null,
-    },
 ];
 
 export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured);
