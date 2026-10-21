@@ -61,7 +61,8 @@ const CATEGORIES = [
     color: 'from-violet-400 to-violet-500',
     skills: [
       { name: 'Oracle Cloud Infrastructure', level: 80 },
-      { name: 'AWS', level: 40 }
+      { name: 'AWS (EC2, S3)', level: 40 },
+      { name: 'Google Cloud (GCP)', level: null }, // TODO(Sithu): level
     ],
   },
   {
@@ -74,6 +75,7 @@ const CATEGORIES = [
       { name: 'Patch Management', level: 84 },
       { name: 'System Updates', level: 88 },
       { name: 'Backup & Recovery', level: 82 },
+      { name: 'Email Security (SPF, DKIM, DMARC)', level: null }, // TODO(Sithu): level
     ],
   },
   {
@@ -89,6 +91,7 @@ const CATEGORIES = [
       { name: 'Tailwind CSS', level: 90 },
       { name: 'JavaScript/TypeScript', level: 92 },
       { name: 'WordPress', level: 88 },
+      { name: 'Payload CMS', level: null }, // TODO(Sithu): level
       { name: 'Elementor', level: 90 },
     ],
   },
@@ -114,7 +117,7 @@ const CATEGORIES = [
     skills: [
       { name: 'MySQL', level: 80 },
       { name: 'PostgreSQL', level: 74 },
-      { name: 'MongoDB', level: 60 },
+      { name: 'MongoDB / MongoDB Atlas', level: 60 },
       { name: 'Microsoft SQL Server', level: 70 },
       { name: 'Oracle Database', level: 70 }
 
@@ -210,15 +213,20 @@ export default function Skills() {
                     <div key={i} className="flex items-center gap-3 bg-white/5 dark:bg-white/5 rounded-lg px-3 py-2">
                       <div className="min-w-[120px]">
                         <div className="text-sm font-medium text-gray-100">{s.name}</div>
-                        <div className="mt-1 h-2 bg-gray-700 rounded-full overflow-hidden">
-                          <div className="h-2 bg-indigo-500 transition-all" style={{ width: `${s.level}%` }} />
+                        {/* Skills without a level (null) show just the name */}
+                        {typeof s.level === 'number' && (
+                          <div className="mt-1 h-2 bg-gray-700 rounded-full overflow-hidden">
+                            <div className="h-2 bg-indigo-500 transition-all" style={{ width: `${s.level}%` }} />
+                          </div>
+                        )}
+                      </div>
+                      {typeof s.level === 'number' && (
+                        <div className="ml-auto hidden md:flex items-center gap-1">
+                          {Array.from({ length: 5 }).map((_, dot) => (
+                            <span key={dot} className={`w-2 h-2 rounded-full ${s.level >= (dot + 1) * 20 ? 'bg-indigo-400' : 'bg-gray-600'}`} />
+                          ))}
                         </div>
-                      </div>
-                      <div className="ml-auto hidden md:flex items-center gap-1">
-                        {Array.from({ length: 5 }).map((_, dot) => (
-                          <span key={dot} className={`w-2 h-2 rounded-full ${s.level >= (dot + 1) * 20 ? 'bg-indigo-400' : 'bg-gray-600'}`} />
-                        ))}
-                      </div>
+                      )}
                     </div>
                   ))}
                 </div>
