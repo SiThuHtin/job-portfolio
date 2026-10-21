@@ -37,7 +37,7 @@ The site has **two audiences**, in this priority order:
 - Freelance web developer and IT consultant — 2023 to present. 10+ websites delivered; consulted 3 organizations on hosting, email and IT infrastructure.
 
 **Client work (ask before naming clients publicly — see TODO list)**
-- 4 Rivers-ACTS: developed their website (Next.js + Payload CMS) on a VPS he set up; advised directors on hosting and email options.
+- 4 Rivers-ACTS: developed their website (the live site at www.4rivers-acts.org is WordPress, confirmed by Sithu); advised directors on hosting and email options. Sithu confirmed the client may be named.
 - Wedding invitation / RSVP websites: 2–3 delivered for Burmese couples.
 - E-learning platform for a customer (Next.js, Cloudflare, Postgres).
 - Event registration web application (Next.js, MySQL/Postgres, Docker).
