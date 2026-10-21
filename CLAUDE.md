@@ -92,11 +92,11 @@ Create `data/services.js` with a JSDoc-typed structure (name, short description,
 | Staff security awareness workshop (half day, up to 15 people) | ฿5,000 |
 | IT policy pack, customized | ฿7,000 |
 | Extra support | ฿700 / hour |
-| Wedding invitation & RSVP website | `TODO(Sithu)` price and inclusions |
+| Wedding invitation & RSVP website | Classic ฿4,000 / Premium ฿8,000 (confirmed by Sithu; inclusions in `data/services.js`) |
 
-Hosting tier details: Basic — shared managed server, SSL, daily backups kept 7 days, uptime monitoring, monthly updates, 2-working-day response. Standard — 30 days of backups, weekly updates, monthly malware scan, 1 hour of changes/month, 1-working-day response. Plus — own VPS (billed at cost), off-site backup copy, weekly malware scan, 3 hours of changes/month, same-day response. Yearly payment: 2 months free. Bundle: Email Security at half price with 12 months of Standard or Plus.
+Hosting tier details: Basic — shared managed server, SSL, daily backups kept 7 days, uptime monitoring, monthly updates, 2-working-day response. Standard — 30 days of backups, weekly updates, monthly malware scan, 1 hour of changes/month, 1-working-day response. Plus — own VPS (billed at cost), off-site backup copy, weekly malware scan, 3 hours of changes/month, same-day response. Tiers are cumulative (confirmed by Sithu): each builds on the one below; Plus's own VPS replaces the shared server. Yearly payment: 2 months free. Bundle: Email Security at half price with 12 months of Standard or Plus.
 
-Reconcile the existing "Monthly Maintenance Retainer from $60/mo" add-on with the hosting tiers (link it to them rather than listing two different maintenance offers). Add a short note near prices: "Web packages in USD; IT services in THB. Ask for a quote in your currency." Make sure the FAQ answer to "Can you host the website for me?" points to the hosting tiers. Update the page title and meta description to cover IT services as well as web development.
+One hourly rate for all extra work: ฿700/hour (about $20), confirmed by Sithu. Reconcile the existing "Monthly Maintenance Retainer from $60/mo" add-on with the hosting tiers (link it to them rather than listing two different maintenance offers). Add a short note near prices: "Web packages in USD; IT services in THB. Ask for a quote in your currency." Make sure the FAQ answer to "Can you host the website for me?" points to the hosting tiers. Update the page title and meta description to cover IT services as well as web development.
 
 ## Phase 4 — Projects and case studies
 
