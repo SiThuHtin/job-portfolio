@@ -62,7 +62,7 @@ const CATEGORIES = [
     skills: [
       { name: 'Oracle Cloud Infrastructure', level: 80 },
       { name: 'AWS (EC2, S3)', level: 40 },
-      { name: 'Google Cloud (GCP)', level: null }, // TODO(Sithu): level
+      { name: 'Google Cloud (GCP)', level: 60 },
     ],
   },
   {
@@ -75,7 +75,7 @@ const CATEGORIES = [
       { name: 'Patch Management', level: 84 },
       { name: 'System Updates', level: 88 },
       { name: 'Backup & Recovery', level: 82 },
-      { name: 'Email Security (SPF, DKIM, DMARC)', level: null }, // TODO(Sithu): level
+      { name: 'Email Security (SPF, DKIM, DMARC)', level: 85 },
     ],
   },
   {
@@ -91,7 +91,7 @@ const CATEGORIES = [
       { name: 'Tailwind CSS', level: 90 },
       { name: 'JavaScript/TypeScript', level: 92 },
       { name: 'WordPress', level: 88 },
-      { name: 'Payload CMS', level: null }, // TODO(Sithu): level
+      { name: 'Payload CMS', level: 60 },
       { name: 'Elementor', level: 90 },
     ],
   },
