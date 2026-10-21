@@ -86,6 +86,22 @@ export const PROJECTS = [
         clientPermission: null, // TODO(Sithu): may the client be named?
     },
     {
+        id: "event-registration",
+        title: "Event registration web app",
+        client: "anonymous",
+        category: "Web application",
+        problem: "TODO(Sithu): problem",
+        built: "Built an event registration web application.",
+        stack: ["Next.js", "MySQL / PostgreSQL", "Docker"],
+        result: "TODO(Sithu): result",
+        image: null,
+        link: null,
+        featured: false,
+        clientWork: true,
+        personal: false,
+        clientPermission: null, // TODO(Sithu): may the client be named?
+    },
+    {
         id: "wedding-rsvp",
         title: "Wedding invitation & RSVP websites",
         client: "anonymous",
