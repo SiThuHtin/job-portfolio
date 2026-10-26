@@ -35,7 +35,7 @@ export const LINKS = {
 export const MESSAGING = [
     { label: "Facebook Messenger", href: "", display: "" },
     { label: "Viber", href: "viber://chat?number=%2B66837710800", display: "Chat on Viber" },
-    { label: "LINE", href: "", display: "" },
+    { label: "LINE", href: "https://line.me/ti/p/AddVFLWctO", display: "Add me on LINE" },
     { label: "WhatsApp", href: "https://wa.me/sithuhtin97", display: "@sithuhtin97" },
 ];
 
