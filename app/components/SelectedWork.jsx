@@ -2,6 +2,7 @@ import Link from 'next/link';
 import CaseStudyCard from './CaseStudyCard';
 import SectionLabel from './SectionLabel';
 import { FEATURED_PROJECTS } from '@/data/projects';
+import { ArrowRight } from 'lucide-react';
 
 export default function SelectedWork() {
   return (
@@ -17,9 +18,10 @@ export default function SelectedWork() {
         <div className="text-center mt-10">
           <Link
             href="/about-me#projects"
-            className="inline-block py-3 px-8 rounded-lg border-2 border-yellow-400 text-yellow-400 font-bold hover:bg-yellow-400/10 transition-colors"
+            className="group inline-flex items-center gap-2 py-3 px-8 rounded-lg border-2 border-yellow-400 text-yellow-400 font-bold hover:bg-yellow-400/10 transition-colors"
           >
-            See all projects -&gt;
+            See all projects
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </div>
       </div>

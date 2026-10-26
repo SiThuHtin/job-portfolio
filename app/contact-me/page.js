@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { LINKS, MESSAGING, RESPONSE_TIME, TECH_TUESDAY_URL } from "@/data/site";
 import { BUDGET_OPTIONS, NEED_OPTIONS, PLAN_TO_NEED } from "@/data/contact";
+import { ArrowRight } from "lucide-react";
 
 const inputClass =
   "w-full px-3 py-2 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400";
@@ -133,9 +134,10 @@ const ContactMe = () => {
               href={TECH_TUESDAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-block w-fit text-yellow-400 font-semibold underline underline-offset-4 hover:text-yellow-300"
+              className="group mt-8 inline-flex items-center gap-2 w-fit text-yellow-400 font-semibold underline underline-offset-4 hover:text-yellow-300"
             >
-              Join Tech Tuesday -&gt;
+              Join Tech Tuesday
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </a>
           )}
         </div>

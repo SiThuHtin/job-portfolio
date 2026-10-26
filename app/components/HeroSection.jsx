@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
+import { ArrowRight } from 'lucide-react';
 
 const STATS = [
   { value: '4+', label: 'Years in IT' },
@@ -69,9 +70,10 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/pricing"
-              className="whitespace-nowrap py-3 px-6 sm:py-4 sm:px-8 rounded-xl bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-base sm:text-lg text-center transition-all duration-300 hover:bg-yellow-400/10 hover:scale-105"
+              className="group whitespace-nowrap py-3 px-6 sm:py-4 sm:px-8 rounded-xl bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-base sm:text-lg inline-flex items-center justify-center gap-2 transition-all duration-300 hover:bg-yellow-400/10 hover:scale-105"
             >
-              See services -&gt;
+              See services
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </motion.div>
 

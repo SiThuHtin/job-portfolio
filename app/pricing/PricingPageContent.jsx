@@ -4,7 +4,7 @@ import Link from 'next/link';
 import CaseStudyCard from '@/app/components/CaseStudyCard';
 import { FEATURED_PROJECTS } from '@/data/projects';
 import { useState } from 'react';
-import { FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare } from 'react-icons/fi';
 import {
   WEB_PLANS as plans,
   WEB_ADDONS as addons,
@@ -540,9 +540,10 @@ export default function PricingPageContent() {
           >
             <Link
               href="/about-me#projects"
-              className="inline-flex items-center gap-2 py-3 px-8 rounded-xl border border-yellow-400/30 text-yellow-400 font-semibold text-sm hover:bg-yellow-400/10 hover:border-yellow-400 transition-all duration-300"
+              className="group inline-flex items-center gap-2 py-3 px-8 rounded-xl border border-yellow-400/30 text-yellow-400 font-semibold text-sm hover:bg-yellow-400/10 hover:border-yellow-400 transition-all duration-300"
             >
-              View All Projects →
+              View All Projects
+              <FiArrowRight className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </motion.div>
         </div>

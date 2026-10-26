@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { LINKS } from "@/data/site";
+import { ArrowRight } from 'lucide-react';
 
 export default function DocumentationSection() {
   return (
@@ -29,8 +30,9 @@ export default function DocumentationSection() {
                   <span className="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full text-sm">Tutorials</span>
                   <span className="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full text-sm">Documentation</span>
                 </div>
-                <button className="bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-600 transition-colors">
-                  Read Documentation →
+                <button className="inline-flex items-center gap-2 bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-600 transition-colors">
+                  Read Documentation
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </button>
               </div>
               <div className="hidden md:block ml-6 text-5xl" aria-hidden="true">📚</div>

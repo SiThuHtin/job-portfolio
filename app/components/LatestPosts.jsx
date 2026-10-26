@@ -64,9 +64,10 @@ export default function LatestPosts({ posts = [] }) {
         <div className="text-center mt-12">
           <button
             onClick={() => router.push('/blog')}
-            className="py-3 px-8 rounded-lg bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-lg hover:bg-yellow-400/10 transition-colors"
+            className="group inline-flex items-center gap-2 py-3 px-8 rounded-lg bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold text-lg hover:bg-yellow-400/10 transition-colors"
           >
-            Read All Articles -&gt;
+            Read All Articles
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </button>
         </div>
       </div>
