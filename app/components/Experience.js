@@ -8,7 +8,7 @@ const positions = [
     title: "IT Officer",
     company: "Health Information System Working Group (HISWG)",
     duration: "May 2026 - Present",
-    location: "Mae Sot, Thailand",
+    location: "Thailand",
     logo: "HISWG",
     responsibilities: [
       {
@@ -39,7 +39,7 @@ const positions = [
     title: "IT System Administrator",
     company: "Shoklo Malaria Research Unit (Borderland Health Foundation)",
     duration: "2024 - 2026",
-    location: "Mae Ramat, Thailand",
+    location: "Thailand",
     logo: "SMRU",
     responsibilities: [
       {
@@ -124,7 +124,7 @@ const positions = [
     title: "IT Support",
     company: "Burma Medical Association",
     duration: "2022 - 2024",
-    location: "Mae Sot, Thailand",
+    location: "Thailand",
     logo: "BMA",
     description:
       "Provided technical support and system maintenance for healthcare organization",

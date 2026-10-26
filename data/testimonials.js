@@ -5,7 +5,7 @@
  * @typedef {Object} Testimonial
  * @property {string} quote
  * @property {string} name
- * @property {string} role   e.g. "Director, NGO in Mae Sot"
+ * @property {string} role   e.g. "Director, NGO in Thailand"
  */
 
 /** @type {Testimonial[]} */

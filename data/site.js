@@ -14,7 +14,7 @@ export const SITE = {
     alternateName: "See Min Thu",
     title: "IT Systems Administrator & Web Developer",
     description:
-        "Sithu Htin — IT Systems Administrator & Web Developer in Mae Sot, Thailand. Websites, secure email and reliable servers for NGOs and small businesses.",
+        "Sithu Htin — IT Systems Administrator & Web Developer in Thailand. Websites, secure email and reliable servers for NGOs and small businesses.",
     email: "sithuhtin2022@gmail.com",
 };
 

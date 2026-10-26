@@ -46,7 +46,9 @@ The site has **two audiences**, in this priority order:
 
 **Education:** Medical studies (MBBS programme, to final year), University of Medicine 2, Yangon, 2013–2020.
 
-**Languages:** Burmese (native), English (professional), Thai (basic).
+**Languages:** Burmese (native), English (professional). (Sithu asked not to list Thai on the site.)
+
+**Location on the public site:** say only "Thailand" — never Mae Sot, Mae Ramat or another town (Sithu's request). The town names in the facts above are for context only.
 
 **Contact:** sithuhtin2022@gmail.com · LinkedIn https://www.linkedin.com/in/see-min-thu · GitHub https://github.com/SiThuHtin · Facebook https://www.facebook.com/sithu.htin/ · Docs https://sithu-htin-docs.gitbook.io/sithu-things/
 

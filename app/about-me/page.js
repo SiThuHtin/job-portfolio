@@ -11,7 +11,7 @@ import { LINKS } from "@/data/site";
 
 export const metadata = pageMetadata({
   title: "About Me",
-  description: "About Sithu Htin: IT systems administrator and web developer in Mae Sot, Thailand. Experience, certifications, skills and projects.",
+  description: "About Sithu Htin: IT systems administrator and web developer in Thailand. Experience, certifications, skills and projects.",
   path: "/about-me",
 });
 
@@ -77,7 +77,7 @@ export default function About() {
               </div>
               <div>
                 <dt className="text-yellow-400 font-semibold">Languages</dt>
-                <dd className="text-gray-300">Burmese (native), English (professional), Thai (basic)</dd>
+                <dd className="text-gray-300">Burmese (native), English (professional)</dd>
               </div>
             </dl>
           </div>
