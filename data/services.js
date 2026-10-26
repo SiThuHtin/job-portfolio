@@ -69,8 +69,8 @@ export const WHY_WORK_WITH_ME = [
     { title: "Fixed prices", description: "You know the cost before we start. No hourly surprises." },
     { title: "NGO experience", description: "Years of IT for health organizations: I understand donor budgets and data protection." },
     { title: "You own everything", description: "Your site, your data and your domain stay in your name." },
-    { title: "Local or remote", description: "Based in Mae Sot, Thailand, and working with clients anywhere." },
-    { title: "Burmese, English & Thai", description: "Talk to me in the language you're most comfortable with." },
+    { title: "Local or remote", description: "Based in Thailand and working with clients anywhere." },
+    { title: "Burmese & English", description: "Talk to me in the language you're most comfortable with." },
 ];
 
 /** Shown near prices on the services page. */

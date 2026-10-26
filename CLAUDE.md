@@ -69,7 +69,7 @@ Restructure the homepage in this order:
 1. **Hero:** headline about the client result, e.g. "Websites, secure email and reliable servers for NGOs and small businesses". Sub-line: 4+ years running IT for health organizations on the Thailand–Myanmar border; 10+ websites delivered. Primary button "Get a free 15-minute check" → /contact-me; secondary "See services" → /pricing.
 2. **Services:** 4–6 cards from `data/services.js` (see Phase 3), each linking to the services page.
 3. **Selected work:** 3 case-study cards from `data/projects.js` (see Phase 4).
-4. **Why work with me:** fixed prices; NGO experience (donor budgets, data protection); you own your site, data and domain; local in Mae Sot or remote; Burmese/English/Thai.
+4. **Why work with me:** fixed prices; NGO experience (donor budgets, data protection); you own your site, data and domain; based in Thailand, local or remote; Burmese and English (Sithu asked to drop Mae Sot and Thai from this section).
 5. **Testimonials:** component ready, but hidden until real quotes exist (`TODO(Sithu)`).
 6. **Recent articles** (existing) and the existing documentation link.
 7. **Final call to action** → contact.
