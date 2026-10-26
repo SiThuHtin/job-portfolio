@@ -36,7 +36,7 @@ export const MESSAGING = [
     { label: "Facebook Messenger", href: "", display: "" },
     { label: "Viber", href: "viber://chat?number=%2B66837710800", display: "Chat on Viber" },
     { label: "LINE", href: "", display: "" },
-    { label: "WhatsApp", href: "", display: "" },
+    { label: "WhatsApp", href: "https://wa.me/sithuhtin97", display: "@sithuhtin97" },
 ];
 
 /** TODO(Sithu): Tech Tuesday page URL. The link is hidden while empty. */
