@@ -2,6 +2,19 @@
 import { useEffect, useState } from "react";
 import { LINKS, MESSAGING, RESPONSE_TIME, TECH_TUESDAY_URL } from "@/data/site";
 import { BUDGET_OPTIONS, NEED_OPTIONS, PLAN_TO_NEED } from "@/data/contact";
+import { FaFacebookF, FaFacebookMessenger, FaGithub, FaLine, FaLinkedinIn, FaViber, FaWhatsapp } from "react-icons/fa";
+import { FiMail, FiMessageCircle } from "react-icons/fi";
+
+const CONTACT_ICONS = {
+  Email: FiMail,
+  Viber: FaViber,
+  LINE: FaLine,
+  WhatsApp: FaWhatsapp,
+  "Facebook Messenger": FaFacebookMessenger,
+  Facebook: FaFacebookF,
+  LinkedIn: FaLinkedinIn,
+  GitHub: FaGithub,
+};
 import { ArrowRight } from "lucide-react";
 
 const inputClass =
@@ -9,10 +22,6 @@ const inputClass =
 
 const iconClass =
   "w-12 h-12 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors duration-300 mr-4 shadow-[0_0_15px_rgba(250,204,21,0.2)]";
-
-const ChatIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-);
 
 const ContactMe = () => {
   // `website` is a honeypot: hidden from people, filled in by spam bots
@@ -60,7 +69,8 @@ const ContactMe = () => {
     }
   };
 
-  const messagingLinks = MESSAGING.filter((link) => link.href);
+  // Email first, then messaging apps (only those filled in), then social profiles
+  const contactRows = [LINKS.email, ...MESSAGING.filter((link) => link.href), LINKS.facebook, LINKS.linkedin, LINKS.github];
 
   return (
     <div className="pt-20 min-h-screen bg-black">
@@ -75,66 +85,31 @@ const ContactMe = () => {
           </p>
           <p className="text-yellow-400 font-semibold mb-8">{RESPONSE_TIME}</p>
 
-          <div className="space-y-6">
-            <div className="flex items-center group">
-              <div className={iconClass}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-              </div>
-              <div className="min-w-0">
-                <div className="text-sm text-gray-300">Email</div>
-                <a href={LINKS.email.href} className="text-white hover:text-yellow-400 text-lg font-medium transition-colors break-all">{LINKS.email.display}</a>
-              </div>
-            </div>
-
-            {messagingLinks.map((link) => (
-              <div key={link.label} className="flex items-center group">
-                <div className={iconClass}>
-                  <ChatIcon />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-300">{link.label}</div>
-                  {/* App links (viber://) open the app directly; web links open in a new tab */}
+          <ul className="space-y-6">
+            {contactRows.map((link) => {
+              const Icon = CONTACT_ICONS[link.label] || FiMessageCircle;
+              return (
+                <li key={link.label}>
+                  {/* The whole row is the link. App links (viber://) open the app; web links open a new tab */}
                   <a
                     href={link.href}
                     {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="text-white hover:text-yellow-400 text-lg font-medium transition-colors"
+                    className="flex items-center group w-fit max-w-full"
                   >
-                    {link.display || "Message me"}
+                    <span className={iconClass}>
+                      <Icon className="w-5 h-5" aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm text-gray-300">{link.label}</span>
+                      <span className="block text-white group-hover:text-yellow-400 text-lg font-medium transition-colors break-all">
+                        {link.display || "Message me"}
+                      </span>
+                    </span>
                   </a>
-                </div>
-              </div>
-            ))}
-
-            <div className="flex items-center group">
-              <div className={iconClass}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              </div>
-              <div>
-                <div className="text-sm text-gray-300">Facebook</div>
-                <a href={LINKS.facebook.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">{LINKS.facebook.display}</a>
-              </div>
-            </div>
-
-            <div className="flex items-center group">
-              <div className={iconClass}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </div>
-              <div>
-                <div className="text-sm text-gray-300">LinkedIn</div>
-                <a href={LINKS.linkedin.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">{LINKS.linkedin.display}</a>
-              </div>
-            </div>
-
-            <div className="flex items-center group">
-              <div className={iconClass}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.34 6-1.53 6-6.86 0-1.5-.5-2.7-1.3-3.7.1-.3.6-1.7-.1-3.6 0 0-1-.3-3.3 1.2a11.3 11.3 0 0 0-6 0c-2.3-1.5-3.3-1.2-3.3-1.2-.7 1.9-.2 3.3-.1 3.6-.8 1-1.3 2.2-1.3 3.7 0 5.3 3 6.5 6 6.8-.4.4-.7 1.1-.8 2.2V22"></path></svg>
-              </div>
-              <div>
-                <div className="text-sm text-gray-300">GitHub</div>
-                <a href={LINKS.github.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">{LINKS.github.display}</a>
-              </div>
-            </div>
-          </div>
+                </li>
+              );
+            })}
+          </ul>
 
           {TECH_TUESDAY_URL && (
             <a
