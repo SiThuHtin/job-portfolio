@@ -93,7 +93,14 @@ const ContactMe = () => {
                 </div>
                 <div>
                   <div className="text-sm text-gray-300">{link.label}</div>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400 text-lg font-medium transition-colors">{link.display || "Message me"}</a>
+                  {/* App links (viber://) open the app directly; web links open in a new tab */}
+                  <a
+                    href={link.href}
+                    {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="text-white hover:text-yellow-400 text-lg font-medium transition-colors"
+                  >
+                    {link.display || "Message me"}
+                  </a>
                 </div>
               </div>
             ))}
