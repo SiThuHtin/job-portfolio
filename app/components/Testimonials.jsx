@@ -19,7 +19,7 @@ export default function Testimonials() {
               <blockquote className="text-gray-300 leading-relaxed mb-4">{testimonial.quote}</blockquote>
               <figcaption className="text-sm">
                 <span className="text-white font-semibold">{testimonial.name}</span>
-                <span className="text-gray-500"> · {testimonial.role}</span>
+                <span className="text-gray-400"> · {testimonial.role}</span>
               </figcaption>
             </figure>
           ))}

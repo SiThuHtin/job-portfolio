@@ -28,7 +28,7 @@ function LatestPostsFallback() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Recent Articles</h2>
+        <h2 className="type-section-title text-center text-white mb-8 md:mb-12">Recent Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {[...Array(3)].map((_, index) => (
             <div

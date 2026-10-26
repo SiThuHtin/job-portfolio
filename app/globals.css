@@ -2,9 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* One type scale for every page */
+@layer components {
+  .type-hero-title {
+    @apply text-3xl md:text-5xl font-extrabold leading-[1.1] tracking-tight;
+  }
+  .type-page-title {
+    @apply text-4xl md:text-5xl font-extrabold leading-[1.1] tracking-tight;
+  }
+  .type-section-title {
+    @apply text-3xl md:text-4xl font-bold leading-tight tracking-tight;
+  }
+  .type-card-title {
+    @apply text-xl font-semibold leading-snug;
+  }
+  .type-lead {
+    @apply text-base md:text-lg leading-relaxed text-gray-300;
+  }
+}
+
 html {
-  --font-body: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Avenir Next", Avenir, "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  /* --font-sans is Plus Jakarta Sans, loaded in app/layout.js; Myanmar fonts cover Burmese text */
+  --font-body: var(--font-sans), "Segoe UI", "Helvetica Neue", Arial, "Noto Sans Myanmar", "Myanmar Text", sans-serif;
+  --font-display: var(--font-body);
   font-size: 16px;
 }
 

@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <div className="flex flex-col space-y-4">
-                        <h3 className="text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
+                        <h3 className="text-xl font-bold text-white tracking-tight">
                             Sithu Htin
                         </h3>
                         <p className="max-w-xs text-sm leading-relaxed">

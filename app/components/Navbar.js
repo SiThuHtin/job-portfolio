@@ -41,7 +41,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full h-16 md:h-20 z-50 bg-neutral-900/95 border-b border-neutral-800 shadow-lg flex items-center transition-all duration-300">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
         {/* Brand */}
-        <div className="text-lg md:text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
+        <div className="text-lg md:text-xl font-bold text-white tracking-tight">
           Sithu Htin
         </div>
 

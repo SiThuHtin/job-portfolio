@@ -55,8 +55,8 @@ export default function About() {
           </div>
 
           <div className="md:col-span-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">Hi, I&apos;m Sithu Htin</h2>
-            <p className="text-sm text-gray-500 mb-4">Also known as See Min Thu (LinkedIn).</p>
+            <h1 className="type-page-title text-white mb-2">Hi, I&apos;m Sithu Htin</h1>
+            <p className="text-sm text-gray-400 mb-4">Also known as See Min Thu (LinkedIn).</p>
 
             <p className="text-gray-300 mb-4">I&apos;m an IT Systems Administrator &amp; Web Developer who keeps infrastructure secure, stable and running, and builds the websites and tools organizations need.</p>
 
@@ -100,7 +100,7 @@ export default function About() {
       </div>
 
       <SectionLabel id="personal-projects">Personal Projects</SectionLabel>
-      <p className="text-gray-400 text-center px-4 mb-8">Side projects I built to learn and experiment. Not client work.</p>
+      <p className="text-gray-300 text-center px-4 mb-8">Side projects I built to learn and experiment. Not client work.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 max-w-7xl mx-auto w-full pb-16">
         {PERSONAL_PROJECTS.map((project) => (
           <CaseStudyCard key={project.id} project={project} />

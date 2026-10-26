@@ -165,7 +165,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-semibold text-white"
+          className="type-section-title text-white"
         >
           Skills & Expertise
         </motion.h2>
@@ -194,12 +194,12 @@ export default function Skills() {
             >
               <header className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-white bg-gradient-to-br ${cat.color}`}>
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-yellow-400/10 text-yellow-400`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-white">{cat.title}</h3>
-                    <p className="text-xs text-gray-400">{cat.skills.length} skills</p>
+                    <p className="text-xs text-gray-300">{cat.skills.length} skills</p>
                   </div>
                 </div>
                 <div>
@@ -216,14 +216,14 @@ export default function Skills() {
                         {/* Skills without a level (null) show just the name */}
                         {typeof s.level === 'number' && (
                           <div className="mt-1 h-2 bg-gray-700 rounded-full overflow-hidden">
-                            <div className="h-2 bg-indigo-500 transition-all" style={{ width: `${s.level}%` }} />
+                            <div className="h-2 bg-yellow-500 transition-all" style={{ width: `${s.level}%` }} />
                           </div>
                         )}
                       </div>
                       {typeof s.level === 'number' && (
                         <div className="ml-auto hidden md:flex items-center gap-1">
                           {Array.from({ length: 5 }).map((_, dot) => (
-                            <span key={dot} className={`w-2 h-2 rounded-full ${s.level >= (dot + 1) * 20 ? 'bg-indigo-400' : 'bg-gray-600'}`} />
+                            <span key={dot} className={`w-2 h-2 rounded-full ${s.level >= (dot + 1) * 20 ? 'bg-yellow-400' : 'bg-gray-600'}`} />
                           ))}
                         </div>
                       )}

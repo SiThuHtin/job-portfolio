@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Analytics } from '@vercel/analytics/react';
@@ -6,6 +7,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { SITE, SITE_URL, LINKS } from "@/data/site";
 
 // Pages set their own canonical and og:url via pageMetadata() in lib/metadata.js
+// Self-hosted by Next.js at build time, so every device gets the same font
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 export const metadata = {
   title: {
     default: `${SITE.name} | ${SITE.title}`,
@@ -23,7 +32,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"

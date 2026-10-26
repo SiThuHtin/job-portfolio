@@ -10,8 +10,8 @@ export default function ContactSection() {
       </div>
       <div className="py-16 px-4 md:px-16 bg-gradient-to-t from-yellow-900/20 to-black">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Need help with your website or IT?</h2>
-          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+          <h2 className="type-section-title text-white mb-6">Need help with your website or IT?</h2>
+          <p className="text-gray-300 text-lg mb-10 max-w-xl mx-auto">
             Tell me what you need. The first 15-minute check is free, and I usually reply within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

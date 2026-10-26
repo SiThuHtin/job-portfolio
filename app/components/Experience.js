@@ -144,13 +144,13 @@ const CardBody = ({ pos, open }) => (
   <div className="flex flex-col h-full">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div className="md:flex-1">
-        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+        <h3 className="type-card-title text-white group-hover:text-yellow-400 transition-colors">
           {pos.title}
         </h3>
         <div className="flex flex-wrap items-center gap-2 mt-2">
           <span className="text-sm font-medium text-gray-300">{pos.company}</span>
           <span className="text-gray-600 hidden md:inline">•</span>
-          <span className="text-sm text-gray-400">{pos.location}</span>
+          <span className="text-sm text-gray-300">{pos.location}</span>
         </div>
       </div>
 
@@ -159,7 +159,7 @@ const CardBody = ({ pos, open }) => (
           {pos.duration}
         </span>
         <div className="mt-1 hidden md:block">
-          <div className={`p-1.5 rounded-full bg-gray-800/50 text-gray-400 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-300 ${open[pos.id] ? 'rotate-180' : ''}`}>
+          <div className={`p-1.5 rounded-full bg-gray-800/50 text-gray-300 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-300 ${open[pos.id] ? 'rotate-180' : ''}`}>
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -180,7 +180,7 @@ const CardBody = ({ pos, open }) => (
             </h4>
             <ul className="grid grid-cols-1 gap-2">
               {cat.items.map((it, ii) => (
-                <li key={ii} className="text-sm text-gray-400 flex items-start gap-2 group/item">
+                <li key={ii} className="text-sm text-gray-300 flex items-start gap-2 group/item">
                   <span className="text-yellow-500 mt-1.5 opacity-50 group-hover/item:opacity-100 transition-opacity">•</span>
                   <span className="group-hover/item:text-gray-200 transition-colors">{it}</span>
                 </li>
@@ -205,7 +205,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs"
+          className="text-yellow-400 font-bold tracking-[0.2em] uppercase text-xs"
         >
           My Journey
         </motion.span> */}
@@ -214,7 +214,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-5xl font-black mt-4 text-white"
+          className="type-section-title mt-4 text-white"
         >
           Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300 text-glow">Experience</span>
         </motion.h2>
@@ -235,7 +235,7 @@ export default function Experience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className={`group relative md:row-start-1 ${isLeft ? 'md:col-start-1' : 'md:col-start-3'} bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/5 hover:border-indigo-500/50 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl md:shadow-2xl transition-all duration-500 cursor-pointer`}
+                  className={`group relative md:row-start-1 ${isLeft ? 'md:col-start-1' : 'md:col-start-3'} bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/5 hover:border-yellow-400/50 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl md:shadow-2xl transition-all duration-500 cursor-pointer`}
                   onClick={() => toggle(pos.id)}
                 >
                   <div className={`mb-4 md:mb-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:z-20 ${isLeft ? 'md:-right-[76px]' : 'md:-left-[76px]'}`}>

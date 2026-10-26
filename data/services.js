@@ -128,7 +128,7 @@ export const WEB_PLANS = [
         highlight: true,
         badge: 'Most Popular',
         description:
-            'A fully custom website built with modern frameworks. Includes a CMS or database so you can manage your content without touching code.Ideal for startups, booking systems, dashboards, directories, and CMS-driven websites.',
+            'A fully custom website built with modern frameworks. Includes a CMS or database so you can manage your content without touching code. Ideal for startups, booking systems, dashboards, directories, and CMS-driven websites.',
         features: [
             { label: 'Up to 15-page custom website', note: null },
             { label: 'Next.js / React build', note: null },
@@ -171,16 +171,16 @@ export const WEB_PLANS = [
     },
 ];
 
-/** Optional add-ons for web packages. An `href` makes the card a link. */
+/** Optional add-ons for web packages. `icon` is a lucide-react icon name; an `href` makes the card a link. */
 export const WEB_ADDONS = [
-    { icon: '🌐+🔒', label: 'Domain & SSL Certificate Setup', price: '+$50' },
-    { icon: '🔗', label: 'Third-party API Integration', price: '+$120/each' },
-    { icon: '📧', label: 'Email Integration (Nodemailer / SendGrid)', price: '+$60' },
-    { icon: '🛒', label: 'E-commerce (WooCommerce / Stripe)', price: '+$180' },
-    { icon: '🔄', label: 'Monthly maintenance & hosting', price: 'See hosting plans', href: '#hosting' },
-    { icon: '🌍', label: 'Multi-language Support (i18n)', price: '+$100' },
-    { icon: '📊', label: 'Custom Analytics Dashboard', price: '+$150' },
-    { icon: '📊', label: 'Admin Dashboard', price: '+$80' },
+    { icon: 'ShieldCheck', label: 'Domain & SSL Certificate Setup', price: '+$50' },
+    { icon: 'Link2', label: 'Third-party API Integration', price: '+$120/each' },
+    { icon: 'Mail', label: 'Email Integration (Nodemailer / SendGrid)', price: '+$60' },
+    { icon: 'ShoppingCart', label: 'E-commerce (WooCommerce / Stripe)', price: '+$180' },
+    { icon: 'RefreshCw', label: 'Monthly maintenance & hosting', price: 'See hosting plans', href: '#hosting' },
+    { icon: 'Languages', label: 'Multi-language Support (i18n)', price: '+$100' },
+    { icon: 'BarChart3', label: 'Custom Analytics Dashboard', price: '+$150' },
+    { icon: 'LayoutDashboard', label: 'Admin Dashboard', price: '+$80' },
 ];
 
 /**

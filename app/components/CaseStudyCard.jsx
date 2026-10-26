@@ -21,8 +21,8 @@ export default function CaseStudyCard({ project }) {
       </div>
       <div className="flex flex-col flex-grow p-6">
         <span className="text-xs font-semibold uppercase tracking-wider text-yellow-500 mb-2">{project.category}</span>
-        <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">{project.built}</p>
+        <h3 className="type-card-title text-white mb-3">{project.title}</h3>
+        <p className="text-gray-300 text-base leading-relaxed mb-4 flex-grow">{project.built}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.stack.map((tech) => (
             <span key={tech} className="text-xs text-gray-300 bg-white/5 border border-white/10 rounded-full px-3 py-1">{tech}</span>

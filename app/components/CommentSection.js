@@ -85,10 +85,10 @@ export default function CommentSection({ postId }) {
                 {error && <div className="text-red-400 text-sm mb-4 bg-red-400/10 p-3 rounded-lg border border-red-400/20">{error}</div>}
 
                 <div className="mb-4">
-                    <label className="block text-gray-400 text-sm font-semibold mb-2">Name</label>
+                    <label className="block text-gray-300 text-sm font-semibold mb-2">Name</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <User className="h-5 w-5 text-gray-500" />
+                            <User className="h-5 w-5 text-gray-400" />
                         </div>
                         <input
                             type="text"
@@ -102,7 +102,7 @@ export default function CommentSection({ postId }) {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-400 text-sm font-semibold mb-2">Comment</label>
+                    <label className="block text-gray-300 text-sm font-semibold mb-2">Comment</label>
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
@@ -127,7 +127,7 @@ export default function CommentSection({ postId }) {
             {loading ? (
                 <div className="text-yellow-400 animate-pulse text-center py-6">Loading comments...</div>
             ) : comments.length === 0 ? (
-                <div className="text-gray-500 text-center py-10 bg-white/5 rounded-2xl border border-white/10 italic">
+                <div className="text-gray-400 text-center py-10 bg-white/5 rounded-2xl border border-white/10 italic">
                     No comments yet. Be the first to share your thoughts!
                 </div>
             ) : (
@@ -141,7 +141,7 @@ export default function CommentSection({ postId }) {
                                     </div>
                                     {comment.author}
                                 </span>
-                                <span className="text-xs text-gray-500 flex items-center gap-1">
+                                <span className="text-xs text-gray-400 flex items-center gap-1">
                                     <Clock className="w-3 h-3" />
                                     {new Date(comment.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                 </span>

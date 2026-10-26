@@ -11,7 +11,7 @@ export default function DocumentationSection() {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black/50 backdrop-blur-lg">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Documentation & Guides</h2>
+        <h2 className="type-section-title text-center text-white mb-8 md:mb-12">Documentation & Guides</h2>
         <div className="max-w-2xl mx-auto">
           <Link
             href={LINKS.docs.href}
@@ -21,7 +21,7 @@ export default function DocumentationSection() {
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white mb-3">Sithu Things</h3>
+                <h3 className="type-card-title text-white mb-3">Sithu Things</h3>
                 <p className="text-gray-300 mb-4">
                   Comprehensive documentation covering my tech stack, system administration guides, web development best practices, and detailed project documentation.
                 </p>

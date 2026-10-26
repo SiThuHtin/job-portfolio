@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['var(--font-sans)', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans Myanmar', 'Myanmar Text', 'sans-serif'],
       },
     },
   },

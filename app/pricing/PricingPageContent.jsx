@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import CaseStudyCard from '@/app/components/CaseStudyCard';
+import { BarChart3, LayoutDashboard, Languages, Link2, Mail, RefreshCw, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { FEATURED_PROJECTS } from '@/data/projects';
 import { useState } from 'react';
 import { FiArrowRight, FiCheck, FiZap, FiChevronDown, FiMail, FiMessageSquare } from 'react-icons/fi';
@@ -41,11 +42,22 @@ function FAQItem({ faq }) {
             transition={{ duration: 0.28, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+            <p className="px-6 pb-5 text-gray-300 text-sm leading-relaxed">{faq.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+const ADDON_ICONS = { BarChart3, LayoutDashboard, Languages, Link2, Mail, RefreshCw, ShieldCheck, ShoppingCart };
+
+function AddonIcon({ name }) {
+  const Icon = ADDON_ICONS[name] || ShieldCheck;
+  return (
+    <span className="w-10 h-10 rounded-lg bg-yellow-400/10 text-yellow-400 flex items-center justify-center">
+      <Icon className="w-5 h-5" aria-hidden="true" />
+    </span>
   );
 }
 
@@ -77,14 +89,14 @@ export default function PricingPageContent() {
           <span className="inline-block text-yellow-400 text-sm font-bold mb-4 px-4 py-2 bg-yellow-400/10 rounded-full">
             Web &amp; IT Services
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-5">
+          <h1 className="type-page-title text-white mb-5">
             Simple,{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
               Transparent
             </span>{' '}
             Pricing
           </h1>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-8">
             No hidden fees. No surprises. Websites, hosting, email security and IT support for NGOs and small businesses.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -134,21 +146,21 @@ export default function PricingPageContent() {
                 <h2 className={`text-xl font-bold mb-1 ${plan.highlight ? 'text-yellow-400' : 'text-white'}`}>
                   {plan.name}
                 </h2>
-                <p className="text-gray-500 text-sm">{plan.tagline}</p>
+                <p className="text-gray-400 text-sm">{plan.tagline}</p>
               </div>
 
               <div className="mb-4">
                 <span className="text-4xl md:text-5xl font-extrabold text-white">{plan.price}</span>
                 {plan.duration !== 'quote' && (
-                  <span className="ml-2 text-gray-500 text-sm">/ {plan.duration}</span>
+                  <span className="ml-2 text-gray-400 text-sm">/ {plan.duration}</span>
                 )}
               </div>
 
-              <p className="text-gray-400 text-sm mb-6 leading-relaxed border-b border-white/10 pb-6">
+              <p className="text-gray-300 text-sm mb-6 leading-relaxed border-b border-white/10 pb-6">
                 {plan.description}
               </p>
 
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                 What&apos;s included
               </p>
               <ul className="flex flex-col gap-2.5 mb-6 flex-1">
@@ -217,13 +229,13 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               Optional{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 Add-ons
               </span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto">
               Enhance any plan with these optional services. Prices are fixed — no surprises.
             </p>
           </motion.div>
@@ -231,7 +243,7 @@ export default function PricingPageContent() {
             {addons.map((addon, i) => {
               const content = (
                 <>
-                  <span className="text-2xl">{addon.icon}</span>
+                  <AddonIcon name={addon.icon} />
                   <p className="text-white text-sm font-semibold leading-snug">{addon.label}</p>
                   <p className="text-yellow-400 font-bold text-sm mt-auto">{addon.price}{addon.href && ' ↓'}</p>
                 </>
@@ -270,13 +282,13 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               IT{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 Services
               </span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto">
               Email security, monitoring, training and support for your organization. Fixed prices in Thai baht.
             </p>
           </motion.div>
@@ -290,11 +302,11 @@ export default function PricingPageContent() {
                 transition={{ delay: i * 0.06, duration: 0.4 }}
                 className="flex flex-col rounded-2xl border border-white/10 bg-black/60 p-6 hover:border-yellow-400/30 transition-colors duration-300"
               >
-                <h3 className="text-white font-bold text-lg mb-2">{service.name}</h3>
-                <p className="text-gray-400 text-sm mb-4">{service.description}</p>
+                <h3 className="type-card-title text-white mb-2">{service.name}</h3>
+                <p className="text-gray-300 text-sm mb-4">{service.description}</p>
                 <div className="mb-4">
                   <span className="text-3xl font-extrabold text-white">{service.price}</span>
-                  <span className="ml-2 text-gray-500 text-sm">{service.unit}</span>
+                  <span className="ml-2 text-gray-400 text-sm">{service.unit}</span>
                 </div>
                 <ul className="flex flex-col gap-2 mb-6 flex-1">
                   {service.inclusions.map((item) => (
@@ -325,17 +337,17 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               Managed{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 Hosting
               </span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto">
               Hosting, backups, updates and monitoring handled for you. One-time setup {HOSTING_SETUP_FEE}.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {HOSTING_TIERS.map((tier, i) => (
               <motion.div
                 key={tier.id}
@@ -346,13 +358,13 @@ export default function PricingPageContent() {
                 viewport={{ once: true }}
                 className="flex flex-col rounded-2xl border border-white/10 bg-black/60 p-7 hover:border-yellow-400/30 transition-colors duration-300"
               >
-                <h3 className="text-xl font-bold text-white mb-3">{tier.name}</h3>
+                <h3 className="type-card-title text-white mb-3">{tier.name}</h3>
                 <div className="mb-5">
                   <span className="text-4xl font-extrabold text-white">{tier.price}</span>
-                  <span className="ml-2 text-gray-500 text-sm">/ month</span>
+                  <span className="ml-2 text-gray-400 text-sm">/ month</span>
                 </div>
                 {tier.includesFrom && (
-                  <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                     Everything in {tier.includesFrom}, plus
                   </p>
                 )}
@@ -373,7 +385,7 @@ export default function PricingPageContent() {
               </motion.div>
             ))}
           </div>
-          <ul className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-400">
+          <ul className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-300">
             {HOSTING_NOTES.map((note) => (
               <li key={note} className="flex items-start gap-2">
                 <FiZap className="mt-0.5 shrink-0 text-yellow-400" />
@@ -394,17 +406,17 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               Wedding{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 Websites
               </span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto">
               Invitation websites with RSVP that guests open on their phones.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {WEDDING_PACKAGES.map((pkg, i) => (
               <motion.div
                 key={pkg.id}
@@ -415,14 +427,14 @@ export default function PricingPageContent() {
                 viewport={{ once: true }}
                 className="flex flex-col rounded-2xl border border-white/10 bg-black/60 p-7 hover:border-yellow-400/30 transition-colors duration-300"
               >
-                <h3 className="text-xl font-bold text-white mb-1">{pkg.name}</h3>
-                <p className="text-gray-500 text-sm mb-3">{pkg.tagline}</p>
+                <h3 className="type-card-title text-white mb-1">{pkg.name}</h3>
+                <p className="text-gray-400 text-sm mb-3">{pkg.tagline}</p>
                 <div className="mb-5">
                   <span className="text-4xl font-extrabold text-white">{pkg.price}</span>
-                  <span className="ml-2 text-gray-500 text-sm">one-time</span>
+                  <span className="ml-2 text-gray-400 text-sm">one-time</span>
                 </div>
                 {pkg.includesFrom && (
-                  <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                     Everything in {pkg.includesFrom}, plus
                   </p>
                 )}
@@ -443,7 +455,7 @@ export default function PricingPageContent() {
               </motion.div>
             ))}
           </div>
-          <ul className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-400">
+          <ul className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-300">
             {WEDDING_ADDONS.map((addon) => (
               <li key={addon.label} className="flex items-start gap-2">
                 <FiZap className="mt-0.5 shrink-0 text-yellow-400" />
@@ -465,29 +477,29 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               Technologies{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 I Use
               </span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto">
               Every project is built with modern, production-grade tools — chosen for performance, scalability, and developer experience.
             </p>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              { name: 'Next.js', icon: '▲', color: 'from-white/10 to-white/5', border: 'border-white/20', text: 'text-white' },
-              { name: 'React', icon: '⚛', color: 'from-cyan-500/10 to-cyan-500/5', border: 'border-cyan-500/30', text: 'text-cyan-400' },
-              { name: 'Tailwind CSS', icon: '🎨', color: 'from-sky-500/10 to-sky-500/5', border: 'border-sky-500/30', text: 'text-sky-400' },
-              { name: 'Node.js', icon: '🟢', color: 'from-green-500/10 to-green-500/5', border: 'border-green-500/30', text: 'text-green-400' },
-              { name: 'PostgreSQL / MySQL', icon: '🐘', color: 'from-blue-500/10 to-blue-500/5', border: 'border-blue-500/30', text: 'text-blue-400' },
-              { name: 'Vercel', icon: '🚀', color: 'from-white/10 to-white/5', border: 'border-white/20', text: 'text-white' },
-              { name: 'Cloudflare CDN', icon: '🌐', color: 'from-orange-500/10 to-orange-500/5', border: 'border-orange-500/30', text: 'text-orange-400' },
-              { name: 'MongoDB Atlas', icon: '🍃', color: 'from-green-600/10 to-green-600/5', border: 'border-green-600/30', text: 'text-green-500' },
-              { name: 'Supabase', icon: '⚡', color: 'from-emerald-500/10 to-emerald-500/5', border: 'border-emerald-500/30', text: 'text-emerald-400' },
-              { name: 'Neon', icon: '💡', color: 'from-violet-500/10 to-violet-500/5', border: 'border-violet-500/30', text: 'text-violet-400' },
+              { name: 'Next.js' },
+              { name: 'React' },
+              { name: 'Tailwind CSS' },
+              { name: 'Node.js' },
+              { name: 'PostgreSQL / MySQL' },
+              { name: 'Vercel' },
+              { name: 'Cloudflare CDN' },
+              { name: 'MongoDB Atlas' },
+              { name: 'Supabase' },
+              { name: 'Neon' },
             ].map((tech, i) => (
               <motion.div
                 key={tech.name}
@@ -495,10 +507,9 @@ export default function PricingPageContent() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.35 }}
-                className={`flex items-center gap-3 px-5 py-3 rounded-xl bg-gradient-to-br ${tech.color} border ${tech.border} hover:scale-105 transition-transform duration-300 cursor-default`}
+                className="flex items-center px-5 py-3 rounded-xl bg-white/5 border border-white/15 hover:border-yellow-400/50 transition-colors duration-300 cursor-default"
               >
-                <span className="text-xl leading-none">{tech.icon}</span>
-                <span className={`font-semibold text-sm ${tech.text}`}>{tech.name}</span>
+                <span className="font-semibold text-sm text-gray-200">{tech.name}</span>
               </motion.div>
             ))}
           </div>
@@ -514,13 +525,13 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               Selected{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 Work
               </span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto">
               Websites and systems I&apos;ve built for organizations I&apos;ve worked for and for clients.
             </p>
           </motion.div>
@@ -559,7 +570,7 @@ export default function PricingPageContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="type-section-title text-white mb-3">
               Frequently Asked{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                 Questions
@@ -592,10 +603,10 @@ export default function PricingPageContent() {
         >
           <div className="rounded-2xl border border-yellow-400/20 bg-gradient-to-b from-yellow-400/5 to-black p-10">
             <FiMessageSquare className="text-yellow-400 text-4xl mx-auto mb-4" />
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="type-section-title text-white mb-4">
               Not sure which plan fits?
             </h2>
-            <p className="text-gray-400 text-base mb-8 max-w-lg mx-auto">
+            <p className="text-gray-300 text-base mb-8 max-w-lg mx-auto">
               Tell me about your project and I&apos;ll help you figure out the best approach and give
               you an accurate quote — no commitment required.
             </p>

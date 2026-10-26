@@ -41,7 +41,7 @@ export default function HeroSection() {
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl py-2 sm:py-4 text-center text-white font-bold leading-tight"
+            className="type-hero-title py-2 sm:py-4 text-center text-white"
           >
             Websites, secure email and reliable servers for{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">NGOs and small businesses</span>
@@ -51,7 +51,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-4 mb-8 text-center text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="type-lead mt-4 mb-8 text-center max-w-2xl mx-auto"
           >
             4+ years running IT for health organizations on the Thailand–Myanmar border. 10+ websites delivered.
           </motion.p>
@@ -81,12 +81,12 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-2 mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10"
           >
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="text-2xl md:text-3xl font-bold text-yellow-400">{stat.value}</p>
-                <p className="text-sm text-gray-400">{stat.label}</p>
+                <p className="text-sm text-gray-300 md:whitespace-nowrap">{stat.label}</p>
               </div>
             ))}
           </motion.div>

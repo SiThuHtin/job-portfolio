@@ -18,10 +18,10 @@ export default async function Blog() {
         <div className="flex flex-col bg-black min-h-screen pt-20 w-full overflow-x-hidden">
             {/* Header Section */}
             <div className="py-16 px-4 md:px-16 flex flex-col items-center justify-center text-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h1 className="type-page-title text-white mb-6">
                     Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">Notes</span>
                 </h1>
-                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                     Thoughts, tutorials, and insights regarding System Administration, Full-Stack Development, and bridging the gap between healthcare workflows and IT.
                 </p>
             </div>
@@ -35,7 +35,7 @@ export default async function Blog() {
             {/* Blog Grid */}
             <div className="px-4 md:px-16 pb-20 max-w-7xl mx-auto w-full">
                 {posts.length === 0 && (
-                    <p className="text-gray-500 text-center py-10 bg-white/5 rounded-2xl border border-white/10">
+                    <p className="text-gray-400 text-center py-10 bg-white/5 rounded-2xl border border-white/10">
                         No posts yet. Check back soon!
                     </p>
                 )}
@@ -55,18 +55,18 @@ export default async function Blog() {
                             </div>
 
                             {/* Title */}
-                            <h2 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-300 transition-colors duration-300">
+                            <h2 className="type-section-title text-white mb-3 group-hover:text-yellow-300 transition-colors duration-300">
                                 {post.title}
                             </h2>
 
                             {/* Summary */}
-                            <p className="text-gray-400 text-sm flex-grow mb-6 leading-relaxed">
+                            <p className="text-gray-300 text-sm flex-grow mb-6 leading-relaxed">
                                 {post.summary}
                             </p>
 
                             {/* Meta & Link */}
                             <div className="mt-auto">
-                                <div className="flex items-center gap-4 text-gray-500 text-xs mb-4">
+                                <div className="flex items-center gap-4 text-gray-400 text-xs mb-4">
                                     <div className="flex items-center gap-1">
                                         <Calendar className="w-3 h-3" />
                                         {post.date}

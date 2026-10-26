@@ -18,7 +18,7 @@ export default function LatestPosts({ posts = [] }) {
         <div className="flex-grow border-t border-yellow-400/30"></div>
       </div>
       <div className="py-12 px-4 md:px-16 bg-black">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">Recent Articles</h2>
+        <h2 className="type-section-title text-center text-white mb-8 md:mb-12">Recent Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {posts.map((post) => (
             <Link
@@ -32,14 +32,14 @@ export default function LatestPosts({ posts = [] }) {
                 </span>
                 <TerminalSquare className="text-white/20 group-hover:text-yellow-400/50 w-6 h-6 transition-colors duration-300" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-300 transition-colors duration-300 line-clamp-2">
+              <h3 className="type-card-title text-white mb-3 group-hover:text-yellow-300 transition-colors duration-300 line-clamp-2">
                 {post.title}
               </h3>
-              <p className="text-gray-400 text-sm flex-grow mb-6 leading-relaxed line-clamp-3">
+              <p className="text-gray-300 text-sm flex-grow mb-6 leading-relaxed line-clamp-3">
                 {post.summary}
               </p>
               <div className="mt-auto">
-                <div className="flex items-center gap-4 text-gray-500 text-xs mb-4">
+                <div className="flex items-center gap-4 text-gray-400 text-xs mb-4">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
                     {post.date}

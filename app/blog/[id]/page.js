@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }) {
                 {/* Back Link */}
                 <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors mb-8"
+                    className="inline-flex items-center gap-2 text-gray-300 hover:text-yellow-400 transition-colors mb-8"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to all posts
@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }) {
                         </span>
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="type-page-title text-white mb-6">
                         {post.title}
                     </h1>
 
@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params }) {
                         {post.summary}
                     </p>
 
-                    <div className="flex items-center gap-6 text-gray-500 text-sm">
+                    <div className="flex items-center gap-6 text-gray-400 text-sm">
                         <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
                             {post.fullDate}

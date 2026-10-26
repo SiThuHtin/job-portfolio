@@ -16,8 +16,8 @@ export default function WhyWorkWithMe() {
             return (
               <div key={reason.title} className="text-center sm:text-left lg:text-center bg-white/5 border border-white/10 rounded-2xl p-6">
                 <Icon className="w-7 h-7 text-yellow-400 mb-3 mx-auto sm:mx-0 lg:mx-auto" aria-hidden="true" />
-                <h3 className="text-white font-bold mb-2">{reason.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{reason.description}</p>
+                <h3 className="type-card-title text-white mb-2">{reason.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{reason.description}</p>
               </div>
             );
           })}
