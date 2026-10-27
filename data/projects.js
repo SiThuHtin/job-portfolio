@@ -108,7 +108,7 @@ export const PROJECTS = [
         category: "Wedding website",
         problem: "",
         built: "A wedding invitation website with a countdown, love story, photo gallery, event schedule, map with directions, an RSVP form with a message to the couple, and English, Burmese and Japanese language options.",
-        stack: ["Next.js", "Vercel"],
+        stack: ["Next.js"],
         result: "",
         image: "/projects/phyo-mon-wedding-hero.png",
         link: "https://phyo-and-mon-wedding-invitation.vercel.app/",
