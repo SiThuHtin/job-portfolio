@@ -17,6 +17,7 @@
  * @property {boolean} clientWork False for employer or personal projects
  * @property {boolean} personal   Side projects, listed separately and never described as client work
  * @property {boolean|null} clientPermission  May the client be named? null = not asked yet (TODO(Sithu))
+ * @property {boolean} [hidden]   Not shown anywhere on the site (e.g. work not started yet)
  */
 
 /** @type {Project[]} */
@@ -84,6 +85,7 @@ export const PROJECTS = [
         clientWork: true,
         personal: false,
         clientPermission: null, // TODO(Sithu): may the client be named?
+        hidden: true, // Not started yet (Sithu). Remove this line to show it again.
     },
     {
         id: "event-registration",
@@ -167,6 +169,8 @@ export const PROJECTS = [
     },
 ];
 
-export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured);
-export const WORK_PROJECTS = PROJECTS.filter((project) => !project.personal);
-export const PERSONAL_PROJECTS = PROJECTS.filter((project) => project.personal);
+const VISIBLE_PROJECTS = PROJECTS.filter((project) => !project.hidden);
+
+export const FEATURED_PROJECTS = VISIBLE_PROJECTS.filter((project) => project.featured);
+export const WORK_PROJECTS = VISIBLE_PROJECTS.filter((project) => !project.personal);
+export const PERSONAL_PROJECTS = VISIBLE_PROJECTS.filter((project) => project.personal);

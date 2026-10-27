@@ -39,7 +39,7 @@ The site has **two audiences**, in this priority order:
 **Client work (ask before naming clients publicly — see TODO list)**
 - 4 Rivers-ACTS: developed their website (the live site at www.4rivers-acts.org is WordPress, confirmed by Sithu); advised directors on hosting and email options. Sithu confirmed the client may be named.
 - Wedding invitation / RSVP websites: 2–3 delivered for Burmese couples.
-- E-learning platform for a customer (Next.js, Cloudflare, Postgres).
+- E-learning platform for a customer (Next.js, Cloudflare, Postgres). Not started yet (Sithu, Oct 2026): keep it hidden (`hidden: true` in `data/projects.js`) until he says it has begun.
 - Event registration web application (Next.js, MySQL/Postgres, Docker).
 
 **Skills to add or fix:** AWS (EC2, S3), Google Cloud (GCP), Oracle Cloud (spell it correctly — currently "Orcale"), MongoDB / MongoDB Atlas, Payload CMS, Docker, Nginx, SPF/DKIM/DMARC.
