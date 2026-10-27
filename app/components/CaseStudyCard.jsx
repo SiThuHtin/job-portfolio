@@ -12,7 +12,7 @@ export default function CaseStudyCard({ project }) {
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-contain"
+            className="object-cover object-top"
           />
         ) : (
           // Anonymous client work has no screenshot

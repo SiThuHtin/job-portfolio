@@ -30,7 +30,7 @@ export const PROJECTS = [
         built: "Migrated the website from WordPress to Next.js on Oracle Cloud. I develop and maintain 5 websites and web applications for HISWG and manage its Linux servers.",
         stack: ["Next.js", "Oracle Cloud", "Linux"],
         result: "TODO(Sithu): result",
-        image: "https://res.cloudinary.com/dznkec5x0/image/upload/v1756629016/hiswg_fu9cc8.png",
+        image: "/projects/hiswg.webp",
         link: "https://www.hiswg.org/",
         featured: true,
         clientWork: false,
