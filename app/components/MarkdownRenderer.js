@@ -4,7 +4,32 @@ import { isValidElement, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import Link from "next/link";
 import { Check, Copy, Hash, List } from "lucide-react";
+import { SITE_URL } from "@/data/site";
+
+const SITE_HOST = new URL(SITE_URL).hostname.replace(/^www\./, "");
+
+// Relative links (/pricing, #section) and absolute links to sithuhtin.com count as internal
+function isInternalLink(href) {
+    if (href.startsWith("/") || href.startsWith("#")) {
+        return !href.startsWith("//");
+    }
+    try {
+        const url = new URL(href);
+        return /^https?:$/.test(url.protocol) && url.hostname.replace(/^www\./, "") === SITE_HOST;
+    } catch {
+        return false;
+    }
+}
+
+function toSitePath(href) {
+    if (href.startsWith("/") || href.startsWith("#")) {
+        return href;
+    }
+    const url = new URL(href);
+    return `${url.pathname}${url.search}${url.hash}`;
+}
 
 function CodeBlock({ language, code, ...props }) {
     const [copied, setCopied] = useState(false);
@@ -126,8 +151,16 @@ export default function MarkdownRenderer({ content }) {
                 ol({ children }) {
                     return <ol className="list-decimal pl-6 mb-6 text-gray-300 space-y-2 marker:text-yellow-500 text-lg leading-relaxed">{children}</ol>;
                 },
-                a({ href, children }) {
-                    return <a href={href} className="text-yellow-400 hover:text-yellow-300 underline underline-offset-4 decoration-yellow-400/50 hover:decoration-yellow-300 transition-all font-medium" target="_blank" rel="noopener noreferrer">{children}</a>;
+                a({ href = "", children }) {
+                    const className = "text-yellow-400 hover:text-yellow-300 underline underline-offset-4 decoration-yellow-400/50 hover:decoration-yellow-300 transition-all font-medium";
+                    // Links to this site (e.g. /pricing) stay in the same tab; other websites open in a new tab
+                    if (isInternalLink(href)) {
+                        return <Link href={toSitePath(href)} className={className}>{children}</Link>;
+                    }
+                    if (/^(mailto|tel):/i.test(href)) {
+                        return <a href={href} className={className}>{children}</a>;
+                    }
+                    return <a href={href} className={className} target="_blank" rel="noopener noreferrer">{children}</a>;
                 },
                 blockquote({ children }) {
                     return <blockquote className="border-l-4 border-yellow-500 bg-white/5 p-6 rounded-r-xl italic text-gray-400 mb-8 shadow-inner">{children}</blockquote>;
