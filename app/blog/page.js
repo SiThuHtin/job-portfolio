@@ -55,7 +55,7 @@ export default async function Blog() {
                             </div>
 
                             {/* Title */}
-                            <h2 className="type-section-title text-white mb-3 group-hover:text-yellow-300 transition-colors duration-300">
+                            <h2 className="type-card-title text-white mb-3 group-hover:text-yellow-300 transition-colors duration-300">
                                 {post.title}
                             </h2>
 
