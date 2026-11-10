@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // This folder is the project root (a stray lockfile in the home folder confused the build)
+  turbopack: { root: import.meta.dirname },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
