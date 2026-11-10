@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Trash2, Edit2, Lock, LogOut, Layout, FileText } from "lucide-react";
+import { Trash2, Edit2, Lock, LogOut, FileText } from "lucide-react";
 
 export default function AdminPanel() {
     const [activeTab, setActiveTab] = useState("posts"); // 'posts' or 'projects'
@@ -291,12 +291,8 @@ export default function AdminPanel() {
                 >
                     <FileText className="w-5 h-5" /> Blog Posts
                 </button>
-                <button
-                    onClick={() => { setActiveTab("projects"); handleCancelEdit(); }}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold transition-all ${activeTab === "projects" ? "bg-yellow-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"}`}
-                >
-                    <Layout className="w-5 h-5" /> Projects
-                </button>
+                {/* The Projects tab was removed: the public site reads projects from data/projects.js, not the database */}
+                <p className="self-center text-sm text-gray-500">Projects are edited in <code className="text-gray-300">data/projects.js</code></p>
 
                 <div className="ml-auto">
                     <button

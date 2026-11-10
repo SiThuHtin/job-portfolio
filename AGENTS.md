@@ -34,7 +34,7 @@ Next.js 16 (App Router, **JavaScript, no TypeScript**), React 19, Tailwind 3, fr
 
 - **Edit content in `data/*.js`, not in components.** Every page reads from those files.
 - **Blog posts are in MongoDB.** Sithu writes them in `/admin`; posts are Markdown rendered by `app/components/MarkdownRenderer.js`. That renderer has no table support (no `remark-gfm`). Links to this site stay in the same tab; other websites open in a new tab.
-- **Projects come from `data/projects.js`.** The `/admin` → Projects tab still writes to MongoDB, but the public site no longer reads it.
+- **Projects come from `data/projects.js`.** The `/admin` Projects tab was removed (its API routes and database records remain, unused).
 - **Contact form:** `app/api/contact/route.js` sends through EmailJS. It is rate-limited and has a honeypot field.
 - **Type scale:** use the classes in `app/globals.css` (`type-hero-title`, `type-page-title`, `type-section-title`, `type-card-title`, `type-lead`). Don't write ad-hoc heading sizes.
 - **Accent colour is yellow only.** Body text is `text-gray-300`, never fainter than `text-gray-400`.
@@ -108,7 +108,7 @@ Next.js 16 (App Router, **JavaScript, no TypeScript**), React 19, Tailwind 3, fr
 - Send one real test message through the contact form.
 - Confirm the contact form's budget ranges (`data/contact.js`).
 - Optional: a Burmese version of the homepage and services page, built as hidden drafts for Sithu to review first.
-- Technical: decide whether to remove or reconnect the unused `/admin` Projects tab. Tailwind 4 would clear the remaining dev-only `npm audit` warnings.
+- Technical: Tailwind 4 would clear the remaining dev-only `npm audit` warnings.
 
 ## Related project
 
