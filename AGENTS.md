@@ -102,7 +102,7 @@ Next.js 16 (App Router, **JavaScript, no TypeScript**), React 19, Tailwind 3, fr
 ## Open items for Sithu
 
 - Facebook Messenger link and the Tech Tuesday URL. Both are hidden in `data/site.js` until filled in.
-- The issuer and year of the "Information Security and Data Protection Awareness Course", and the real certification count (the hero says 9+).
+- The issuer and year of the "Information Security and Data Protection Awareness Course". Its card on `/about-me` currently shows the text "TODO(Sithu): issuer and year" to visitors.
 - The problem and result for each project; testimonials with permission.
 - Update `public/cv.pdf`: remove the phone number and town, and add the HISWG role.
 - Send one real test message through the contact form.
