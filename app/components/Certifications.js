@@ -12,7 +12,7 @@ const CERTS = [
   { id: 6, name: 'Python Developer', org: 'SoloLearn', category: 'Technical', icon: Zap, year: 2024 },
   { id: 7, name: 'Various IT Certificates', org: 'SoloLearn', category: 'Technical', icon: FileText },
   { id: 8, name: 'Prevention of Sexual Exploitation and Abuse (PSEA)', org: 'UNICEF', category: 'Other', icon: ShieldCheck, year: 2025 },
-  { id: 9, name: 'Information Security and Data Protection Awareness Course', org: 'TODO(Sithu): issuer and year', category: 'Other', icon: Award },
+  { id: 9, name: 'Information Security and Data Protection Awareness Course', org: '', category: 'Other', icon: Award, year: 2025 }, // TODO(Sithu): issuer not known yet; card shows the year only
 ]
 
 export default function Certifications() {
@@ -82,7 +82,7 @@ export default function Certifications() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-sm font-semibold text-white">{c.name}</h3>
-                    <p className="text-xs text-gray-300 mt-1">{c.org} {c.year ? ` | ${c.year}` : ''}</p>
+                    <p className="text-xs text-gray-300 mt-1">{[c.org, c.year].filter(Boolean).join(' | ')}</p>
                     <div className="mt-3 flex items-center gap-2">
                       <span className="text-xs font-medium px-2 py-1 rounded-full bg-yellow-400/10 text-yellow-300">{c.category}</span>
                       <span className="text-xs text-gray-400">|</span>
