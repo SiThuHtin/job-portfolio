@@ -1,77 +1,71 @@
 [![CI](https://github.com/SiThuHtin/job-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/SiThuHtin/job-portfolio/actions/workflows/ci.yml)
 
-# Sithu Htin - Professional Portfolio Website
+# sithuhtin.com
 
-This is the repository for my personal professional portfolio, designed to showcase my journey as an IT System Administrator, Developer, and Technology Enthusiast. It highlights my skills, professional experience, certifications, featured projects, and latest blog posts/documentation.
+The website of **Sithu Htin**, IT Systems Administrator & Web Developer based in Thailand. It presents my web and IT services for NGOs and small businesses (websites, managed hosting, email security, wedding invitation websites), selected work, a blog, and my CV.
 
-You can visit the live website here: [www.sithuhtin.com](https://www.sithuhtin.com)
+Live site: [www.sithuhtin.com](https://www.sithuhtin.com)
 
-## Technology Stack
+## Pages
 
-This project is built using modern web development technologies to ensure high performance, scalability, and excellent user experience:
+| Page | What it shows |
+| --- | --- |
+| `/` | Services, selected work, why work with me, latest articles |
+| `/pricing` | Web packages, IT services, managed hosting and wedding website packages, with prices and FAQ |
+| `/about-me` | Bio, CV download, experience, certifications, skills, all projects |
+| `/blog` | Articles on Linux, hosting, email security and IT for NGOs |
+| `/contact-me` | Contact form plus email, Viber, WhatsApp, LINE and social links |
+| `/admin` | Password-protected editor for blog posts |
 
-### Frontend
-* **[Next.js 16](https://nextjs.org/)** (App Router): React framework for server-side rendering and static site generation.
-* **[React](https://reactjs.org/)**: JavaScript library for building user interfaces.
-* **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for rapid and responsive UI styling.
-* **[Framer Motion](https://www.framer.com/motion/)**: For smooth, declarative UI animations and scroll effects.
-* **[Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)**: Comprehensive and beautiful icon libraries.
-* **[React Markdown](https://github.com/remarkjs/react-markdown)** & **[React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)**: Parsing and styling technical blog posts and documentation.
+## Technology
 
-### Backend & Database
-* **Next.js API Routes**: Serverless functions handling backend logic (e.g., fetching projects, submitting contact forms).
-* **[MongoDB](https://www.mongodb.com/) & [Mongoose](https://mongoosejs.com/)**: NoSQL database and ODM for storing and querying dynamic content like Projects and Blog Posts.
-* **[EmailJS](https://www.emailjs.com/)**: Contact form delivery via EmailJS.
+- **[Next.js 16](https://nextjs.org/)** (App Router) and **React 19**, in JavaScript
+- **Tailwind CSS 3** and **Framer Motion**; Plus Jakarta Sans via `next/font`
+- **MongoDB** with **Mongoose** for blog posts and comments
+- **EmailJS** (server-side) for the contact form, with rate limiting and a honeypot field
+- **React Markdown** and **React Syntax Highlighter** for blog posts
+- Admin login with an httpOnly JWT cookie and CSRF protection
+- SEO: per-page canonical and Open Graph tags, `sitemap.xml`, `robots.txt`, and schema.org structured data
+- Hosted on **Vercel**, with Vercel Analytics and Speed Insights
 
-### Analytics & Performance
-* **[Vercel Analytics](https://vercel.com/analytics)**: Tracking website visitors and page views.
-* **[Vercel Speed Insights](https://vercel.com/docs/speed-insights)**: Real-time core web vitals and performance monitoring.
+## Where content lives
 
-## Key Features
+Most content is plain data, separate from layout:
 
-* **Responsive Modern Design**: Built with an immersive dark visual style using premium glassmorphism effects and Tailwind CSS.
-* **Dynamic Animations**: Powered by `framer-motion`, elements animate into view as users scroll through the page.
-* **Centralized API Architecture**: Projects and posts data are delivered via custom Next.js backend API routes connecting to MongoDB.
-* **Interactive Contact Form**: Server-side EmailJS integration allows recruiters and clients to send messages directly.
-* **SEO Optimized**: Integrated Schema.org structured data, metadata, and OpenGraph tags improve search visibility.
-* **CV Download**: Easy-access download functionality for the professional resume.
+| File | Content |
+| --- | --- |
+| `data/site.js` | Name, title, description, contact and social links |
+| `data/services.js` | Services, prices, packages, hosting tiers, FAQ |
+| `data/projects.js` | Projects and case studies |
+| `data/contact.js` | Contact form options |
+| `data/testimonials.js` | Client testimonials |
 
-## How to Run Locally
+Blog posts are written in Markdown in `/admin` and stored in MongoDB.
 
-To get a local copy up and running, follow these simple steps.
+## Project structure
 
-### Prerequisites
-* Node.js (v20.9.0 or higher) installed on your machine.
-* npm, yarn, or bun installed.
-* A MongoDB connection URI (if you want to fetch dynamic database content).
-* EmailJS account credentials (for testing the contact form).
+- `app/`: pages, layout, global styles and API routes (`app/api`)
+- `app/components/`: page sections and shared UI (Navbar, Footer, MarkdownRenderer, CaseStudyCard and others)
+- `data/`: site content (see above)
+- `lib/`: database connection, Mongoose models, auth helpers, validation, metadata and structured data
+- `public/`: images, project screenshots and `cv.pdf`
 
-### Installation Setup
+## Run locally
 
-1. **Clone the repository:**
+Requires Node.js 20.9 or newer.
+
+1. Clone and install:
    ```bash
    git clone https://github.com/SiThuHtin/job-portfolio.git
    cd job-portfolio
-   ```
-
-2. **Install dependencies:**
-   ```bash
    npm install
-   # or yarn install
-   # or pnpm install
    ```
 
-3. **Set up Environment Variables:**
-   Create a `.env.local` file in the root directory and add your credentials:
+2. Create `.env.local` (see `.env.example`):
    ```env
-   # Required for Database connection
    MONGODB_URI=your_mongodb_connection_string
-
-   # Required for Admin authentication
    ADMIN_PASSWORD=your_admin_password
    JWT_SECRET=your_long_random_jwt_secret
-
-   # Required for Contact Form (EmailJS server-side route)
    EMAILJS_SERVICE_ID=your_service_id
    EMAILJS_TEMPLATE_ID=your_template_id
    EMAILJS_PUBLIC_KEY=your_public_key
@@ -79,28 +73,15 @@ To get a local copy up and running, follow these simple steps.
    CONTACT_TO_EMAIL=your_inbox@example.com
    ```
 
-4. **Run the development server:**
+3. Start the development server and open [http://localhost:3000](http://localhost:3000):
    ```bash
    npm run dev
-   # or yarn dev
    ```
 
-5. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000) to view the application running locally.
+Other commands: `npm run build` (production build), `npm run start` (serve the build), `npm run lint` (ESLint).
 
-## Project Structure highlights
+## Contact
 
-* `/app`: Contains Next.js App Router pages, layout, globals.css, and API routes (`/api`).
-* `/app/components`: All UI components: page sections (HeroSection, Skills, Experience, FeaturedProjects) and shared pieces (Navbar, Footer, MarkdownRenderer, CommentSection).
-* `/lib`: Database connection, Mongoose models, auth (JWT/CSRF) helpers, validation and content fetching.
-* `/public`: Static assets like images, PDFs (`cv.pdf`), and icons.
-
-## License & Contact
-
-* **Name**: Sithu Htin
-* **LinkedIn**: [SiMinThu](https://www.linkedin.com/in/see-min-thu)
-* **GitHub**: [@SiThuHtin](https://github.com/SiThuHtin)
-* **Email**: sithuhtin2022@gmail.com
-
----
-*Developed with Next.js, initialized using `create-next-app`.*
+- **Email**: sithuhtin2022@gmail.com
+- **LinkedIn**: [See Min Thu](https://www.linkedin.com/in/see-min-thu)
+- **GitHub**: [@SiThuHtin](https://github.com/SiThuHtin)
